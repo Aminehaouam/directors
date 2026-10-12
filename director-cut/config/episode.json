@@ -1,0 +1,506 @@
+{
+  "title": "Director's Cut - Episode 1: The Matrix",
+  "workingTitle": "The Comfortable Cage",
+  "canvas": {"width": 1920, "height": 1080},
+  "fps": 30,
+  "duration": 30,
+  "palette": "config/palette.json",
+  "typography": {
+    "families": {
+      "display": {
+        "family": "Cormorant Garamond",
+        "weights": [500, 600],
+        "italic": [500],
+        "tracking": 0.02,
+        "lineHeight": 1.0,
+        "minHeroSize": 96
+      },
+      "analytical": {"family": "Inter", "weights": [500, 600], "sizeRange": [26, 32], "labelTracking": 0.08},
+      "annotation": {
+        "family": "Reenie Beanie",
+        "fallback": "Caveat",
+        "weights": [400],
+        "sizeRange": [40, 56],
+        "maxWords": 4,
+        "opacity": 0.85
+      }
+    },
+    "safeMargins": {"left": 96, "right": 96, "top": 72, "bottom": 72}
+  },
+  "easing": {
+    "ink": [0.16, 1, 0.3, 1],
+    "paper": [0.22, 1, 0.36, 1],
+    "camera": [0.45, 0, 0.2, 1],
+    "stamp": [0.16, 1, 0.3, 1],
+    "inkMs": [400, 700],
+    "paperMs": [500, 900],
+    "settle": [0.33, 0, 0.67, 1]
+  },
+  "motion": {
+    "parallax": {"back": 0.6, "mid": 1.0, "front": 1.4},
+    "grain": 0.06,
+    "secondaryMaxPx": 2,
+    "textLeadSeconds": [0.08, 0.12]
+  },
+  "greenCap": {"default": 0.12, "shot10": 0.3},
+  "voiceover": {
+    "path": "public/audio/voiceover.wav",
+    "cues": [
+      {
+        "id": "c1",
+        "start": 0.3,
+        "end": 4.7,
+        "text": "The unsettling thing about The Matrix isn't that reality is fake.",
+        "words": {"unsettling": 0.12, "fake": 0.88}
+      },
+      {
+        "id": "c2",
+        "start": 5.1,
+        "end": 9.1,
+        "text": "It's that nobody has to force you to accept it.",
+        "words": {"nobody": 0.2, "force": 0.45, "accept": 0.72}
+      },
+      {
+        "id": "c3",
+        "start": 9.6,
+        "end": 13.6,
+        "text": "The system offers routines. Rewards. Reasons never to ask.",
+        "words": {"routines": 0.22, "rewards": 0.42, "reasons": 0.6, "never": 0.71, "to": 0.79, "ask": 0.88}
+      },
+      {
+        "id": "c4",
+        "start": 14.0,
+        "end": 17.2,
+        "text": "Slowly, the prison stops looking like a prison.",
+        "words": {"prison1": 0.22, "prison2": 0.78}
+      },
+      {
+        "id": "c5",
+        "start": 17.4,
+        "end": 19.8,
+        "text": "It starts looking like your life.",
+        "words": {"your": 0.55, "life": 0.75}
+      },
+      {
+        "id": "c6",
+        "start": 20.1,
+        "end": 22.5,
+        "text": "And obedience starts to feel natural.",
+        "words": {"obedience": 0.24, "natural": 0.72}
+      },
+      {
+        "id": "c7",
+        "start": 23.2,
+        "end": 26.0,
+        "text": "Neo's awakening isn't about seeing the truth.",
+        "words": {"awakening": 0.17, "truth": 0.8}
+      },
+      {
+        "id": "c8",
+        "start": 26.5,
+        "end": 29.3,
+        "text": "It's about what the truth will cost.",
+        "words": {"the": 0.3, "truth": 0.44, "cost": 0.66}
+      }
+    ]
+  },
+  "music": {
+    "path": "public/audio/music.wav",
+    "gainDb": -14,
+    "duckDb": 10,
+    "dropouts": [{"start": 22.0, "end": 23.0, "gainDb": -60}],
+    "placeholder": {"kind": "drone"}
+  },
+  "sfx": [
+    {
+      "id": "room-tone",
+      "path": "public/audio/sfx/room-tone.wav",
+      "atSeconds": 0.0,
+      "gainDb": -30,
+      "placeholder": {"kind": "noise", "duration": 3.0, "lowpass": 400}
+    },
+    {
+      "id": "paper-creak",
+      "path": "public/audio/sfx/paper-creak.wav",
+      "atSeconds": 0.3,
+      "gainDb": -22,
+      "placeholder": {"kind": "noise", "duration": 0.6, "lowpass": 1800, "fade": 0.2}
+    },
+    {
+      "id": "pen-scratch",
+      "path": "public/audio/sfx/pen-scratch.wav",
+      "atSeconds": 1.0,
+      "gainDb": -22,
+      "placeholder": {"kind": "noise", "duration": 0.8, "highpass": 2500, "lowpass": 6000, "tremolo": 18}
+    },
+    {
+      "id": "sub-hit",
+      "path": "public/audio/sfx/sub-hit.wav",
+      "atSeconds": 2.7,
+      "gainDb": -10,
+      "placeholder": {"kind": "thump", "freq": 48, "duration": 1.2}
+    },
+    {
+      "id": "keys",
+      "path": "public/audio/sfx/keyboard-clicks.wav",
+      "atSeconds": 3.0,
+      "gainDb": -26,
+      "placeholder": {"kind": "clicks", "duration": 3.0, "rate": 7}
+    },
+    {
+      "id": "clock",
+      "path": "public/audio/sfx/clock-tick.wav",
+      "atSeconds": 6.2,
+      "gainDb": -26,
+      "placeholder": {"kind": "clicks", "duration": 3.4, "rate": 1}
+    },
+    {
+      "id": "paper-rip",
+      "path": "public/audio/sfx/paper-rip.wav",
+      "atSeconds": 9.7,
+      "gainDb": -14,
+      "placeholder": {"kind": "noise", "duration": 0.9, "highpass": 1200, "lowpass": 7000, "fade": 0.4}
+    },
+    {
+      "id": "swell-1",
+      "path": "public/audio/sfx/low-swell.wav",
+      "atSeconds": 10.0,
+      "gainDb": -18,
+      "placeholder": {"kind": "swell", "freq": 70, "duration": 1.8}
+    },
+    {
+      "id": "pen-ticks",
+      "path": "public/audio/sfx/pen-ticks.wav",
+      "atCue": "c3",
+      "atWord": "reasons",
+      "gainDb": -18,
+      "placeholder": {"kind": "clicks", "duration": 1.4, "rate": 3}
+    },
+    {
+      "id": "code-hum",
+      "path": "public/audio/sfx/code-hum.wav",
+      "atSeconds": 11.8,
+      "gainDb": -28,
+      "placeholder": {"kind": "tone", "freq": 220, "duration": 2.2, "tremolo": 6}
+    },
+    {
+      "id": "pulse",
+      "path": "public/audio/sfx/pulse-60bpm.wav",
+      "atSeconds": 14.0,
+      "gainDb": -20,
+      "placeholder": {"kind": "pulse", "freq": 55, "bpm": 60, "duration": 6.2}
+    },
+    {
+      "id": "stamp-thump",
+      "path": "public/audio/sfx/stamp-thump.wav",
+      "atCue": "c6",
+      "atWord": "natural",
+      "offset": 0.0,
+      "gainDb": -8,
+      "placeholder": {"kind": "thump", "freq": 70, "duration": 0.5}
+    },
+    {
+      "id": "paper-tear",
+      "path": "public/audio/sfx/paper-tear.wav",
+      "atSeconds": 25.9,
+      "gainDb": -12,
+      "placeholder": {"kind": "noise", "duration": 1.0, "highpass": 900, "lowpass": 6500, "fade": 0.5}
+    },
+    {
+      "id": "swell-2",
+      "path": "public/audio/sfx/low-swell-2.wav",
+      "atSeconds": 25.9,
+      "gainDb": -18,
+      "placeholder": {"kind": "swell", "freq": 55, "duration": 1.6}
+    },
+    {
+      "id": "final-tone",
+      "path": "public/audio/sfx/final-tone.wav",
+      "atSeconds": 26.6,
+      "gainDb": -16,
+      "placeholder": {"kind": "tone", "freq": 98, "duration": 3.4, "fade": 1.5}
+    },
+    {
+      "id": "candle",
+      "path": "public/audio/sfx/candle-crackle.wav",
+      "atSeconds": 28.2,
+      "gainDb": -26,
+      "placeholder": {"kind": "clicks", "duration": 1.8, "rate": 9}
+    }
+  ],
+  "footageSlots": {
+    "A": {
+      "path": "public/footage/A.mp4",
+      "inSeconds": 0,
+      "durationSeconds": 3.4,
+      "speed": 1,
+      "crop": {"x": 0, "y": 0, "w": 1, "h": 1},
+      "standInStyle": "monitor",
+      "placeAtSeconds": 3.0,
+      "audioGainDb": -12,
+      "useAudio": false
+    },
+    "B": {
+      "path": "public/footage/B.mp4",
+      "inSeconds": 0,
+      "durationSeconds": 3.6,
+      "speed": 1,
+      "crop": {"x": 0, "y": 0, "w": 1, "h": 1},
+      "standInStyle": "corridor",
+      "placeAtSeconds": 6.2,
+      "audioGainDb": -6,
+      "useAudio": false
+    },
+    "C": {
+      "path": "public/footage/C.mp4",
+      "inSeconds": 0,
+      "durationSeconds": 2.8,
+      "speed": 1,
+      "crop": {"x": 0, "y": 0, "w": 1, "h": 1},
+      "standInStyle": "office",
+      "placeAtSeconds": 20.1,
+      "audioGainDb": -12,
+      "useAudio": false
+    },
+    "D": {
+      "path": "public/footage/D.mp4",
+      "inSeconds": 0,
+      "durationSeconds": 1.3,
+      "speed": 1,
+      "crop": {"x": 0, "y": 0, "w": 1, "h": 1},
+      "standInStyle": "pills",
+      "placeAtSeconds": 24.0,
+      "audioGainDb": -12,
+      "useAudio": false,
+      "optional": true
+    }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "Archival opening",
+      "module": "s1-archival",
+      "start": 0.0,
+      "end": 3.0,
+      "layers": ["desk", "candle", "parchment", "pen", "reel", "books", "smoke", "vignette", "grain"]
+    },
+    {
+      "id": "s2",
+      "name": "Ordinary world",
+      "module": "s2-ordinary",
+      "start": 3.0,
+      "end": 9.6,
+      "layers": ["desk", "mat", "footage", "border", "corners", "label"]
+    },
+    {
+      "id": "s3",
+      "name": "System underneath",
+      "module": "s3-system",
+      "start": 9.6,
+      "end": 14.0,
+      "layers": ["parchment", "code", "strips", "figure", "lines"]
+    },
+    {
+      "id": "s4",
+      "name": "Prison that looks normal",
+      "module": "s4-prison",
+      "start": 14.0,
+      "end": 22.7,
+      "layers": ["backplate", "grid", "architecture", "shadow", "note", "ghost"]
+    },
+    {
+      "id": "s5",
+      "name": "Awakening",
+      "module": "s5-awakening",
+      "start": 22.7,
+      "end": 26.5,
+      "layers": ["desk", "silhouette", "code", "paper-layers", "tear"]
+    },
+    {
+      "id": "s6",
+      "name": "Final statement",
+      "module": "s6-final",
+      "start": 26.5,
+      "end": 30.0,
+      "layers": ["desk", "cutout", "hairline", "wordmark"]
+    }
+  ],
+  "transitions": [
+    {"id": "t-blot", "type": "inkBlot", "from": "s1", "to": "s2", "atSeconds": 2.45, "duration": 0.8},
+    {"id": "t-cut-23", "type": "cut", "from": "s2", "to": "s3", "atSeconds": 9.6},
+    {"id": "t-slide", "type": "archivalSlide", "from": "s3", "to": "s4", "atSeconds": 13.45, "duration": 0.7},
+    {"id": "t-cut-45", "type": "cut", "from": "s4", "to": "s5", "atSeconds": 22.7},
+    {"id": "t-tear", "type": "tornPaper", "from": "s5", "to": "s6", "atSeconds": 25.85, "duration": 0.9}
+  ],
+  "events": [
+    {"id": "title-ink", "scene": "s1", "atSeconds": 1.0, "duration": 0.8, "easing": "ink"},
+    {"id": "code-surface", "scene": "s1", "atSeconds": 1.3, "duration": 1.2, "easing": "paper"},
+    {"id": "frame-draw", "scene": "s2", "atSeconds": 3.15, "duration": 0.7, "easing": "ink"},
+    {"id": "label-ordinary", "scene": "s2", "atSeconds": 3.6, "duration": 0.4, "easing": "ink"},
+    {"id": "strips-lift", "scene": "s3", "atSeconds": 9.75, "duration": 1.6, "easing": "paper"},
+    {"id": "code-behind", "scene": "s3", "atSeconds": 9.85, "duration": 1.0, "easing": "paper"},
+    {"id": "slide-diagram", "scene": "s3", "atSeconds": 11.1, "duration": 0.75, "easing": "paper"},
+    {"id": "fig-draw", "scene": "s3", "atSeconds": 11.75, "duration": 0.9, "easing": "ink"},
+    {
+      "id": "label-routine",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "reasons",
+      "offset": -0.115,
+      "duration": 0.35,
+      "easing": "ink",
+      "text": true
+    },
+    {
+      "id": "line-routine",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "reasons",
+      "offset": 0.0,
+      "duration": 0.5,
+      "easing": "ink"
+    },
+    {
+      "id": "label-reward",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "never",
+      "offset": -0.115,
+      "duration": 0.35,
+      "easing": "ink",
+      "text": true
+    },
+    {
+      "id": "line-reward",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "never",
+      "offset": 0.0,
+      "duration": 0.5,
+      "easing": "ink"
+    },
+    {
+      "id": "label-rules",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "to",
+      "offset": -0.115,
+      "duration": 0.35,
+      "easing": "ink",
+      "text": true
+    },
+    {
+      "id": "line-rules",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "to",
+      "offset": 0.0,
+      "duration": 0.5,
+      "easing": "ink"
+    },
+    {
+      "id": "label-expect",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "ask",
+      "offset": -0.115,
+      "duration": 0.35,
+      "easing": "ink",
+      "text": true
+    },
+    {
+      "id": "line-expect",
+      "scene": "s3",
+      "atCue": "c3",
+      "atWord": "ask",
+      "offset": 0.0,
+      "duration": 0.5,
+      "easing": "ink"
+    },
+    {"id": "cage-hatch", "scene": "s4", "atSeconds": 14.15, "duration": 1.5, "easing": "ink"},
+    {
+      "id": "cage-grid",
+      "scene": "s4",
+      "atCue": "c4",
+      "atWord": "prison2",
+      "offset": 0.0,
+      "duration": 1.1,
+      "easing": "ink",
+      "align": "end"
+    },
+    {"id": "walls-grow", "scene": "s4", "atSeconds": 17.2, "duration": 2.3, "easing": "paper"},
+    {
+      "id": "note-yourlife",
+      "scene": "s4",
+      "atCue": "c5",
+      "atWord": "your",
+      "offset": -0.115,
+      "duration": 0.45,
+      "easing": "ink",
+      "text": true
+    },
+    {"id": "ghost-grid", "scene": "s4", "atSeconds": 20.15, "duration": 0.8, "easing": "paper"},
+    {
+      "id": "stamp-obedience",
+      "scene": "s4",
+      "atCue": "c6",
+      "atWord": "natural",
+      "offset": -0.115,
+      "duration": 0.22,
+      "easing": "stamp",
+      "text": true,
+      "textId": "obedience"
+    },
+    {"id": "tear-open", "scene": "s5", "atSeconds": 22.8, "duration": 1.6, "easing": "paper"},
+    {"id": "frame-d", "scene": "s5", "atSeconds": 24.0, "duration": 1.3, "easing": "paper"},
+    {
+      "id": "layers-separate",
+      "scene": "s5",
+      "atCue": "c7",
+      "atWord": "truth",
+      "offset": -0.05,
+      "duration": 1.0,
+      "easing": "paper"
+    },
+    {
+      "id": "cost-letters",
+      "scene": "s6",
+      "atCue": "c8",
+      "atWord": "cost",
+      "offset": 0.0,
+      "duration": 1.5,
+      "easing": "settle",
+      "align": "end",
+      "text": true
+    },
+    {"id": "cost-underline", "scene": "s6", "atSeconds": 28.3, "duration": 0.7, "easing": "ink"},
+    {"id": "hairline-to-ink", "scene": "s6", "atSeconds": 28.9, "duration": 0.6, "easing": "paper"},
+    {"id": "wordmark", "scene": "s6", "atSeconds": 29.0, "duration": 0.5, "easing": "ink"},
+    {"id": "fade-out", "scene": "s6", "atSeconds": 29.5, "duration": 0.5, "easing": "paper"}
+  ],
+  "output": {
+    "final": "output/director-cut-ep01.mp4",
+    "draft": "output/director-cut-ep01-draft.mp4",
+    "preview": "output/preview.mp4",
+    "intermediate": "output/director-cut-ep01-intermediate.mov",
+    "mix": "output/mix.wav",
+    "frames": "output/frames",
+    "cache": "output/cache",
+    "contactSheet": "output/contact-sheet.png",
+    "qaReport": "output/qa-report.md"
+  },
+  "shots": [
+    {"n": 1, "start": 0.0, "end": 1.2},
+    {"n": 2, "start": 1.2, "end": 3.0},
+    {"n": 3, "start": 3.0, "end": 6.2},
+    {"n": 4, "start": 6.2, "end": 9.6},
+    {"n": 5, "start": 9.6, "end": 11.8},
+    {"n": 6, "start": 11.8, "end": 14.0},
+    {"n": 7, "start": 14.0, "end": 17.2},
+    {"n": 8, "start": 17.2, "end": 20.1},
+    {"n": 9, "start": 20.1, "end": 22.7},
+    {"n": 10, "start": 22.7, "end": 26.5},
+    {"n": 11, "start": 26.5, "end": 28.2},
+    {"n": 12, "start": 28.2, "end": 30.0}
+  ]
+}

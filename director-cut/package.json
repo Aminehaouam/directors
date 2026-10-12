@@ -1,0 +1,26 @@
+{
+  "name": "director-cut",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic film-essay animation renderer (Director's Cut)",
+  "type": "module",
+  "scripts": {
+    "inspect": "node scripts/inspect/inspect.mjs",
+    "assets": "node scripts/assets/build-assets.mjs",
+    "preview": "node scripts/render/render.mjs --preview",
+    "render:draft": "node scripts/render/render.mjs --draft",
+    "render": "node scripts/render/render.mjs --final",
+    "validate": "node scripts/validate/validate.mjs",
+    "cues": "node scripts/cues/cues.mjs",
+    "test": "node --test \"tests/*.test.mjs\""
+  },
+  "dependencies": {
+    "playwright": "1.56.1",
+    "ajv": "^8.17.1",
+    "@fontsource/cormorant-garamond": "^5.1.0",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/reenie-beanie": "^5.1.0",
+    "@fontsource/caveat": "^5.1.0",
+    "pngjs": "^7.0.0"
+  }
+}

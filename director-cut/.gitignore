@@ -1,0 +1,8 @@
+node_modules/
+output/
+*.log
+public/textures/
+public/footage/*
+!public/footage/.gitkeep
+public/audio/*
+!public/audio/.gitkeep

@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["title", "canvas", "fps", "duration", "palette", "typography", "easing", "voiceover", "music", "sfx", "footageSlots", "scenes", "events", "output"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "canvas": { "type": "object", "required": ["width", "height"], "properties": { "width": { "const": 1920 }, "height": { "const": 1080 } } },
+    "fps": { "type": "integer", "minimum": 1, "maximum": 120 },
+    "duration": { "type": "number", "exclusiveMinimum": 0 },
+    "palette": { "type": "string" },
+    "typography": {
+      "type": "object", "required": ["families", "safeMargins"],
+      "properties": {
+        "families": { "type": "object", "required": ["display", "analytical", "annotation"],
+          "additionalProperties": { "type": "object", "required": ["family"], "properties": { "family": { "type": "string" } } } },
+        "safeMargins": { "type": "object", "required": ["left", "right", "top", "bottom"], "additionalProperties": { "type": "number", "minimum": 0 } }
+      }
+    },
+    "easing": {
+      "type": "object",
+      "patternProperties": { "^(?!.*Ms$).*$": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 } },
+      "required": ["ink", "paper", "camera", "stamp"]
+    },
+    "voiceover": {
+      "type": "object", "required": ["path", "cues"],
+      "properties": { "path": { "type": "string" }, "cues": { "type": "array", "minItems": 1, "items": {
+        "type": "object", "required": ["id", "start", "end"],
+        "properties": { "id": { "type": "string" }, "start": { "type": "number", "minimum": 0 }, "end": { "type": "number" }, "text": { "type": "string" },
+          "words": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 } } } } } }
+    },
+    "music": { "type": "object", "required": ["path", "gainDb"], "properties": { "path": { "type": "string" }, "gainDb": { "type": "number" }, "duckDb": { "type": "number" } } },
+    "sfx": { "type": "array", "items": { "type": "object", "required": ["id", "path"], "properties": { "id": { "type": "string" }, "path": { "type": "string" }, "atSeconds": { "type": "number" }, "atCue": { "type": "string" }, "atWord": { "type": "string" }, "offset": { "type": "number" }, "gainDb": { "type": "number" } },
+      "anyOf": [{ "required": ["atSeconds"] }, { "required": ["atCue"] }] } },
+    "footageSlots": { "type": "object", "required": ["A", "B", "C", "D"], "additionalProperties": { "type": "object", "required": ["path", "inSeconds", "durationSeconds", "speed", "crop", "standInStyle"],
+      "properties": { "path": { "type": "string" }, "inSeconds": { "type": "number", "minimum": 0 }, "durationSeconds": { "type": "number", "exclusiveMinimum": 0 }, "speed": { "type": "number", "exclusiveMinimum": 0 },
+        "crop": { "type": "object", "required": ["x", "y", "w", "h"], "properties": { "x": { "type": "number", "minimum": 0, "maximum": 1 }, "y": { "type": "number", "minimum": 0, "maximum": 1 }, "w": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }, "h": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 } } },
+        "standInStyle": { "enum": ["monitor", "corridor", "office", "pills"] } } } },
+    "scenes": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["id", "module", "start", "end", "layers"], "properties": { "id": { "type": "string" }, "module": { "type": "string" }, "start": { "type": "number", "minimum": 0 }, "end": { "type": "number" }, "layers": { "type": "array", "items": { "type": "string" } } } } },
+    "transitions": { "type": "array", "items": { "type": "object", "required": ["id", "type", "from", "to", "atSeconds"], "properties": { "type": { "enum": ["inkBlot", "tornPaper", "archivalSlide", "cut"] }, "duration": { "type": "number", "exclusiveMinimum": 0 } } } },
+    "events": { "type": "array", "items": { "type": "object", "required": ["id", "scene", "duration", "easing"],
+      "properties": { "id": { "type": "string" }, "scene": { "type": "string" }, "atSeconds": { "type": "number" }, "atCue": { "type": "string" }, "atWord": { "type": "string" }, "offset": { "type": "number" }, "duration": { "type": "number", "exclusiveMinimum": 0 }, "easing": { "type": "string" }, "align": { "enum": ["start", "end"] }, "text": { "type": "boolean" } },
+      "anyOf": [{ "required": ["atSeconds"] }, { "required": ["atCue"] }] } },
+    "output": { "type": "object", "required": ["final", "draft", "frames", "cache", "qaReport"] }
+  }
+}
