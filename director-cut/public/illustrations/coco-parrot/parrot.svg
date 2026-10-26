@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="coco-parrot" viewBox="0 0 400 520" width="400" height="520" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="coco-title coco-desc">
+  <title id="coco-title">Coco the African grey parrot</title>
+  <desc id="coco-desc">Friendly African grey parrot mascot with red tail feathers. Parts are grouped for animation: tail, feet, body, wings, head, eyes, eyelids and beaks.</desc>
+  <defs>
+    <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f96a1"/><stop offset="1" stop-color="#767d89"/></linearGradient>
+    <linearGradient id="gBelly" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9afb8"/><stop offset="1" stop-color="#8f96a1"/></linearGradient>
+    <linearGradient id="gHead" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b3b9c2"/><stop offset="1" stop-color="#a9afb8"/></linearGradient>
+    <linearGradient id="gWingCov" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f96a1"/><stop offset="1" stop-color="#767d89"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9261c"/><stop offset="1" stop-color="#f2503a"/></linearGradient>
+    <linearGradient id="gRedD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a81b14"/><stop offset="1" stop-color="#d93426"/></linearGradient>
+    <radialGradient id="gIris" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f6df8a"/><stop offset="1" stop-color="#e3b548"/></radialGradient>
+    <linearGradient id="gLid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b7bcc4"/><stop offset="1" stop-color="#9ea4ae"/></linearGradient>
+    <linearGradient id="gBeak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3e48"/><stop offset="1" stop-color="#2a2d35"/></linearGradient>
+    <clipPath id="clip-left-eye"><circle cx="158" cy="160" r="23"/></clipPath>
+    <clipPath id="clip-right-eye"><circle cx="242" cy="160" r="23"/></clipPath>
+  </defs>
+
+  <!-- Pivots are declared as data-pivot="x y" in viewBox units; the preview script reads them. -->
+  <g id="shadow" data-pivot="200 506"><ellipse cx="200" cy="506" rx="96" ry="9" fill="#2c3039" fill-opacity=".14"/></g>
+
+  <g id="parrot" data-pivot="200 480">
+
+    <g id="tail" data-pivot="200 372">
+      <g transform="translate(200 366) rotate(42)"><path d="M0 0 C-19 26 -21 73.16 0 118 C21 73.16 19 26 0 0 Z" fill="url(#gRedD)"/><path d="M0 18 L0 104" stroke="#bf2118" stroke-width="2" stroke-linecap="round" opacity=".55"/></g>
+      <g transform="translate(200 366) rotate(-42)"><path d="M0 0 C-19 26 -21 73.16 0 118 C21 73.16 19 26 0 0 Z" fill="url(#gRedD)"/><path d="M0 18 L0 104" stroke="#bf2118" stroke-width="2" stroke-linecap="round" opacity=".55"/></g>
+      <g transform="translate(200 366) rotate(21)"><path d="M0 0 C-21 26 -23 83.08 0 134 C23 83.08 21 26 0 0 Z" fill="url(#gRed)"/><path d="M0 18 L0 120" stroke="#bf2118" stroke-width="2" stroke-linecap="round" opacity=".55"/></g>
+      <g transform="translate(200 366) rotate(-21)"><path d="M0 0 C-21 26 -23 83.08 0 134 C23 83.08 21 26 0 0 Z" fill="url(#gRed)"/><path d="M0 18 L0 120" stroke="#bf2118" stroke-width="2" stroke-linecap="round" opacity=".55"/></g>
+      <g transform="translate(200 366) rotate(0)"><path d="M0 0 C-22 26 -24 86.8 0 140 C24 86.8 22 26 0 0 Z" fill="url(#gRed)"/><path d="M0 18 L0 126" stroke="#bf2118" stroke-width="2" stroke-linecap="round" opacity=".55"/></g>
+    </g>
+
+    <g id="feet">
+      <g id="left-foot"><rect x="159" y="414" width="12" height="36" rx="6" fill="#7a808b"/><path d="M165 446 L147.4 466" stroke="#656b76" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="146.52" cy="468" r="3" fill="#2c3039"/><path d="M165 446 L165 466" stroke="#656b76" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="165" cy="468" r="3" fill="#2c3039"/><path d="M165 446 L182.6 466" stroke="#656b76" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="183.48" cy="468" r="3" fill="#2c3039"/><ellipse cx="165" cy="448" rx="12" ry="7" fill="#7a808b"/></g>
+      <g id="right-foot"><rect x="229" y="414" width="12" height="36" rx="6" fill="#7a808b"/><path d="M235 446 L217.4 466" stroke="#656b76" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="216.52" cy="468" r="3" fill="#2c3039"/><path d="M235 446 L235 466" stroke="#656b76" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="235" cy="468" r="3" fill="#2c3039"/><path d="M235 446 L252.6 466" stroke="#656b76" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="253.48" cy="468" r="3" fill="#2c3039"/><ellipse cx="235" cy="448" rx="12" ry="7" fill="#7a808b"/></g>
+    </g>
+
+    <g id="body" data-pivot="200 425">
+      <path id="body-shape" d="M104 322 C104 258 148 228 200 228 C252 228 296 258 296 322 C296 380 258 424 200 424 C142 424 104 380 104 322 Z" fill="url(#gBody)"/>
+      <path id="belly" d="M140 318 C140 270 166 246 200 246 C234 246 260 270 260 318 C260 366 236 408 200 408 C164 408 140 366 140 318 Z" fill="url(#gBelly)"/>
+      <path id="feather-scallops" d="M147 308 Q160 320 173 308 M187 308 Q200 320 213 308 M227 308 Q240 320 253 308 M129 330 Q142 342 155 330 M167 330 Q180 342 193 330 M207 330 Q220 342 233 330 M245 330 Q258 342 271 330 M147 352 Q160 364 173 352 M187 352 Q200 364 213 352 M227 352 Q240 364 253 352 M165 374 Q178 385 191 374 M209 374 Q222 385 235 374" fill="none" stroke="#767d89" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+      <path id="body-rim" d="M116 350 C128 390 160 414 200 414" fill="none" stroke="#5b616c" stroke-opacity=".35" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <g id="left-wing" data-pivot="124 276">
+      <path d="M118 296 C100 336 96 392 104 428 C108 438 120 438 124 428 C134 396 140 340 138 296 Z" fill="#5b616c"/>
+      <path d="M130 292 C116 340 114 396 124 434 C128 444 140 442 142 432 C150 398 152 340 148 292 Z" fill="#767d89"/>
+      <path d="M104 286 C92 320 92 364 104 394 C110 402 122 400 126 392 C134 364 140 322 134 286 Z" fill="#6a717d"/>
+      <path d="M122 330 C118 370 118 400 122 424" fill="none" stroke="#2c3039" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+      <path d="M136 326 C134 366 134 396 137 428" fill="none" stroke="#2c3039" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+      <path d="M96 282 C96 262 118 252 138 256 C152 260 156 276 152 296 C148 322 124 340 108 330 C96 322 94 300 96 282 Z" fill="url(#gWingCov)"/>
+      <path d="M104 318 C108 346 126 352 138 338 C146 326 148 312 146 300 C140 322 120 336 104 318 Z" fill="#a9afb8" fill-opacity=".35"/>
+      <path d="M106 290 C112 280 124 276 136 280" fill="none" stroke="#f2f0ea" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M104 306 C112 298 128 296 142 302" fill="none" stroke="#f2f0ea" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g id="right-wing" data-pivot="276 276">
+      <path d="M 282 296 C 300 336 304 392 296 428 C 292 438 280 438 276 428 C 266 396 260 340 262 296 Z" fill="#5b616c"/>
+      <path d="M 270 292 C 284 340 286 396 276 434 C 272 444 260 442 258 432 C 250 398 248 340 252 292 Z" fill="#767d89"/>
+      <path d="M 296 286 C 308 320 308 364 296 394 C 290 402 278 400 274 392 C 266 364 260 322 266 286 Z" fill="#6a717d"/>
+      <path d="M 278 330 C 282 370 282 400 278 424" fill="none" stroke="#2c3039" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 264 326 C 266 366 266 396 263 428" fill="none" stroke="#2c3039" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 304 282 C 304 262 282 252 262 256 C 248 260 244 276 248 296 C 252 322 276 340 292 330 C 304 322 306 300 304 282 Z" fill="url(#gWingCov)"/>
+      <path d="M 296 318 C 292 346 274 352 262 338 C 254 326 252 312 254 300 C 260 322 280 336 296 318 Z" fill="#a9afb8" fill-opacity=".35"/>
+      <path d="M 294 290 C 288 280 276 276 264 280" fill="none" stroke="#f2f0ea" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 296 306 C 288 298 272 296 258 302" fill="none" stroke="#f2f0ea" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <g id="head" data-pivot="200 248">
+      <path id="head-shape" d="M108 172 C108 112 148 74 200 74 C252 74 292 112 292 172 C292 226 252 262 200 262 C148 262 108 226 108 172 Z" fill="url(#gHead)"/>
+      <path id="crest" d="M168 82 C168 62 176 54 184 52 C182 62 188 66 192 66 C192 56 200 48 208 46 C206 58 212 62 218 62 C220 54 228 50 234 50 C232 62 236 72 232 82 Z" fill="#a4abb5"/>
+      <path id="head-feather-marks" d="M150 98 Q162 90 176 94 M224 94 Q238 90 250 98 M132 128 Q140 120 150 122 M250 122 Q260 120 268 128" fill="none" stroke="#767d89" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+      <path id="face-patch" d="M122 168 C122 134 140 118 162 120 C180 122 190 132 200 132 C210 132 220 122 238 120 C260 118 278 134 278 168 C278 204 252 224 224 222 C212 221 206 216 200 216 C194 216 188 221 176 222 C148 224 122 204 122 168 Z" fill="#f2f0ea"/>
+      <path id="face-patch-shade" d="M126 184 C134 212 160 224 184 222 C150 226 128 208 126 184 Z M274 184 C266 212 240 224 216 222 C250 226 272 208 274 184 Z" fill="#e2dfd8"/>
+      <ellipse id="left-cheek" cx="138" cy="198" rx="12" ry="8" fill="#f4a39a" fill-opacity=".45"/>
+      <ellipse id="right-cheek" cx="262" cy="198" rx="12" ry="8" fill="#f4a39a" fill-opacity=".45"/>
+
+      <g id="eyes">
+      <g id="left-eye" data-pivot="158 160">
+        <circle cx="158" cy="160" r="23" fill="#2c3039"/>
+        <circle cx="158" cy="160" r="19" fill="url(#gIris)"/>
+        <g id="left-pupil" data-pivot="158 160">
+          <circle cx="158" cy="160" r="10.5" fill="#14161b"/>
+          <circle cx="152" cy="153" r="5.6" fill="#fff"/>
+          <circle cx="164" cy="166" r="2.6" fill="#fff" fill-opacity=".85"/>
+        </g>
+      </g>
+      <g id="right-eye" data-pivot="242 160">
+        <circle cx="242" cy="160" r="23" fill="#2c3039"/>
+        <circle cx="242" cy="160" r="19" fill="url(#gIris)"/>
+        <g id="right-pupil" data-pivot="242 160">
+          <circle cx="242" cy="160" r="10.5" fill="#14161b"/>
+          <circle cx="236" cy="153" r="5.6" fill="#fff"/>
+          <circle cx="248" cy="166" r="2.6" fill="#fff" fill-opacity=".85"/>
+        </g>
+      </g>
+      </g>
+      <g id="eyelids">
+      <g id="left-eyelid" data-pivot="158 137" style="transform:scaleY(0)" clip-path="url(#clip-left-eye)">
+        <path d="M134 135 H182 V174 Q158 190 134 174 Z" fill="url(#gLid)"/>
+        <path d="M134 174 Q158 190 182 174" fill="none" stroke="#2c3039" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <g id="right-eyelid" data-pivot="242 137" style="transform:scaleY(0)" clip-path="url(#clip-right-eye)">
+        <path d="M218 135 H266 V174 Q242 190 218 174 Z" fill="url(#gLid)"/>
+        <path d="M218 174 Q242 190 266 174" fill="none" stroke="#2c3039" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      </g>
+
+      <g id="beak" data-pivot="200 200">
+        <g id="mouth" data-pivot="200 228"><path id="mouth-inner" d="M187 228 C187 222 213 222 213 228 C213 240 209 250 200 252 C191 250 187 240 187 228 Z" fill="#7a2c3a"/>
+        <path id="mouth-tongue" d="M192 240 C194 234 206 234 208 240 C206 247 194 247 192 240 Z" fill="#d9707a"/></g>
+        <g id="lower-beak" data-pivot="200 226">
+          <path d="M186 228 C186 222 214 222 214 228 C214 242 209 252 200 254 C191 252 186 242 186 228 Z" fill="#23262d"/>
+          <path d="M191 240 C195 248 205 248 209 240" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g id="upper-beak" data-pivot="200 200">
+          <path d="M168 182 C168 158 232 158 232 182 C232 204 222 222 212 232 C206 238 194 238 188 232 C178 222 168 204 168 182 Z" fill="url(#gBeak)"/>
+          <path d="M190 236 C196 239 204 239 210 236" fill="none" stroke="#14161b" stroke-opacity=".55" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M178 172 C186 164 200 162 210 164" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="4" stroke-linecap="round"/>
+          <ellipse cx="188" cy="178" rx="3.6" ry="2.6" fill="#0f1115"/>
+          <ellipse cx="212" cy="178" rx="3.6" ry="2.6" fill="#0f1115"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

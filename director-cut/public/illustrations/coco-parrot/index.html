@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coco parrot – preview</title>
+<style>
+  :root { --bg:#ebe9e4; --ink:#2c3039; --card:#f7f6f2; --line:#d6d3cb; --accent:#e8392a; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; background:var(--bg); color:var(--ink); font:16px/1.4 system-ui, sans-serif;
+         display:flex; flex-direction:column; align-items:center; gap:20px; padding:24px 16px 40px; }
+  h1 { margin:0; font-size:1.2rem; font-weight:650; }
+  .stage { width:min(100%,420px); aspect-ratio:400/520; background:var(--card); border:1px solid var(--line); border-radius:24px; }
+  .stage svg { width:100%; height:100%; display:block; overflow:visible; }
+  .controls { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:520px; }
+  button { font:inherit; font-weight:600; padding:9px 16px; border-radius:999px; border:1px solid var(--line);
+           background:#fff; color:var(--ink); cursor:pointer; }
+  button:hover { border-color:var(--ink); }
+  button:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+  button[aria-pressed="true"] { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .sizes { display:flex; align-items:flex-end; gap:20px; }
+  .sizes img { display:block; }
+  .sizes figure { margin:0; text-align:center; font-size:.75rem; opacity:.7; }
+  #err { color:#b00020; }
+</style>
+</head>
+<body>
+  <h1>Coco · African grey mascot</h1>
+  <div class="stage" id="stage" aria-live="off"></div>
+  <div class="controls" id="controls">
+    <button data-anim="idle">Idle</button>
+    <button data-anim="look">Look around</button>
+    <button data-anim="talk">Talk</button>
+    <button data-anim="flap">Wing flap</button>
+    <button data-anim="celebrate">Celebrate</button>
+    <button data-anim="curious">Curious</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
+  </div>
+  <div class="sizes" aria-label="Small size check">
+    <figure><img src="parrot.svg" width="24" alt="Coco 24px"><figcaption>24</figcaption></figure>
+    <figure><img src="parrot.svg" width="48" alt="Coco 48px"><figcaption>48</figcaption></figure>
+    <figure><img src="parrot.svg" width="96" alt="Coco 96px"><figcaption>96</figcaption></figure>
+  </div>
+  <p id="err" role="alert"></p>
+<script type="module">
+  import { createCoco } from './coco-animations.js';
+  try {
+    const markup = await (await fetch('parrot.svg')).text();
+    stage.innerHTML = markup.replace(/^<\?xml[^>]*\?>/, '');
+    const coco = createCoco(stage.querySelector('svg'));
+    window.coco = coco;
+    const buttons = [...document.querySelectorAll('[data-anim]')];
+    const sync = () => {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', coco.isActive(b.dataset.anim)));
+      pause.textContent = coco.paused ? 'Resume' : 'Pause';
+    };
+    buttons.forEach((b) => b.addEventListener('click', () => { coco.toggle(b.dataset.anim); sync(); }));
+    pause.addEventListener('click', () => { coco.paused ? coco.resume() : coco.pause(); sync(); });
+    reset.addEventListener('click', () => { coco.reset(); sync(); });
+    coco.reset(); sync();
+  } catch (e) { err.textContent = 'Could not load parrot.svg (serve this folder over http): ' + e.message; }
+</script>
+</body>
+</html>
