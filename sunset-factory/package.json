@@ -1,0 +1,14 @@
+{
+  "name": "sunset-factory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "20-second paper-cut animation of a tiny factory that manufactures sunsets, rendered entirely from code",
+  "type": "module",
+  "scripts": {
+    "audio": "node scripts/audio.mjs",
+    "stills": "node scripts/render.mjs --scale 0.5 --stills",
+    "preview": "node scripts/render.mjs --scale 0.5",
+    "render": "node scripts/audio.mjs && node scripts/render.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}
