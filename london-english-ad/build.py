@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """London -> English-learning app ad: 15 s, 1080x1920, 30 fps.
 
-Stage 1  ffmpeg re-cuts the source onto a 120 BPM grid (0.5 s per beat),
-         crops each shot to 9:16, retimes it and grades it  -> build/base.mp4
-Stage 2  numpy synthesises a placeholder phonk-style bed + SFX -> build/mix.wav
+Stage 1  footage:     ffmpeg re-cuts the source onto a 120 BPM grid (0.5 s per beat),
+                      crops each shot to 9:16, retimes it and grades it  -> build/base.mp4
+         illustrated: headless Chromium draws the flat vector scenes in
+                      illustrated/scenes.js on the same shot grid         -> build/illustrated-base.mp4
+Stage 2  numpy synthesises a placeholder phonk-style bed + SFX -> build/mix*.wav
 Stage 3  Pillow animates the type, vocab chips and end card over every frame
-         and pipes them to ffmpeg with the mix               -> output/london-english-ad.mp4
+         and pipes them to ffmpeg with the mix               -> output/london-english-ad*.mp4
 
-Usage: python3 build.py [--app-name NAME] [--preview-frames]
+Usage: python3 build.py [--style footage|illustrated] [--app-name NAME] [--preview-frames]
 """
 import argparse
 import math
@@ -39,6 +41,24 @@ YELLOW = (255, 214, 10)      # #FFD60A highlight
 INK = (11, 11, 11)           # #0B0B0B text on yellow
 RED = (228, 0, 43)           # #E4002B London red
 NAVY = (11, 31, 75)          # #0B1F4B
+
+ILLO_FONTS = os.path.join(ROOT, "illustrated", "fonts")
+# The illustrated scenes carry their own camera moves, vignette and end-card dim, so stage 3
+# skips those passes for them; rounded Nunito replaces Inter for a friendlier, Duolingo-like voice.
+STYLES = {
+    "footage": {"base": "base.mp4", "mix": "mix.wav", "out": "london-english-ad.mp4", "camera": True, "fonts": {}},
+    "illustrated": {
+        "base": "illustrated-base.mp4", "mix": "mix-illustrated.wav", "out": "london-english-ad-illustrated.mp4",
+        "camera": False,
+        "fonts": {
+            F_BLACK: os.path.join(ILLO_FONTS, "nunito-latin-900-normal.woff2"),
+            F_BOLD: os.path.join(ILLO_FONTS, "nunito-latin-800-normal.woff2"),
+            F_SEMI: os.path.join(ILLO_FONTS, "nunito-latin-800-normal.woff2"),
+            F_MED: os.path.join(ILLO_FONTS, "nunito-latin-700-normal.woff2"),
+        },
+    },
+}
+FONT_SWAP = {}  # filled from STYLES[style]["fonts"] in main()
 
 # ---------------------------------------------------------------------------
 # Shot list: (source in, source out, output duration, crop x-centre 0..1, motion, label)
@@ -232,7 +252,24 @@ def ambience(dur, cutoff, gain):
     return x * fade * gain
 
 
-def build_audio(path):
+def boing(f0=280, dur=0.35):
+    """Cartoon spring for the illustrated mascot's pops and hops."""
+    t = tt(int(dur * SR))
+    f = f0 * (1 + 0.5 * np.exp(-t / 0.04)) * (1 + 0.12 * np.sin(2 * np.pi * 22 * t) * np.exp(-t / 0.15))
+    return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / 0.12) * (1 - np.exp(-t / 0.003)) * 0.4
+
+
+def flutter(dur=0.45):
+    t = tt(int(dur * SR))
+    return whoosh(dur, 900, 6000, 0.4) * (0.6 + 0.4 * np.sign(np.sin(2 * np.pi * 26 * t)))
+
+
+def poof():
+    t = tt(int(0.4 * SR))
+    return lowpass(rng.standard_normal(len(t)), 1400) * np.exp(-t / 0.09) * (1 - np.exp(-t / 0.01)) * 0.8
+
+
+def build_audio(path, style="footage"):
     music, sfx = Bus(), Bus()
     # HOOK 0-1.5: riser + an impact on each cut, kick on every beat
     n = int(1.5 * SR)
@@ -295,6 +332,14 @@ def build_audio(path):
     sfx.add(12.0, bell_bong(), 0.45)
     sfx.add(12.9, click(), 0.8)                          # button tap
     sfx.add(13.2, chime((1046.5, 1318.5, 1568.0), 0.8), 1.0)
+    if style == "illustrated":                           # cartoon layer for the mascot
+        sfx.add(0.12, boing(260), 0.9)                   # pops up in the hook
+        sfx.add(1.3, boing(150, 0.3), 0.5)               # train squashes to a stop
+        sfx.add(4.55, boing(340), 0.8)                   # hop over the gap
+        sfx.add(4.85, boing(230, 0.25), 0.6)             # lands in the carriage
+        sfx.add(9.08, flutter(), 0.8)                    # flashcards fly away
+        sfx.add(9.53, poof(), 0.9)                       # chalkboard vanishes
+        sfx.add(13.6, boing(300), 0.7)                   # waves from the end card
 
     mix = music.buf * 0.75 + sfx.buf
     mix = mix[: int(DUR * SR)]
@@ -316,7 +361,7 @@ def build_audio(path):
 # ---------------------------------------------------------------------------
 # Stage 3: graphics
 def font(path, size):
-    return ImageFont.truetype(path, size)
+    return ImageFont.truetype(FONT_SWAP.get(path, path), size)
 
 
 def ease_out_cubic(x):
@@ -449,8 +494,12 @@ def cta_button(label):
     img = rounded((w, h), 66, YELLOW + (255,))
     d = ImageDraw.Draw(img)
     f = font(F_BLACK, 50)
-    tw = f.getlength(label)
-    d.text(((w - tw) / 2, 34), label, font=f, fill=INK)
+    # the arrow always comes from Inter: not every swapped-in font has U+2192
+    text, arrow = (label[:-1], label[-1]) if label.endswith("→") else (label, "")
+    fa = ImageFont.truetype(F_BLACK, 50)
+    x, base = (w - f.getlength(text) - fa.getlength(arrow)) / 2, 34 + f.getmetrics()[0]
+    d.text((x, base), text, font=f, fill=INK, anchor="ls")
+    d.text((x + f.getlength(text), base), arrow, font=fa, fill=INK, anchor="ls")
     return with_shadow(img, radius=22, offset=(0, 10), opacity=0.5)
 
 
@@ -609,10 +658,11 @@ def zoom_for(i, lt):
 FLASHES = [0.5, 1.0, 1.5, 10.0, 12.0]
 
 
-def render(app_name, preview_frames=False):
-    base = os.path.join(BUILD, "base.mp4")
-    mix = os.path.join(BUILD, "mix.wav")
-    out = os.path.join(OUT, "london-english-ad.mp4")
+def render(app_name, style="footage", preview_frames=False):
+    cfg = STYLES[style]
+    base = os.path.join(BUILD, cfg["base"])
+    mix = os.path.join(BUILD, cfg["mix"])
+    out = os.path.join(OUT, cfg["out"])
     els = build_overlays(app_name)
     vig = make_vignette()
     reader = subprocess.Popen(["ffmpeg", "-v", "error", "-i", base, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
@@ -623,7 +673,7 @@ def render(app_name, preview_frames=False):
          "-profile:v", "high", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart",
          "-shortest", out], stdin=subprocess.PIPE)
     shake = np.random.default_rng(3)
-    previews = {int(s * FPS) for s in (0.7, 2.4, 3.6, 4.4, 6.3, 9.7, 10.6, 14.0)}
+    previews = {int(s * FPS) for s in (0.4, 0.7, 1.2, 2.4, 3.6, 4.4, 4.7, 5.2, 6.3, 7.2, 7.7, 8.7, 9.7, 10.6, 11.2, 12.6, 14.0)}
     for fi in range(NFRAMES):
         raw = reader.stdout.read(W * H * 3)
         if len(raw) < W * H * 3:
@@ -632,19 +682,22 @@ def render(app_name, preview_frames=False):
         i, lt = shot_at(t)
         arr = np.frombuffer(raw, np.uint8).reshape(H, W, 3)
         img = Image.fromarray(arr)
-        z = zoom_for(i, lt)
-        if z > 1.001:
-            cw, ch = W / z, H / z
-            ox = oy = 0.0
-            if SHOTS[i][4] == "shake":
-                ox, oy = shake.normal(0, 7, 2)
-            l, tp = (W - cw) / 2 + ox, (H - ch) / 2 + oy
-            img = img.resize((W, H), Image.BICUBIC, box=(l, tp, l + cw, tp + ch))
-        f = np.asarray(img).astype(np.float32) * vig
-        if t >= 12.0:  # end card: darken for legibility
-            k = ease_out_cubic((t - 12.0) / 0.4)
-            grad = np.linspace(0.62, 0.38, H, dtype=np.float32)[:, None, None]
-            f = f * (1 - k * (1 - grad))
+        if cfg["camera"]:
+            z = zoom_for(i, lt)
+            if z > 1.001:
+                cw, ch = W / z, H / z
+                ox = oy = 0.0
+                if SHOTS[i][4] == "shake":
+                    ox, oy = shake.normal(0, 7, 2)
+                l, tp = (W - cw) / 2 + ox, (H - ch) / 2 + oy
+                img = img.resize((W, H), Image.BICUBIC, box=(l, tp, l + cw, tp + ch))
+            f = np.asarray(img).astype(np.float32) * vig
+            if t >= 12.0:  # end card: darken for legibility
+                k = ease_out_cubic((t - 12.0) / 0.4)
+                grad = np.linspace(0.62, 0.38, H, dtype=np.float32)[:, None, None]
+                f = f * (1 - k * (1 - grad))
+        else:
+            f = np.asarray(img).astype(np.float32)
         if 11.85 <= t < 12.0:  # dip toward the end card
             f *= 1 - 0.7 * (t - 11.85) / 0.15
         for fl in FLASHES:
@@ -652,14 +705,14 @@ def render(app_name, preview_frames=False):
                 a = 0.55 * (1 - (t - fl) / 0.1)
                 f = f * (1 - a) + 255 * a
         frame = Image.fromarray(np.clip(f, 0, 255).astype(np.uint8)).convert("RGBA")
-        if t >= 12.0:
+        if cfg["camera"] and t >= 12.0:
             r = 10 * ease_out_cubic((t - 12.0) / 0.4)
             frame = frame.filter(ImageFilter.GaussianBlur(r))
         for el in els:
             el.draw(frame, t)
         rgb = frame.convert("RGB")
         if preview_frames and fi in previews:
-            rgb.save(os.path.join(BUILD, f"frame_{t:05.2f}.png"))
+            rgb.save(os.path.join(BUILD, f"{style}_frame_{t:05.2f}.png"))
         writer.stdin.write(rgb.tobytes())
     writer.stdin.close()
     writer.wait()
@@ -669,19 +722,27 @@ def render(app_name, preview_frames=False):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--style", choices=sorted(STYLES), default="footage")
     ap.add_argument("--app-name", default="WanderEnglish")
     ap.add_argument("--preview-frames", action="store_true")
     ap.add_argument("--skip-base", action="store_true")
     args = ap.parse_args()
+    cfg = STYLES[args.style]
+    FONT_SWAP.update(cfg["fonts"])
     os.makedirs(BUILD, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
     if not args.skip_base:
-        print("stage 1: base cut", file=sys.stderr)
-        build_base(os.path.join(BUILD, "base.mp4"))
+        base = os.path.join(BUILD, cfg["base"])
+        if args.style == "footage":
+            print("stage 1: base cut", file=sys.stderr)
+            build_base(base)
+        else:
+            print("stage 1: illustrated scenes", file=sys.stderr)
+            subprocess.run(["node", os.path.join(ROOT, "illustrated", "render.js"), base], check=True)
     print("stage 2: audio", file=sys.stderr)
-    build_audio(os.path.join(BUILD, "mix.wav"))
+    build_audio(os.path.join(BUILD, cfg["mix"]), args.style)
     print("stage 3: graphics + encode", file=sys.stderr)
-    print(render(args.app_name, args.preview_frames))
+    print(render(args.app_name, args.style, args.preview_frames))
 
 
 if __name__ == "__main__":
