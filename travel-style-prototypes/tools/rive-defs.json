@@ -1,0 +1,4737 @@
+{
+ "AdvanceableState": {
+  "typeKey": 145,
+  "super": "LayerState",
+  "props": {
+   "speed": {
+    "key": 292,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Animation": {
+  "typeKey": 27,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 55,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "AnimationState": {
+  "typeKey": 61,
+  "super": "AdvanceableState",
+  "props": {
+   "animationId": {
+    "key": 149,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "AnyState": {
+  "typeKey": 62,
+  "super": "LayerState",
+  "props": {}
+ },
+ "BlendAnimation1D": {
+  "typeKey": 75,
+  "super": "BlendAnimation",
+  "props": {
+   "value": {
+    "key": 166,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "BlendAnimation": {
+  "typeKey": 74,
+  "super": "Core",
+  "props": {
+   "animationId": {
+    "key": 165,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "BlendAnimationDirect": {
+  "typeKey": 77,
+  "super": "BlendAnimation",
+  "props": {
+   "inputId": {
+    "key": 168,
+    "type": "CoreIdType"
+   },
+   "mixValue": {
+    "key": 297,
+    "type": "CoreDoubleType"
+   },
+   "blendSource": {
+    "key": 298,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "BlendState1D": {
+  "typeKey": 527,
+  "super": "BlendState",
+  "props": {}
+ },
+ "BlendState1DInput": {
+  "typeKey": 76,
+  "super": "BlendState1D",
+  "props": {
+   "inputId": {
+    "key": 167,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "BlendState1DViewModel": {
+  "typeKey": 528,
+  "super": "BlendState1D",
+  "props": {}
+ },
+ "BlendState": {
+  "typeKey": 72,
+  "super": "LayerState",
+  "props": {}
+ },
+ "BlendStateDirect": {
+  "typeKey": 73,
+  "super": "BlendState",
+  "props": {}
+ },
+ "BlendStateTransition": {
+  "typeKey": 78,
+  "super": "StateTransition",
+  "props": {
+   "exitBlendAnimationId": {
+    "key": 171,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "CubicEaseInterpolator": {
+  "typeKey": 28,
+  "super": "CubicInterpolator",
+  "props": {}
+ },
+ "CubicInterpolator": {
+  "typeKey": 139,
+  "super": "KeyFrameInterpolator",
+  "props": {
+   "x1": {
+    "key": 63,
+    "type": "CoreDoubleType"
+   },
+   "y1": {
+    "key": 64,
+    "type": "CoreDoubleType"
+   },
+   "x2": {
+    "key": 65,
+    "type": "CoreDoubleType"
+   },
+   "y2": {
+    "key": 66,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CubicInterpolatorComponent": {
+  "typeKey": 163,
+  "super": "Component",
+  "props": {
+   "x1": {
+    "key": 337,
+    "type": "CoreDoubleType"
+   },
+   "y1": {
+    "key": 338,
+    "type": "CoreDoubleType"
+   },
+   "x2": {
+    "key": 339,
+    "type": "CoreDoubleType"
+   },
+   "y2": {
+    "key": 340,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CubicValueInterpolator": {
+  "typeKey": 138,
+  "super": "CubicInterpolator",
+  "props": {}
+ },
+ "ElasticInterpolator": {
+  "typeKey": 174,
+  "super": "KeyFrameInterpolator",
+  "props": {
+   "easingValue": {
+    "key": 405,
+    "type": "CoreUintType"
+   },
+   "amplitude": {
+    "key": 406,
+    "type": "CoreDoubleType"
+   },
+   "period": {
+    "key": 407,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "EntryState": {
+  "typeKey": 63,
+  "super": "LayerState",
+  "props": {}
+ },
+ "ExitState": {
+  "typeKey": 64,
+  "super": "LayerState",
+  "props": {}
+ },
+ "FocusAction": {
+  "typeKey": 671,
+  "super": "ListenerAction",
+  "props": {}
+ },
+ "FocusActionClear": {
+  "typeKey": 1037,
+  "super": "FocusAction",
+  "props": {}
+ },
+ "FocusActionTarget": {
+  "typeKey": 652,
+  "super": "FocusAction",
+  "props": {
+   "targetId": {
+    "key": 952,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "FocusActionTraversal": {
+  "typeKey": 672,
+  "super": "FocusAction",
+  "props": {
+   "traversalKind": {
+    "key": 1011,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "InterpolatingKeyFrame": {
+  "typeKey": 170,
+  "super": "KeyFrame",
+  "props": {
+   "interpolationType": {
+    "key": 68,
+    "type": "CoreUintType"
+   },
+   "interpolatorId": {
+    "key": 69,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "KeyedObject": {
+  "typeKey": 25,
+  "super": "Core",
+  "props": {
+   "objectId": {
+    "key": 51,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "KeyedProperty": {
+  "typeKey": 26,
+  "super": "Core",
+  "props": {
+   "propertyKey": {
+    "key": 53,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "KeyFrame": {
+  "typeKey": 29,
+  "super": "Core",
+  "props": {
+   "frame": {
+    "key": 67,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "KeyFrameBool": {
+  "typeKey": 84,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 181,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "KeyFrameCallback": {
+  "typeKey": 171,
+  "super": "KeyFrame",
+  "props": {}
+ },
+ "KeyFrameColor": {
+  "typeKey": 37,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 88,
+    "type": "CoreColorType"
+   }
+  }
+ },
+ "KeyFrameDouble": {
+  "typeKey": 30,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 70,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "KeyFrameId": {
+  "typeKey": 50,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 122,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "KeyFrameInt": {
+  "typeKey": 1067,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 1068,
+    "type": "CoreIntType"
+   }
+  }
+ },
+ "KeyFrameInterpolator": {
+  "typeKey": 175,
+  "super": "Core",
+  "props": {}
+ },
+ "KeyFrameString": {
+  "typeKey": 142,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 280,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "KeyFrameUint": {
+  "typeKey": 450,
+  "super": "InterpolatingKeyFrame",
+  "props": {
+   "value": {
+    "key": 631,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "LayerState": {
+  "typeKey": 60,
+  "super": "StateMachineLayerComponent",
+  "props": {
+   "flags": {
+    "key": 536,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "LinearAnimation": {
+  "typeKey": 31,
+  "super": "Animation",
+  "props": {
+   "fps": {
+    "key": 56,
+    "type": "CoreUintType"
+   },
+   "duration": {
+    "key": 57,
+    "type": "CoreUintType"
+   },
+   "speed": {
+    "key": 58,
+    "type": "CoreDoubleType"
+   },
+   "loopValue": {
+    "key": 59,
+    "type": "CoreUintType"
+   },
+   "workStart": {
+    "key": 60,
+    "type": "CoreUintType"
+   },
+   "workEnd": {
+    "key": 61,
+    "type": "CoreUintType"
+   },
+   "enableWorkArea": {
+    "key": 62,
+    "type": "CoreBoolType"
+   },
+   "quantize": {
+    "key": 376,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ListenerAction": {
+  "typeKey": 125,
+  "super": "Core",
+  "props": {
+   "flags": {
+    "key": 980,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ListenerAlignTarget": {
+  "typeKey": 126,
+  "super": "ListenerAction",
+  "props": {
+   "targetId": {
+    "key": 240,
+    "type": "CoreIdType"
+   },
+   "preserveOffset": {
+    "key": 541,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ListenerBoolChange": {
+  "typeKey": 117,
+  "super": "ListenerInputChange",
+  "props": {
+   "value": {
+    "key": 228,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ListenerFireEvent": {
+  "typeKey": 168,
+  "super": "ListenerAction",
+  "props": {
+   "eventId": {
+    "key": 389,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ListenerInputChange": {
+  "typeKey": 116,
+  "super": "ListenerAction",
+  "props": {
+   "inputId": {
+    "key": 227,
+    "type": "CoreIdType"
+   },
+   "nestedInputId": {
+    "key": 400,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ListenerNumberChange": {
+  "typeKey": 118,
+  "super": "ListenerInputChange",
+  "props": {
+   "value": {
+    "key": 229,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "ListenerTriggerChange": {
+  "typeKey": 115,
+  "super": "ListenerInputChange",
+  "props": {}
+ },
+ "ListenerInputType": {
+  "typeKey": 658,
+  "super": "Core",
+  "props": {
+   "listenerTypeValue": {
+    "key": 965,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ListenerInputTypeEvent": {
+  "typeKey": 659,
+  "super": "ListenerInputType",
+  "props": {
+   "eventId": {
+    "key": 962,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ListenerInputTypeGamepad": {
+  "typeKey": 973,
+  "super": "ListenerInputType",
+  "props": {}
+ },
+ "ListenerInputTypeKeyboard": {
+  "typeKey": 665,
+  "super": "ListenerInputType",
+  "props": {}
+ },
+ "ListenerInputTypePointerButton": {
+  "typeKey": 155,
+  "super": "ListenerInputType",
+  "props": {
+   "pointerButtonValue": {
+    "key": 468,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ListenerInputTypeSemantic": {
+  "typeKey": 669,
+  "super": "ListenerInputType",
+  "props": {}
+ },
+ "ListenerInputTypeText": {
+  "typeKey": 666,
+  "super": "ListenerInputType",
+  "props": {}
+ },
+ "ListenerInputTypeViewModel": {
+  "typeKey": 660,
+  "super": "ListenerInputType",
+  "props": {
+   "viewModelPathIds": {
+    "key": 963,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "ListenerViewModelChange": {
+  "typeKey": 487,
+  "super": "ListenerAction",
+  "props": {
+   "inputValue": {
+    "key": 453,
+    "type": "CoreUintType"
+   },
+   "inputValueIndex": {
+    "key": 454,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "NestedBool": {
+  "typeKey": 123,
+  "super": "NestedInput",
+  "props": {
+   "nestedValue": {
+    "key": 238,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "NestedInput": {
+  "typeKey": 121,
+  "super": "Component",
+  "props": {
+   "inputId": {
+    "key": 237,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "NestedLinearAnimation": {
+  "typeKey": 97,
+  "super": "NestedAnimation",
+  "props": {
+   "mix": {
+    "key": 200,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "NestedNumber": {
+  "typeKey": 124,
+  "super": "NestedInput",
+  "props": {
+   "nestedValue": {
+    "key": 239,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "NestedRemapAnimation": {
+  "typeKey": 98,
+  "super": "NestedLinearAnimation",
+  "props": {
+   "time": {
+    "key": 202,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "NestedSimpleAnimation": {
+  "typeKey": 96,
+  "super": "NestedLinearAnimation",
+  "props": {
+   "speed": {
+    "key": 199,
+    "type": "CoreDoubleType"
+   },
+   "isPlaying": {
+    "key": 201,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "NestedStateMachine": {
+  "typeKey": 95,
+  "super": "NestedAnimation",
+  "props": {}
+ },
+ "NestedTrigger": {
+  "typeKey": 122,
+  "super": "NestedInput",
+  "props": {
+   "fire": {
+    "key": 401,
+    "type": "?"
+   }
+  }
+ },
+ "ScriptedListenerAction": {
+  "typeKey": 646,
+  "super": "ListenerAction",
+  "props": {
+   "scriptAssetId": {
+    "key": 930,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ScriptedTransitionCondition": {
+  "typeKey": 647,
+  "super": "TransitionCondition",
+  "props": {
+   "scriptAssetId": {
+    "key": 931,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "StateMachine": {
+  "typeKey": 53,
+  "super": "Animation",
+  "props": {}
+ },
+ "StateMachineBool": {
+  "typeKey": 59,
+  "super": "StateMachineInput",
+  "props": {
+   "value": {
+    "key": 141,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "StateMachineComponent": {
+  "typeKey": 54,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 138,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "StateMachineFireAction": {
+  "typeKey": 615,
+  "super": "Core",
+  "props": {
+   "occursValue": {
+    "key": 393,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "StateMachineFireEvent": {
+  "typeKey": 169,
+  "super": "StateMachineFireAction",
+  "props": {
+   "eventId": {
+    "key": 392,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "StateMachineFireTrigger": {
+  "typeKey": 614,
+  "super": "StateMachineFireAction",
+  "props": {
+   "viewModelPathIds": {
+    "key": 871,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "StateMachineInput": {
+  "typeKey": 55,
+  "super": "StateMachineComponent",
+  "props": {}
+ },
+ "StateMachineLayer": {
+  "typeKey": 57,
+  "super": "StateMachineComponent",
+  "props": {}
+ },
+ "StateMachineLayerComponent": {
+  "typeKey": 66,
+  "super": "Core",
+  "props": {}
+ },
+ "StateMachineListener": {
+  "typeKey": 654,
+  "super": "StateMachineComponent",
+  "props": {
+   "targetId": {
+    "key": 224,
+    "type": "CoreIdType"
+   },
+   "phaseValue": {
+    "key": 535,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "StateMachineListenerSingle": {
+  "typeKey": 114,
+  "super": "StateMachineListener",
+  "props": {
+   "listenerTypeValue": {
+    "key": 225,
+    "type": "CoreUintType"
+   },
+   "eventId": {
+    "key": 399,
+    "type": "CoreIdType"
+   },
+   "viewModelPathIds": {
+    "key": 868,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "StateMachineNumber": {
+  "typeKey": 56,
+  "super": "StateMachineInput",
+  "props": {
+   "value": {
+    "key": 140,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "StateMachineTrigger": {
+  "typeKey": 58,
+  "super": "StateMachineInput",
+  "props": {}
+ },
+ "StateTransition": {
+  "typeKey": 65,
+  "super": "StateMachineLayerComponent",
+  "props": {
+   "stateToId": {
+    "key": 151,
+    "type": "CoreIdType"
+   },
+   "flags": {
+    "key": 152,
+    "type": "CoreUintType"
+   },
+   "duration": {
+    "key": 158,
+    "type": "CoreUintType"
+   },
+   "exitTime": {
+    "key": 160,
+    "type": "CoreUintType"
+   },
+   "interpolationType": {
+    "key": 349,
+    "type": "CoreUintType"
+   },
+   "interpolatorId": {
+    "key": 350,
+    "type": "CoreIdType"
+   },
+   "randomWeight": {
+    "key": 537,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TransitionArtboardCondition": {
+  "typeKey": 497,
+  "super": "TransitionViewModelCondition",
+  "props": {}
+ },
+ "TransitionBoolCondition": {
+  "typeKey": 71,
+  "super": "TransitionValueCondition",
+  "props": {}
+ },
+ "TransitionComparator": {
+  "typeKey": 477,
+  "super": "Core",
+  "props": {}
+ },
+ "TransitionCondition": {
+  "typeKey": 476,
+  "super": "Core",
+  "props": {}
+ },
+ "TransitionFocusCondition": {
+  "typeKey": 1038,
+  "super": "TransitionViewModelCondition",
+  "props": {}
+ },
+ "TransitionInputCondition": {
+  "typeKey": 67,
+  "super": "TransitionCondition",
+  "props": {
+   "inputId": {
+    "key": 155,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TransitionNumberCondition": {
+  "typeKey": 70,
+  "super": "TransitionValueCondition",
+  "props": {
+   "value": {
+    "key": 157,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TransitionPropertyComparator": {
+  "typeKey": 478,
+  "super": "TransitionComparator",
+  "props": {}
+ },
+ "TransitionSelfComparator": {
+  "typeKey": 593,
+  "super": "TransitionComparator",
+  "props": {}
+ },
+ "TransitionTriggerCondition": {
+  "typeKey": 68,
+  "super": "TransitionInputCondition",
+  "props": {}
+ },
+ "TransitionValueArtboardComparator": {
+  "typeKey": 630,
+  "super": "TransitionValueIdComparator",
+  "props": {}
+ },
+ "TransitionValueAssetComparator": {
+  "typeKey": 602,
+  "super": "TransitionValueIdComparator",
+  "props": {}
+ },
+ "TransitionValueBooleanComparator": {
+  "typeKey": 481,
+  "super": "TransitionValueComparator",
+  "props": {
+   "value": {
+    "key": 647,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "TransitionValueColorComparator": {
+  "typeKey": 483,
+  "super": "TransitionValueComparator",
+  "props": {
+   "value": {
+    "key": 651,
+    "type": "CoreColorType"
+   }
+  }
+ },
+ "TransitionValueComparator": {
+  "typeKey": 480,
+  "super": "TransitionComparator",
+  "props": {}
+ },
+ "TransitionValueCondition": {
+  "typeKey": 69,
+  "super": "TransitionInputCondition",
+  "props": {
+   "opValue": {
+    "key": 156,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TransitionValueEnumComparator": {
+  "typeKey": 485,
+  "super": "TransitionValueIdComparator",
+  "props": {}
+ },
+ "TransitionValueIdComparator": {
+  "typeKey": 601,
+  "super": "TransitionValueComparator",
+  "props": {
+   "value": {
+    "key": 653,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TransitionValueNumberComparator": {
+  "typeKey": 484,
+  "super": "TransitionValueComparator",
+  "props": {
+   "value": {
+    "key": 652,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TransitionValueStringComparator": {
+  "typeKey": 486,
+  "super": "TransitionValueComparator",
+  "props": {
+   "value": {
+    "key": 654,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "TransitionValueTriggerComparator": {
+  "typeKey": 505,
+  "super": "TransitionValueComparator",
+  "props": {
+   "value": {
+    "key": 689,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TransitionViewModelCondition": {
+  "typeKey": 482,
+  "super": "TransitionCondition",
+  "props": {
+   "opValue": {
+    "key": 650,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "Artboard": {
+  "typeKey": 1,
+  "super": "LayoutComponent",
+  "props": {
+   "originX": {
+    "key": 11,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 12,
+    "type": "CoreDoubleType"
+   },
+   "defaultStateMachineId": {
+    "key": 236,
+    "type": "CoreIdType"
+   },
+   "viewModelId": {
+    "key": 583,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ArtboardComponentList": {
+  "typeKey": 559,
+  "super": "Drawable",
+  "props": {
+   "listSource": {
+    "key": 800,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ArtboardListMapRule": {
+  "typeKey": 648,
+  "super": "Component",
+  "props": {
+   "artboardId": {
+    "key": 934,
+    "type": "CoreIdType"
+   },
+   "viewModelId": {
+    "key": 935,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "Asset": {
+  "typeKey": 99,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 203,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "AudioAsset": {
+  "typeKey": 406,
+  "super": "ExportAudio",
+  "props": {}
+ },
+ "BlobAsset": {
+  "typeKey": 649,
+  "super": "FileAsset",
+  "props": {}
+ },
+ "DrawableAsset": {
+  "typeKey": 104,
+  "super": "FileAsset",
+  "props": {
+   "height": {
+    "key": 207,
+    "type": "CoreDoubleType"
+   },
+   "width": {
+    "key": 208,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "ExportAudio": {
+  "typeKey": 422,
+  "super": "FileAsset",
+  "props": {
+   "volume": {
+    "key": 530,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "FileAsset": {
+  "typeKey": 103,
+  "super": "Asset",
+  "props": {
+   "assetId": {
+    "key": 204,
+    "type": "CoreUintType"
+   },
+   "cdnUuid": {
+    "key": 359,
+    "type": "CoreBytesType"
+   },
+   "cdnBaseUrl": {
+    "key": 362,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "FileAssetContents": {
+  "typeKey": 106,
+  "super": "Core",
+  "props": {
+   "bytes": {
+    "key": 212,
+    "type": "CoreBytesType"
+   },
+   "signature": {
+    "key": 911,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "FontAsset": {
+  "typeKey": 141,
+  "super": "FileAsset",
+  "props": {}
+ },
+ "ImageAsset": {
+  "typeKey": 105,
+  "super": "DrawableAsset",
+  "props": {
+   "samplerFilter": {
+    "key": 1073,
+    "type": "CoreUintType"
+   },
+   "samplerWrapX": {
+    "key": 1074,
+    "type": "CoreUintType"
+   },
+   "samplerWrapY": {
+    "key": 1075,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ManifestAsset": {
+  "typeKey": 642,
+  "super": "FileAsset",
+  "props": {}
+ },
+ "ScriptAsset": {
+  "typeKey": 529,
+  "super": "TextAsset",
+  "props": {
+   "generatorFunctionRef": {
+    "key": 893,
+    "type": "CoreUintType"
+   },
+   "isModule": {
+    "key": 914,
+    "type": "CoreBoolType"
+   },
+   "serializedImplementedMethods": {
+    "key": 1022,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ScriptModuleAsset": {
+  "typeKey": 1071,
+  "super": "FileAsset",
+  "props": {
+   "language": {
+    "key": 1087,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ShaderAsset": {
+  "typeKey": 970,
+  "super": "TextAsset",
+  "props": {}
+ },
+ "TextAsset": {
+  "typeKey": 971,
+  "super": "FileAsset",
+  "props": {
+   "folderPath": {
+    "key": 926,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "AudioEvent": {
+  "typeKey": 407,
+  "super": "Event",
+  "props": {
+   "assetId": {
+    "key": 408,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "Backboard": {
+  "typeKey": 23,
+  "super": "Core",
+  "props": {}
+ },
+ "BitmapCache": {
+  "typeKey": 136,
+  "super": "Component",
+  "props": {
+   "resolution": {
+    "key": 417,
+    "type": "CoreDoubleType"
+   },
+   "cacheFlags": {
+    "key": 418,
+    "type": "CoreUintType"
+   },
+   "cacheEnabled": {
+    "key": 419,
+    "type": "CoreBoolType"
+   },
+   "dither": {
+    "key": 420,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "Bone": {
+  "typeKey": 40,
+  "super": "SkeletalComponent",
+  "props": {
+   "length": {
+    "key": 89,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CubicWeight": {
+  "typeKey": 46,
+  "super": "Weight",
+  "props": {
+   "inValues": {
+    "key": 110,
+    "type": "CoreUintType"
+   },
+   "inIndices": {
+    "key": 111,
+    "type": "CoreUintType"
+   },
+   "outValues": {
+    "key": 112,
+    "type": "CoreUintType"
+   },
+   "outIndices": {
+    "key": 113,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "RootBone": {
+  "typeKey": 41,
+  "super": "Bone",
+  "props": {
+   "x": {
+    "key": 90,
+    "type": "CoreDoubleType"
+   },
+   "y": {
+    "key": 91,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "SkeletalComponent": {
+  "typeKey": 39,
+  "super": "TransformComponent",
+  "props": {}
+ },
+ "Skin": {
+  "typeKey": 43,
+  "super": "ContainerComponent",
+  "props": {
+   "xx": {
+    "key": 104,
+    "type": "CoreDoubleType"
+   },
+   "yx": {
+    "key": 105,
+    "type": "CoreDoubleType"
+   },
+   "xy": {
+    "key": 106,
+    "type": "CoreDoubleType"
+   },
+   "yy": {
+    "key": 107,
+    "type": "CoreDoubleType"
+   },
+   "tx": {
+    "key": 108,
+    "type": "CoreDoubleType"
+   },
+   "ty": {
+    "key": 109,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Tendon": {
+  "typeKey": 44,
+  "super": "Component",
+  "props": {
+   "boneId": {
+    "key": 95,
+    "type": "CoreIdType"
+   },
+   "xx": {
+    "key": 96,
+    "type": "CoreDoubleType"
+   },
+   "yx": {
+    "key": 97,
+    "type": "CoreDoubleType"
+   },
+   "xy": {
+    "key": 98,
+    "type": "CoreDoubleType"
+   },
+   "yy": {
+    "key": 99,
+    "type": "CoreDoubleType"
+   },
+   "tx": {
+    "key": 100,
+    "type": "CoreDoubleType"
+   },
+   "ty": {
+    "key": 101,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Weight": {
+  "typeKey": 45,
+  "super": "Component",
+  "props": {
+   "values": {
+    "key": 102,
+    "type": "CoreUintType"
+   },
+   "indices": {
+    "key": 103,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "Component": {
+  "typeKey": 10,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 4,
+    "type": "CoreStringType"
+   },
+   "parentId": {
+    "key": 5,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ComponentOrigin": {
+  "typeKey": 1039,
+  "super": "Component",
+  "props": {
+   "originX": {
+    "key": 1040,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 1041,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Constraint": {
+  "typeKey": 79,
+  "super": "Component",
+  "props": {
+   "strength": {
+    "key": 172,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "DistanceConstraint": {
+  "typeKey": 82,
+  "super": "TargetedConstraint",
+  "props": {
+   "distance": {
+    "key": 177,
+    "type": "CoreDoubleType"
+   },
+   "modeValue": {
+    "key": 178,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DraggableConstraint": {
+  "typeKey": 520,
+  "super": "Constraint",
+  "props": {
+   "directionValue": {
+    "key": 722,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "FollowPathConstraint": {
+  "typeKey": 165,
+  "super": "TransformSpaceConstraint",
+  "props": {
+   "distance": {
+    "key": 363,
+    "type": "CoreDoubleType"
+   },
+   "orient": {
+    "key": 364,
+    "type": "CoreBoolType"
+   },
+   "offset": {
+    "key": 365,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "IKConstraint": {
+  "typeKey": 81,
+  "super": "TargetedConstraint",
+  "props": {
+   "invertDirection": {
+    "key": 174,
+    "type": "CoreBoolType"
+   },
+   "parentBoneCount": {
+    "key": 175,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ListFollowPathConstraint": {
+  "typeKey": 625,
+  "super": "FollowPathConstraint",
+  "props": {
+   "distanceEnd": {
+    "key": 888,
+    "type": "CoreDoubleType"
+   },
+   "distanceOffset": {
+    "key": 889,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "RotationConstraint": {
+  "typeKey": 89,
+  "super": "TransformComponentConstraint",
+  "props": {}
+ },
+ "ScaleConstraint": {
+  "typeKey": 88,
+  "super": "TransformComponentConstraintY",
+  "props": {}
+ },
+ "ClampedScrollPhysics": {
+  "typeKey": 524,
+  "super": "ScrollPhysics",
+  "props": {}
+ },
+ "ElasticScrollPhysics": {
+  "typeKey": 525,
+  "super": "ScrollPhysics",
+  "props": {
+   "friction": {
+    "key": 728,
+    "type": "CoreDoubleType"
+   },
+   "speedMultiplier": {
+    "key": 729,
+    "type": "CoreDoubleType"
+   },
+   "elasticFactor": {
+    "key": 730,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "ScrollBarConstraint": {
+  "typeKey": 522,
+  "super": "DraggableConstraint",
+  "props": {
+   "scrollConstraintId": {
+    "key": 725,
+    "type": "CoreIdType"
+   },
+   "autoSize": {
+    "key": 734,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ScrollConstraint": {
+  "typeKey": 521,
+  "super": "DraggableConstraint",
+  "props": {
+   "scrollOffsetX": {
+    "key": 759,
+    "type": "CoreDoubleType"
+   },
+   "scrollOffsetY": {
+    "key": 760,
+    "type": "CoreDoubleType"
+   },
+   "scrollPercentX": {
+    "key": 761,
+    "type": "CoreDoubleType"
+   },
+   "scrollPercentY": {
+    "key": 762,
+    "type": "CoreDoubleType"
+   },
+   "scrollIndex": {
+    "key": 763,
+    "type": "CoreDoubleType"
+   },
+   "snap": {
+    "key": 724,
+    "type": "CoreBoolType"
+   },
+   "physicsTypeValue": {
+    "key": 727,
+    "type": "CoreUintType"
+   },
+   "physicsId": {
+    "key": 726,
+    "type": "CoreIdType"
+   },
+   "virtualize": {
+    "key": 850,
+    "type": "CoreBoolType"
+   },
+   "virtualizeBuffer": {
+    "key": 221,
+    "type": "CoreUintType"
+   },
+   "infinite": {
+    "key": 851,
+    "type": "CoreBoolType"
+   },
+   "interactive": {
+    "key": 891,
+    "type": "CoreBoolType"
+   },
+   "threshold": {
+    "key": 894,
+    "type": "CoreDoubleType"
+   },
+   "velocityX": {
+    "key": 1023,
+    "type": "CoreDoubleType"
+   },
+   "velocityY": {
+    "key": 1024,
+    "type": "CoreDoubleType"
+   },
+   "scrollActive": {
+    "key": 1025,
+    "type": "CoreBoolType"
+   },
+   "dragMultiplier": {
+    "key": 1029,
+    "type": "CoreDoubleType"
+   },
+   "computedContentWidth": {
+    "key": 1069,
+    "type": "CoreDoubleType"
+   },
+   "computedContentHeight": {
+    "key": 1070,
+    "type": "CoreDoubleType"
+   },
+   "scrollFlags": {
+    "key": 466,
+    "type": "CoreUintType"
+   },
+   "wheelInteractive": {
+    "key": 467,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ScrollPhysics": {
+  "typeKey": 523,
+  "super": "Component",
+  "props": {
+   "constraintId": {
+    "key": 731,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TargetedConstraint": {
+  "typeKey": 80,
+  "super": "Constraint",
+  "props": {
+   "targetId": {
+    "key": 173,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TransformComponentConstraint": {
+  "typeKey": 85,
+  "super": "TransformSpaceConstraint",
+  "props": {
+   "minMaxSpaceValue": {
+    "key": 195,
+    "type": "CoreUintType"
+   },
+   "copyFactor": {
+    "key": 182,
+    "type": "CoreDoubleType"
+   },
+   "minValue": {
+    "key": 183,
+    "type": "CoreDoubleType"
+   },
+   "maxValue": {
+    "key": 184,
+    "type": "CoreDoubleType"
+   },
+   "offset": {
+    "key": 188,
+    "type": "CoreBoolType"
+   },
+   "doesCopy": {
+    "key": 189,
+    "type": "CoreBoolType"
+   },
+   "min": {
+    "key": 190,
+    "type": "CoreBoolType"
+   },
+   "max": {
+    "key": 191,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "TransformComponentConstraintY": {
+  "typeKey": 86,
+  "super": "TransformComponentConstraint",
+  "props": {
+   "copyFactorY": {
+    "key": 185,
+    "type": "CoreDoubleType"
+   },
+   "minValueY": {
+    "key": 186,
+    "type": "CoreDoubleType"
+   },
+   "maxValueY": {
+    "key": 187,
+    "type": "CoreDoubleType"
+   },
+   "doesCopyY": {
+    "key": 192,
+    "type": "CoreBoolType"
+   },
+   "minY": {
+    "key": 193,
+    "type": "CoreBoolType"
+   },
+   "maxY": {
+    "key": 194,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "TransformConstraint": {
+  "typeKey": 83,
+  "super": "TransformSpaceConstraint",
+  "props": {
+   "originX": {
+    "key": 372,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 373,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TransformSpaceConstraint": {
+  "typeKey": 90,
+  "super": "TargetedConstraint",
+  "props": {
+   "sourceSpaceValue": {
+    "key": 179,
+    "type": "CoreUintType"
+   },
+   "destSpaceValue": {
+    "key": 180,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TranslationConstraint": {
+  "typeKey": 87,
+  "super": "TransformComponentConstraintY",
+  "props": {}
+ },
+ "ContainerComponent": {
+  "typeKey": 11,
+  "super": "Component",
+  "props": {}
+ },
+ "CustomProperty": {
+  "typeKey": 167,
+  "super": "Component",
+  "props": {
+   "nameId": {
+    "key": 449,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "CustomPropertyBoolean": {
+  "typeKey": 129,
+  "super": "CustomProperty",
+  "props": {
+   "propertyValue": {
+    "key": 245,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "CustomPropertyColor": {
+  "typeKey": 592,
+  "super": "CustomProperty",
+  "props": {
+   "propertyValue": {
+    "key": 836,
+    "type": "CoreColorType"
+   }
+  }
+ },
+ "CustomPropertyEnum": {
+  "typeKey": 616,
+  "super": "CustomProperty",
+  "props": {
+   "propertyValue": {
+    "key": 872,
+    "type": "CoreIdType"
+   },
+   "enumId": {
+    "key": 873,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "CustomPropertyGroup": {
+  "typeKey": 548,
+  "super": "ContainerComponent",
+  "props": {}
+ },
+ "CustomPropertyNumber": {
+  "typeKey": 127,
+  "super": "CustomProperty",
+  "props": {
+   "propertyValue": {
+    "key": 243,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CustomPropertyString": {
+  "typeKey": 130,
+  "super": "CustomProperty",
+  "props": {
+   "propertyValue": {
+    "key": 246,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "CustomPropertyTrigger": {
+  "typeKey": 613,
+  "super": "CustomProperty",
+  "props": {
+   "fire": {
+    "key": 869,
+    "type": "?"
+   },
+   "propertyValue": {
+    "key": 870,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "BindablePropertyArtboard": {
+  "typeKey": 597,
+  "super": "BindablePropertyId",
+  "props": {}
+ },
+ "BindablePropertyAsset": {
+  "typeKey": 588,
+  "super": "BindablePropertyId",
+  "props": {}
+ },
+ "BindableProperty": {
+  "typeKey": 9,
+  "super": "Core",
+  "props": {}
+ },
+ "BindablePropertyBoolean": {
+  "typeKey": 472,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 634,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "BindablePropertyColor": {
+  "typeKey": 475,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 638,
+    "type": "CoreColorType"
+   }
+  }
+ },
+ "BindablePropertyEnum": {
+  "typeKey": 474,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 637,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "BindablePropertyId": {
+  "typeKey": 596,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 823,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "BindablePropertyInteger": {
+  "typeKey": 567,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 686,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "BindablePropertyList": {
+  "typeKey": 590,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 835,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "BindablePropertyNumber": {
+  "typeKey": 473,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 636,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "BindablePropertyString": {
+  "typeKey": 471,
+  "super": "BindableProperty",
+  "props": {
+   "propertyValue": {
+    "key": 635,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "BindablePropertyTrigger": {
+  "typeKey": 503,
+  "super": "BindablePropertyInteger",
+  "props": {}
+ },
+ "BindablePropertyViewModel": {
+  "typeKey": 662,
+  "super": "BindablePropertyId",
+  "props": {}
+ },
+ "DataConverter": {
+  "typeKey": 488,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 662,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "DataConverterBooleanNegate": {
+  "typeKey": 535,
+  "super": "DataConverter",
+  "props": {}
+ },
+ "DataConverterFormula": {
+  "typeKey": 536,
+  "super": "DataConverter",
+  "props": {
+   "randomModeValue": {
+    "key": 887,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DataConverterGroup": {
+  "typeKey": 499,
+  "super": "DataConverter",
+  "props": {}
+ },
+ "DataConverterGroupItem": {
+  "typeKey": 498,
+  "super": "Core",
+  "props": {
+   "converterId": {
+    "key": 679,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "DataConverterInterpolator": {
+  "typeKey": 534,
+  "super": "DataConverter",
+  "props": {
+   "interpolationType": {
+    "key": 757,
+    "type": "CoreUintType"
+   },
+   "interpolatorId": {
+    "key": 758,
+    "type": "CoreIdType"
+   },
+   "duration": {
+    "key": 756,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "DataConverterListToLength": {
+  "typeKey": 591,
+  "super": "DataConverter",
+  "props": {}
+ },
+ "DataConverterNumberToList": {
+  "typeKey": 568,
+  "super": "DataConverter",
+  "props": {
+   "viewModelId": {
+    "key": 816,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "DataConverterOperation": {
+  "typeKey": 516,
+  "super": "DataConverter",
+  "props": {
+   "operationType": {
+    "key": 682,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DataConverterOperationValue": {
+  "typeKey": 500,
+  "super": "DataConverterOperation",
+  "props": {
+   "operationValue": {
+    "key": 681,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "DataConverterOperationViewModel": {
+  "typeKey": 517,
+  "super": "DataConverterOperation",
+  "props": {
+   "sourcePathIds": {
+    "key": 711,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "DataConverterRangeMapper": {
+  "typeKey": 519,
+  "super": "DataConverter",
+  "props": {
+   "interpolationType": {
+    "key": 713,
+    "type": "CoreUintType"
+   },
+   "interpolatorId": {
+    "key": 714,
+    "type": "CoreIdType"
+   },
+   "flags": {
+    "key": 715,
+    "type": "CoreUintType"
+   },
+   "minInput": {
+    "key": 716,
+    "type": "CoreDoubleType"
+   },
+   "maxInput": {
+    "key": 717,
+    "type": "CoreDoubleType"
+   },
+   "minOutput": {
+    "key": 718,
+    "type": "CoreDoubleType"
+   },
+   "maxOutput": {
+    "key": 719,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "DataConverterRounder": {
+  "typeKey": 489,
+  "super": "DataConverter",
+  "props": {
+   "decimals": {
+    "key": 669,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DataConverterStringPad": {
+  "typeKey": 530,
+  "super": "DataConverter",
+  "props": {
+   "length": {
+    "key": 743,
+    "type": "CoreUintType"
+   },
+   "text": {
+    "key": 744,
+    "type": "CoreStringType"
+   },
+   "padType": {
+    "key": 745,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DataConverterStringRemoveZeros": {
+  "typeKey": 531,
+  "super": "DataConverter",
+  "props": {}
+ },
+ "DataConverterStringTemplate": {
+  "typeKey": 177,
+  "super": "DataConverter",
+  "props": {
+   "openDelimiter": {
+    "key": 485,
+    "type": "CoreStringType"
+   },
+   "closeDelimiter": {
+    "key": 486,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "DataConverterStringTrim": {
+  "typeKey": 532,
+  "super": "DataConverter",
+  "props": {
+   "trimType": {
+    "key": 746,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DataConverterSystemDegsToRads": {
+  "typeKey": 514,
+  "super": "DataConverterOperationValue",
+  "props": {}
+ },
+ "DataConverterSystemNormalizer": {
+  "typeKey": 515,
+  "super": "DataConverterOperationValue",
+  "props": {}
+ },
+ "DataConverterToNumber": {
+  "typeKey": 617,
+  "super": "DataConverter",
+  "props": {}
+ },
+ "DataConverterToString": {
+  "typeKey": 490,
+  "super": "DataConverter",
+  "props": {
+   "flags": {
+    "key": 764,
+    "type": "CoreUintType"
+   },
+   "decimals": {
+    "key": 765,
+    "type": "CoreUintType"
+   },
+   "colorFormat": {
+    "key": 766,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "DataConverterTrigger": {
+  "typeKey": 504,
+  "super": "DataConverter",
+  "props": {}
+ },
+ "FormulaTokenArgumentSeparator": {
+  "typeKey": 538,
+  "super": "FormulaToken",
+  "props": {}
+ },
+ "FormulaToken": {
+  "typeKey": 537,
+  "super": "Core",
+  "props": {}
+ },
+ "FormulaTokenFunction": {
+  "typeKey": 542,
+  "super": "FormulaTokenParenthesis",
+  "props": {
+   "functionType": {
+    "key": 776,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "FormulaTokenInput": {
+  "typeKey": 545,
+  "super": "FormulaToken",
+  "props": {}
+ },
+ "FormulaTokenOperation": {
+  "typeKey": 541,
+  "super": "FormulaToken",
+  "props": {
+   "operationType": {
+    "key": 775,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "FormulaTokenParenthesis": {
+  "typeKey": 539,
+  "super": "FormulaToken",
+  "props": {}
+ },
+ "FormulaTokenParenthesisClose": {
+  "typeKey": 540,
+  "super": "FormulaTokenParenthesis",
+  "props": {}
+ },
+ "FormulaTokenParenthesisOpen": {
+  "typeKey": 544,
+  "super": "FormulaTokenParenthesis",
+  "props": {}
+ },
+ "FormulaTokenValue": {
+  "typeKey": 543,
+  "super": "FormulaToken",
+  "props": {
+   "operationValue": {
+    "key": 777,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "StringTemplateArgument": {
+  "typeKey": 156,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 481,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "StringTemplateArgumentNumber": {
+  "typeKey": 176,
+  "super": "StringTemplateArgument",
+  "props": {
+   "propertyValue": {
+    "key": 483,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "StringTemplateArgumentString": {
+  "typeKey": 157,
+  "super": "StringTemplateArgument",
+  "props": {
+   "propertyValue": {
+    "key": 482,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "DataBind": {
+  "typeKey": 446,
+  "super": "Core",
+  "props": {
+   "propertyKey": {
+    "key": 586,
+    "type": "CoreUintType"
+   },
+   "flags": {
+    "key": 587,
+    "type": "CoreUintType"
+   },
+   "converterId": {
+    "key": 660,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "DataBindContext": {
+  "typeKey": 447,
+  "super": "DataBind",
+  "props": {
+   "sourcePathIds": {
+    "key": 588,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "DataBindPath": {
+  "typeKey": 643,
+  "super": "Core",
+  "props": {
+   "path": {
+    "key": 920,
+    "type": "CoreBytesType"
+   },
+   "isRelative": {
+    "key": 921,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "DrawRules": {
+  "typeKey": 49,
+  "super": "ContainerComponent",
+  "props": {
+   "drawTargetId": {
+    "key": 121,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "DrawTarget": {
+  "typeKey": 48,
+  "super": "Component",
+  "props": {
+   "drawableId": {
+    "key": 119,
+    "type": "CoreIdType"
+   },
+   "placementValue": {
+    "key": 120,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "Drawable": {
+  "typeKey": 13,
+  "super": "Node",
+  "props": {
+   "blendModeValue": {
+    "key": 23,
+    "type": "CoreUintType"
+   },
+   "additiveAmount": {
+    "key": 450,
+    "type": "CoreUintType"
+   },
+   "drawableFlags": {
+    "key": 129,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "Event": {
+  "typeKey": 128,
+  "super": "CustomPropertyGroup",
+  "props": {
+   "trigger": {
+    "key": 395,
+    "type": "?"
+   }
+  }
+ },
+ "FocusData": {
+  "typeKey": 653,
+  "super": "Component",
+  "props": {
+   "focusFlags": {
+    "key": 1033,
+    "type": "CoreUintType"
+   },
+   "canFocus": {
+    "key": 953,
+    "type": "CoreBoolType"
+   },
+   "canTouch": {
+    "key": 954,
+    "type": "CoreBoolType"
+   },
+   "canTraverse": {
+    "key": 955,
+    "type": "CoreBoolType"
+   },
+   "edgeBehaviorValue": {
+    "key": 956,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ForegroundLayoutDrawable": {
+  "typeKey": 513,
+  "super": "Drawable",
+  "props": {}
+ },
+ "GamepadInput": {
+  "typeKey": 974,
+  "super": "UserInput",
+  "props": {
+   "kind": {
+    "key": 1021,
+    "type": "CoreUintType"
+   },
+   "mapping": {
+    "key": 1018,
+    "type": "CoreUintType"
+   },
+   "inputIndex": {
+    "key": 1019,
+    "type": "CoreUintType"
+   },
+   "buttonPhase": {
+    "key": 1020,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "KeyboardInput": {
+  "typeKey": 664,
+  "super": "UserInput",
+  "props": {
+   "keyType": {
+    "key": 971,
+    "type": "CoreUintType"
+   },
+   "keyPhase": {
+    "key": 972,
+    "type": "CoreUintType"
+   },
+   "modifiers": {
+    "key": 973,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "SemanticInput": {
+  "typeKey": 670,
+  "super": "UserInput",
+  "props": {
+   "actionType": {
+    "key": 1010,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "UserInput": {
+  "typeKey": 663,
+  "super": "Core",
+  "props": {}
+ },
+ "Joystick": {
+  "typeKey": 148,
+  "super": "Component",
+  "props": {
+   "x": {
+    "key": 299,
+    "type": "CoreDoubleType"
+   },
+   "y": {
+    "key": 300,
+    "type": "CoreDoubleType"
+   },
+   "posX": {
+    "key": 303,
+    "type": "CoreDoubleType"
+   },
+   "posY": {
+    "key": 304,
+    "type": "CoreDoubleType"
+   },
+   "originX": {
+    "key": 307,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 308,
+    "type": "CoreDoubleType"
+   },
+   "width": {
+    "key": 305,
+    "type": "CoreDoubleType"
+   },
+   "height": {
+    "key": 306,
+    "type": "CoreDoubleType"
+   },
+   "xId": {
+    "key": 301,
+    "type": "CoreIdType"
+   },
+   "yId": {
+    "key": 302,
+    "type": "CoreIdType"
+   },
+   "joystickFlags": {
+    "key": 312,
+    "type": "CoreUintType"
+   },
+   "handleSourceId": {
+    "key": 313,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "LayerMask": {
+  "typeKey": 154,
+  "super": "Component",
+  "props": {
+   "sourceId": {
+    "key": 459,
+    "type": "CoreIdType"
+   },
+   "maskFlags": {
+    "key": 460,
+    "type": "CoreUintType"
+   },
+   "maskModeValue": {
+    "key": 455,
+    "type": "CoreUintType"
+   },
+   "isVisible": {
+    "key": 456,
+    "type": "CoreBoolType"
+   },
+   "sourceDraws": {
+    "key": 457,
+    "type": "CoreBoolType"
+   },
+   "useCustomBounds": {
+    "key": 461,
+    "type": "CoreBoolType"
+   },
+   "resolution": {
+    "key": 458,
+    "type": "CoreDoubleType"
+   },
+   "boundsX": {
+    "key": 462,
+    "type": "CoreDoubleType"
+   },
+   "boundsY": {
+    "key": 463,
+    "type": "CoreDoubleType"
+   },
+   "boundsWidth": {
+    "key": 464,
+    "type": "CoreDoubleType"
+   },
+   "boundsHeight": {
+    "key": 465,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "ArtboardComponentListOverride": {
+  "typeKey": 606,
+  "super": "Component",
+  "props": {
+   "artboardId": {
+    "key": 858,
+    "type": "CoreIdType"
+   },
+   "instanceWidth": {
+    "key": 859,
+    "type": "CoreDoubleType"
+   },
+   "instanceHeight": {
+    "key": 860,
+    "type": "CoreDoubleType"
+   },
+   "instanceWidthUnitsValue": {
+    "key": 856,
+    "type": "?"
+   },
+   "instanceHeightUnitsValue": {
+    "key": 861,
+    "type": "?"
+   },
+   "instanceWidthScaleType": {
+    "key": 862,
+    "type": "CoreUintType"
+   },
+   "instanceHeightScaleType": {
+    "key": 863,
+    "type": "?"
+   }
+  }
+ },
+ "Axis": {
+  "typeKey": 492,
+  "super": "Component",
+  "props": {
+   "offset": {
+    "key": 675,
+    "type": "CoreDoubleType"
+   },
+   "normalized": {
+    "key": 676,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "AxisX": {
+  "typeKey": 495,
+  "super": "Axis",
+  "props": {}
+ },
+ "AxisY": {
+  "typeKey": 494,
+  "super": "Axis",
+  "props": {}
+ },
+ "GridItemPlacement": {
+  "typeKey": 1068,
+  "super": "Component",
+  "props": {
+   "gridColumn": {
+    "key": 1047,
+    "type": "CoreIntType"
+   },
+   "gridRow": {
+    "key": 1048,
+    "type": "CoreIntType"
+   },
+   "gridColumnSpan": {
+    "key": 1049,
+    "type": "CoreUintType"
+   },
+   "gridRowSpan": {
+    "key": 1050,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "GridTrack": {
+  "typeKey": 1058,
+  "super": "Component",
+  "props": {
+   "trackValue": {
+    "key": 1063,
+    "type": "CoreDoubleType"
+   },
+   "trackMaxValue": {
+    "key": 1065,
+    "type": "CoreDoubleType"
+   },
+   "collection": {
+    "key": 1061,
+    "type": "CoreUintType"
+   },
+   "trackType": {
+    "key": 1062,
+    "type": "CoreUintType"
+   },
+   "trackMaxType": {
+    "key": 1064,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "LayoutComponentStyle": {
+  "typeKey": 420,
+  "super": "LayoutSizingStyle",
+  "props": {
+   "gapHorizontal": {
+    "key": 498,
+    "type": "CoreDoubleType"
+   },
+   "gapVertical": {
+    "key": 499,
+    "type": "CoreDoubleType"
+   },
+   "borderLeft": {
+    "key": 504,
+    "type": "CoreDoubleType"
+   },
+   "borderRight": {
+    "key": 505,
+    "type": "CoreDoubleType"
+   },
+   "borderTop": {
+    "key": 506,
+    "type": "CoreDoubleType"
+   },
+   "borderBottom": {
+    "key": 507,
+    "type": "CoreDoubleType"
+   },
+   "marginLeft": {
+    "key": 508,
+    "type": "CoreDoubleType"
+   },
+   "marginRight": {
+    "key": 509,
+    "type": "CoreDoubleType"
+   },
+   "marginTop": {
+    "key": 510,
+    "type": "CoreDoubleType"
+   },
+   "marginBottom": {
+    "key": 511,
+    "type": "CoreDoubleType"
+   },
+   "paddingLeft": {
+    "key": 512,
+    "type": "CoreDoubleType"
+   },
+   "paddingRight": {
+    "key": 513,
+    "type": "CoreDoubleType"
+   },
+   "paddingTop": {
+    "key": 514,
+    "type": "CoreDoubleType"
+   },
+   "paddingBottom": {
+    "key": 515,
+    "type": "CoreDoubleType"
+   },
+   "positionLeft": {
+    "key": 516,
+    "type": "CoreDoubleType"
+   },
+   "positionRight": {
+    "key": 517,
+    "type": "CoreDoubleType"
+   },
+   "positionTop": {
+    "key": 518,
+    "type": "CoreDoubleType"
+   },
+   "positionBottom": {
+    "key": 519,
+    "type": "CoreDoubleType"
+   },
+   "positionLeftUnitsValue": {
+    "key": 621,
+    "type": "CoreUintType"
+   },
+   "positionRightUnitsValue": {
+    "key": 622,
+    "type": "CoreUintType"
+   },
+   "positionTopUnitsValue": {
+    "key": 623,
+    "type": "CoreUintType"
+   },
+   "positionBottomUnitsValue": {
+    "key": 624,
+    "type": "CoreUintType"
+   },
+   "flexBasis": {
+    "key": 523,
+    "type": "CoreDoubleType"
+   },
+   "aspectRatio": {
+    "key": 524,
+    "type": "CoreDoubleType"
+   },
+   "aspectRatioAxisValue": {
+    "key": 546,
+    "type": "CoreUintType"
+   },
+   "interpolatorId": {
+    "key": 591,
+    "type": "CoreIdType"
+   },
+   "interpolationTime": {
+    "key": 592,
+    "type": "CoreDoubleType"
+   },
+   "flexBasisUnitsValue": {
+    "key": 705,
+    "type": "CoreUintType"
+   },
+   "layoutAlignmentType": {
+    "key": 632,
+    "type": "CoreUintType"
+   },
+   "animationStyleType": {
+    "key": 589,
+    "type": "CoreUintType"
+   },
+   "interpolationType": {
+    "key": 590,
+    "type": "CoreUintType"
+   },
+   "positionTypeValue": {
+    "key": 597,
+    "type": "CoreUintType"
+   },
+   "flexDirectionValue": {
+    "key": 598,
+    "type": "CoreUintType"
+   },
+   "directionValue": {
+    "key": 599,
+    "type": "CoreUintType"
+   },
+   "flexWrapValue": {
+    "key": 604,
+    "type": "CoreUintType"
+   },
+   "overflowValue": {
+    "key": 605,
+    "type": "CoreUintType"
+   },
+   "intrinsicallySizedValue": {
+    "key": 606,
+    "type": "CoreBoolType"
+   },
+   "borderLeftUnitsValue": {
+    "key": 609,
+    "type": "CoreUintType"
+   },
+   "borderRightUnitsValue": {
+    "key": 610,
+    "type": "CoreUintType"
+   },
+   "borderTopUnitsValue": {
+    "key": 611,
+    "type": "CoreUintType"
+   },
+   "borderBottomUnitsValue": {
+    "key": 612,
+    "type": "CoreUintType"
+   },
+   "marginLeftUnitsValue": {
+    "key": 613,
+    "type": "CoreUintType"
+   },
+   "marginRightUnitsValue": {
+    "key": 614,
+    "type": "CoreUintType"
+   },
+   "marginTopUnitsValue": {
+    "key": 615,
+    "type": "CoreUintType"
+   },
+   "marginBottomUnitsValue": {
+    "key": 616,
+    "type": "CoreUintType"
+   },
+   "paddingLeftUnitsValue": {
+    "key": 617,
+    "type": "CoreUintType"
+   },
+   "paddingRightUnitsValue": {
+    "key": 618,
+    "type": "CoreUintType"
+   },
+   "paddingTopUnitsValue": {
+    "key": 619,
+    "type": "CoreUintType"
+   },
+   "paddingBottomUnitsValue": {
+    "key": 620,
+    "type": "CoreUintType"
+   },
+   "gapHorizontalUnitsValue": {
+    "key": 625,
+    "type": "CoreUintType"
+   },
+   "gapVerticalUnitsValue": {
+    "key": 626,
+    "type": "CoreUintType"
+   },
+   "justifyItemsValue": {
+    "key": 1045,
+    "type": "CoreUintType"
+   },
+   "layoutTypeValue": {
+    "key": 1059,
+    "type": "CoreUintType"
+   },
+   "linkCornerRadius": {
+    "key": 639,
+    "type": "CoreBoolType"
+   },
+   "cornerRadiusTL": {
+    "key": 640,
+    "type": "CoreDoubleType"
+   },
+   "cornerRadiusTR": {
+    "key": 641,
+    "type": "CoreDoubleType"
+   },
+   "cornerRadiusBL": {
+    "key": 642,
+    "type": "CoreDoubleType"
+   },
+   "cornerRadiusBR": {
+    "key": 643,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "LayoutNodeStyle": {
+  "typeKey": 1057,
+  "super": "LayoutSizingStyle",
+  "props": {
+   "width": {
+    "key": 1066,
+    "type": "CoreDoubleType"
+   },
+   "height": {
+    "key": 1067,
+    "type": "CoreDoubleType"
+   },
+   "fractionalWidth": {
+    "key": 1057,
+    "type": "CoreDoubleType"
+   },
+   "fractionalHeight": {
+    "key": 1058,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "LayoutParticipant": {
+  "typeKey": 1066,
+  "super": "LayoutNodeStyle",
+  "props": {}
+ },
+ "LayoutSizingStyle": {
+  "typeKey": 1056,
+  "super": "Component",
+  "props": {
+   "minWidth": {
+    "key": 502,
+    "type": "CoreDoubleType"
+   },
+   "maxWidth": {
+    "key": 500,
+    "type": "CoreDoubleType"
+   },
+   "minHeight": {
+    "key": 503,
+    "type": "CoreDoubleType"
+   },
+   "maxHeight": {
+    "key": 501,
+    "type": "CoreDoubleType"
+   },
+   "minWidthUnitsValue": {
+    "key": 627,
+    "type": "CoreUintType"
+   },
+   "maxWidthUnitsValue": {
+    "key": 629,
+    "type": "CoreUintType"
+   },
+   "minHeightUnitsValue": {
+    "key": 628,
+    "type": "CoreUintType"
+   },
+   "maxHeightUnitsValue": {
+    "key": 630,
+    "type": "CoreUintType"
+   },
+   "layoutWidthScaleType": {
+    "key": 655,
+    "type": "CoreUintType"
+   },
+   "layoutHeightScaleType": {
+    "key": 656,
+    "type": "CoreUintType"
+   },
+   "hugUnbounded": {
+    "key": 451,
+    "type": "CoreBoolType"
+   },
+   "widthUnitsValue": {
+    "key": 607,
+    "type": "CoreUintType"
+   },
+   "heightUnitsValue": {
+    "key": 608,
+    "type": "CoreUintType"
+   },
+   "justifySelfValue": {
+    "key": 1046,
+    "type": "CoreUintType"
+   },
+   "displayValue": {
+    "key": 596,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "NSlicedNode": {
+  "typeKey": 508,
+  "super": "Node",
+  "props": {
+   "initialWidth": {
+    "key": 697,
+    "type": "CoreDoubleType"
+   },
+   "initialHeight": {
+    "key": 698,
+    "type": "CoreDoubleType"
+   },
+   "width": {
+    "key": 699,
+    "type": "CoreDoubleType"
+   },
+   "height": {
+    "key": 700,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "NSlicer": {
+  "typeKey": 493,
+  "super": "ContainerComponent",
+  "props": {}
+ },
+ "NSlicerTileMode": {
+  "typeKey": 491,
+  "super": "Component",
+  "props": {
+   "patchIndex": {
+    "key": 672,
+    "type": "CoreUintType"
+   },
+   "style": {
+    "key": 673,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "LayoutComponent": {
+  "typeKey": 409,
+  "super": "Drawable",
+  "props": {
+   "clip": {
+    "key": 196,
+    "type": "CoreBoolType"
+   },
+   "width": {
+    "key": 7,
+    "type": "CoreDoubleType"
+   },
+   "height": {
+    "key": 8,
+    "type": "CoreDoubleType"
+   },
+   "styleId": {
+    "key": 494,
+    "type": "CoreIdType"
+   },
+   "fractionalWidth": {
+    "key": 706,
+    "type": "CoreDoubleType"
+   },
+   "fractionalHeight": {
+    "key": 707,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "NestedAnimation": {
+  "typeKey": 93,
+  "super": "ContainerComponent",
+  "props": {
+   "animationId": {
+    "key": 198,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "NestedArtboard": {
+  "typeKey": 92,
+  "super": "Drawable",
+  "props": {
+   "artboardId": {
+    "key": 197,
+    "type": "CoreIdType"
+   },
+   "dataBindPathIds": {
+    "key": 582,
+    "type": "CoreBytesType"
+   },
+   "isPaused": {
+    "key": 895,
+    "type": "CoreBoolType"
+   },
+   "speed": {
+    "key": 907,
+    "type": "CoreDoubleType"
+   },
+   "quantize": {
+    "key": 908,
+    "type": "CoreDoubleType"
+   },
+   "isStateful": {
+    "key": 1014,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "NestedArtboardLayout": {
+  "typeKey": 452,
+  "super": "NestedArtboard",
+  "props": {
+   "instanceWidth": {
+    "key": 663,
+    "type": "CoreDoubleType"
+   },
+   "instanceHeight": {
+    "key": 664,
+    "type": "CoreDoubleType"
+   },
+   "instanceWidthUnitsValue": {
+    "key": 665,
+    "type": "CoreUintType"
+   },
+   "instanceHeightUnitsValue": {
+    "key": 666,
+    "type": "CoreUintType"
+   },
+   "instanceWidthScaleType": {
+    "key": 667,
+    "type": "CoreUintType"
+   },
+   "instanceHeightScaleType": {
+    "key": 668,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "NestedArtboardLeaf": {
+  "typeKey": 451,
+  "super": "NestedArtboard",
+  "props": {
+   "fit": {
+    "key": 538,
+    "type": "CoreUintType"
+   },
+   "fitToLayoutParent": {
+    "key": 1098,
+    "type": "CoreBoolType"
+   },
+   "alignmentX": {
+    "key": 644,
+    "type": "CoreDoubleType"
+   },
+   "alignmentY": {
+    "key": 645,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Node": {
+  "typeKey": 2,
+  "super": "TransformComponent",
+  "props": {
+   "x": {
+    "key": 13,
+    "type": "CoreDoubleType"
+   },
+   "xArtboard": {
+    "key": 9,
+    "type": "CoreDoubleType"
+   },
+   "y": {
+    "key": 14,
+    "type": "CoreDoubleType"
+   },
+   "yArtboard": {
+    "key": 10,
+    "type": "CoreDoubleType"
+   },
+   "computedLocalX": {
+    "key": 806,
+    "type": "CoreDoubleType"
+   },
+   "computedLocalY": {
+    "key": 807,
+    "type": "CoreDoubleType"
+   },
+   "computedWorldX": {
+    "key": 808,
+    "type": "CoreDoubleType"
+   },
+   "computedWorldY": {
+    "key": 809,
+    "type": "CoreDoubleType"
+   },
+   "computedRootX": {
+    "key": 864,
+    "type": "CoreDoubleType"
+   },
+   "computedRootY": {
+    "key": 865,
+    "type": "CoreDoubleType"
+   },
+   "computedWidth": {
+    "key": 810,
+    "type": "CoreDoubleType"
+   },
+   "computedHeight": {
+    "key": 811,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "OpenUrlEvent": {
+  "typeKey": 131,
+  "super": "Event",
+  "props": {
+   "url": {
+    "key": 248,
+    "type": "CoreStringType"
+   },
+   "targetValue": {
+    "key": 249,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ScriptInputArtboard": {
+  "typeKey": 621,
+  "super": "CustomProperty",
+  "props": {
+   "artboardId": {
+    "key": 876,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ScriptInputBoolean": {
+  "typeKey": 631,
+  "super": "CustomPropertyBoolean",
+  "props": {}
+ },
+ "ScriptInputColor": {
+  "typeKey": 626,
+  "super": "CustomPropertyColor",
+  "props": {}
+ },
+ "ScriptInputNumber": {
+  "typeKey": 611,
+  "super": "CustomPropertyNumber",
+  "props": {}
+ },
+ "ScriptInputString": {
+  "typeKey": 627,
+  "super": "CustomPropertyString",
+  "props": {}
+ },
+ "ScriptInputTrigger": {
+  "typeKey": 618,
+  "super": "CustomPropertyTrigger",
+  "props": {}
+ },
+ "ScriptInputViewModelProperty": {
+  "typeKey": 612,
+  "super": "CustomProperty",
+  "props": {
+   "dataBindPathIds": {
+    "key": 866,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "ScriptedDataConverter": {
+  "typeKey": 629,
+  "super": "DataConverter",
+  "props": {
+   "scriptAssetId": {
+    "key": 892,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ScriptedDrawable": {
+  "typeKey": 603,
+  "super": "Drawable",
+  "props": {
+   "scriptAssetId": {
+    "key": 848,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ScriptedInterpolator": {
+  "typeKey": 972,
+  "super": "KeyFrameInterpolator",
+  "props": {
+   "scriptAssetId": {
+    "key": 1015,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ScriptedLayout": {
+  "typeKey": 637,
+  "super": "ScriptedDrawable",
+  "props": {}
+ },
+ "ScriptedPathEffect": {
+  "typeKey": 640,
+  "super": "ContainerComponent",
+  "props": {
+   "scriptAssetId": {
+    "key": 912,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ScriptedTransition": {
+  "typeKey": 110,
+  "super": "ScriptedDrawable",
+  "props": {
+   "activeComponentId": {
+    "key": 273,
+    "type": "CoreIdType"
+   },
+   "listSource": {
+    "key": 414,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "SelectionStyle": {
+  "typeKey": 153,
+  "super": "Core",
+  "props": {
+   "highlightColor": {
+    "key": 447,
+    "type": "CoreColorType"
+   },
+   "cornerRadius": {
+    "key": 448,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "SemanticData": {
+  "typeKey": 668,
+  "super": "Component",
+  "props": {
+   "role": {
+    "key": 982,
+    "type": "CoreUintType"
+   },
+   "label": {
+    "key": 983,
+    "type": "CoreStringType"
+   },
+   "value": {
+    "key": 984,
+    "type": "CoreStringType"
+   },
+   "hint": {
+    "key": 985,
+    "type": "CoreStringType"
+   },
+   "headingLevel": {
+    "key": 986,
+    "type": "CoreUintType"
+   },
+   "traitFlags": {
+    "key": 987,
+    "type": "CoreUintType"
+   },
+   "stateFlags": {
+    "key": 988,
+    "type": "CoreUintType"
+   },
+   "isExpandable": {
+    "key": 989,
+    "type": "CoreBoolType"
+   },
+   "isSelectable": {
+    "key": 990,
+    "type": "CoreBoolType"
+   },
+   "isCheckable": {
+    "key": 991,
+    "type": "CoreBoolType"
+   },
+   "isToggleable": {
+    "key": 992,
+    "type": "CoreBoolType"
+   },
+   "isRequirable": {
+    "key": 993,
+    "type": "CoreBoolType"
+   },
+   "isEnablable": {
+    "key": 994,
+    "type": "CoreBoolType"
+   },
+   "isFocusable": {
+    "key": 995,
+    "type": "CoreBoolType"
+   },
+   "isExpanded": {
+    "key": 996,
+    "type": "CoreBoolType"
+   },
+   "isSelected": {
+    "key": 997,
+    "type": "CoreBoolType"
+   },
+   "isChecked": {
+    "key": 998,
+    "type": "CoreUintType"
+   },
+   "isToggled": {
+    "key": 1000,
+    "type": "CoreBoolType"
+   },
+   "isRequired": {
+    "key": 1001,
+    "type": "CoreBoolType"
+   },
+   "isDisabled": {
+    "key": 1002,
+    "type": "CoreBoolType"
+   },
+   "isFocused": {
+    "key": 1003,
+    "type": "CoreBoolType"
+   },
+   "isHidden": {
+    "key": 1004,
+    "type": "CoreBoolType"
+   },
+   "isLiveRegion": {
+    "key": 1005,
+    "type": "CoreBoolType"
+   },
+   "isReadOnly": {
+    "key": 1006,
+    "type": "CoreBoolType"
+   },
+   "isModal": {
+    "key": 1007,
+    "type": "CoreBoolType"
+   },
+   "isObscured": {
+    "key": 1008,
+    "type": "CoreBoolType"
+   },
+   "isMultiline": {
+    "key": 1009,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ClippingShape": {
+  "typeKey": 42,
+  "super": "Component",
+  "props": {
+   "sourceId": {
+    "key": 92,
+    "type": "CoreIdType"
+   },
+   "fillRule": {
+    "key": 93,
+    "type": "CoreUintType"
+   },
+   "isVisible": {
+    "key": 94,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ContourMeshVertex": {
+  "typeKey": 111,
+  "super": "MeshVertex",
+  "props": {}
+ },
+ "CubicAsymmetricVertex": {
+  "typeKey": 34,
+  "super": "CubicVertex",
+  "props": {
+   "rotation": {
+    "key": 79,
+    "type": "CoreDoubleType"
+   },
+   "inDistance": {
+    "key": 80,
+    "type": "CoreDoubleType"
+   },
+   "outDistance": {
+    "key": 81,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CubicDetachedVertex": {
+  "typeKey": 6,
+  "super": "CubicVertex",
+  "props": {
+   "inRotation": {
+    "key": 84,
+    "type": "CoreDoubleType"
+   },
+   "inDistance": {
+    "key": 85,
+    "type": "CoreDoubleType"
+   },
+   "outRotation": {
+    "key": 86,
+    "type": "CoreDoubleType"
+   },
+   "outDistance": {
+    "key": 87,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CubicMirroredVertex": {
+  "typeKey": 35,
+  "super": "CubicVertex",
+  "props": {
+   "rotation": {
+    "key": 82,
+    "type": "CoreDoubleType"
+   },
+   "distance": {
+    "key": 83,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "CubicVertex": {
+  "typeKey": 36,
+  "super": "PathVertex",
+  "props": {}
+ },
+ "Ellipse": {
+  "typeKey": 4,
+  "super": "ParametricPath",
+  "props": {}
+ },
+ "Image": {
+  "typeKey": 100,
+  "super": "Drawable",
+  "props": {
+   "assetId": {
+    "key": 206,
+    "type": "CoreIdType"
+   },
+   "originX": {
+    "key": 380,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 381,
+    "type": "CoreDoubleType"
+   },
+   "fit": {
+    "key": 974,
+    "type": "CoreUintType"
+   },
+   "alignmentX": {
+    "key": 975,
+    "type": "CoreDoubleType"
+   },
+   "alignmentY": {
+    "key": 976,
+    "type": "CoreDoubleType"
+   },
+   "samplerFilter": {
+    "key": 1076,
+    "type": "CoreUintType"
+   },
+   "samplerWrapX": {
+    "key": 1077,
+    "type": "CoreUintType"
+   },
+   "samplerWrapY": {
+    "key": 1078,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ListPath": {
+  "typeKey": 619,
+  "super": "PointsCommonPath",
+  "props": {
+   "listSource": {
+    "key": 874,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "Mesh": {
+  "typeKey": 109,
+  "super": "ContainerComponent",
+  "props": {
+   "triangleIndexBytes": {
+    "key": 223,
+    "type": "CoreBytesType"
+   }
+  }
+ },
+ "MeshVertex": {
+  "typeKey": 108,
+  "super": "Vertex",
+  "props": {
+   "u": {
+    "key": 215,
+    "type": "CoreDoubleType"
+   },
+   "v": {
+    "key": 216,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "AngularGradient": {
+  "typeKey": 1089,
+  "super": "LinearGradient",
+  "props": {}
+ },
+ "Dash": {
+  "typeKey": 507,
+  "super": "Component",
+  "props": {
+   "length": {
+    "key": 692,
+    "type": "CoreDoubleType"
+   },
+   "lengthIsPercentage": {
+    "key": 693,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "DashPath": {
+  "typeKey": 506,
+  "super": "ContainerComponent",
+  "props": {
+   "offset": {
+    "key": 690,
+    "type": "CoreDoubleType"
+   },
+   "offsetIsPercentage": {
+    "key": 691,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "Feather": {
+  "typeKey": 533,
+  "super": "ContainerComponent",
+  "props": {
+   "spaceValue": {
+    "key": 748,
+    "type": "CoreUintType"
+   },
+   "strength": {
+    "key": 749,
+    "type": "CoreDoubleType"
+   },
+   "offsetX": {
+    "key": 750,
+    "type": "CoreDoubleType"
+   },
+   "offsetY": {
+    "key": 751,
+    "type": "CoreDoubleType"
+   },
+   "inner": {
+    "key": 752,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "Fill": {
+  "typeKey": 20,
+  "super": "ShapePaint",
+  "props": {
+   "fillRule": {
+    "key": 40,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "GradientStop": {
+  "typeKey": 19,
+  "super": "Component",
+  "props": {
+   "colorValue": {
+    "key": 38,
+    "type": "CoreColorType"
+   },
+   "position": {
+    "key": 39,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "GroupEffect": {
+  "typeKey": 645,
+  "super": "ContainerComponent",
+  "props": {}
+ },
+ "LinearGradient": {
+  "typeKey": 22,
+  "super": "ContainerComponent",
+  "props": {
+   "startX": {
+    "key": 42,
+    "type": "CoreDoubleType"
+   },
+   "startY": {
+    "key": 33,
+    "type": "CoreDoubleType"
+   },
+   "endX": {
+    "key": 34,
+    "type": "CoreDoubleType"
+   },
+   "endY": {
+    "key": 35,
+    "type": "CoreDoubleType"
+   },
+   "opacity": {
+    "key": 46,
+    "type": "CoreDoubleType"
+   },
+   "transformX": {
+    "key": 1103,
+    "type": "CoreDoubleType"
+   },
+   "transformY": {
+    "key": 1104,
+    "type": "CoreDoubleType"
+   },
+   "transformRotation": {
+    "key": 1105,
+    "type": "CoreDoubleType"
+   },
+   "transformScaleX": {
+    "key": 1106,
+    "type": "CoreDoubleType"
+   },
+   "transformScaleY": {
+    "key": 1107,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "PaintImage": {
+  "typeKey": 113,
+  "super": "Component",
+  "props": {
+   "imageAssetId": {
+    "key": 415,
+    "type": "CoreIdType"
+   },
+   "imageSamplerFilter": {
+    "key": 269,
+    "type": "CoreUintType"
+   },
+   "imageSamplerWrapX": {
+    "key": 270,
+    "type": "CoreUintType"
+   },
+   "imageSamplerWrapY": {
+    "key": 271,
+    "type": "CoreUintType"
+   },
+   "imageScaleX": {
+    "key": 416,
+    "type": "CoreDoubleType"
+   },
+   "imageScaleY": {
+    "key": 368,
+    "type": "CoreDoubleType"
+   },
+   "imageOffsetX": {
+    "key": 369,
+    "type": "CoreDoubleType"
+   },
+   "imageOffsetY": {
+    "key": 410,
+    "type": "CoreDoubleType"
+   },
+   "imageRotation": {
+    "key": 411,
+    "type": "CoreDoubleType"
+   },
+   "imageSizeMode": {
+    "key": 412,
+    "type": "CoreUintType"
+   },
+   "artboardId": {
+    "key": 487,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "RadialGradient": {
+  "typeKey": 17,
+  "super": "LinearGradient",
+  "props": {}
+ },
+ "ShapePaint": {
+  "typeKey": 21,
+  "super": "ContainerComponent",
+  "props": {
+   "isVisible": {
+    "key": 41,
+    "type": "CoreBoolType"
+   },
+   "blendModeValue": {
+    "key": 747,
+    "type": "CoreUintType"
+   },
+   "additiveAmount": {
+    "key": 452,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "SolidColor": {
+  "typeKey": 18,
+  "super": "Component",
+  "props": {
+   "colorValue": {
+    "key": 37,
+    "type": "CoreColorType"
+   }
+  }
+ },
+ "Stroke": {
+  "typeKey": 24,
+  "super": "ShapePaint",
+  "props": {
+   "thickness": {
+    "key": 47,
+    "type": "CoreDoubleType"
+   },
+   "cap": {
+    "key": 48,
+    "type": "CoreUintType"
+   },
+   "join": {
+    "key": 49,
+    "type": "CoreUintType"
+   },
+   "transformAffectsStroke": {
+    "key": 50,
+    "type": "CoreBoolType"
+   },
+   "position": {
+    "key": 470,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TargetEffect": {
+  "typeKey": 644,
+  "super": "Component",
+  "props": {
+   "targetId": {
+    "key": 922,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TrimPath": {
+  "typeKey": 47,
+  "super": "Component",
+  "props": {
+   "start": {
+    "key": 114,
+    "type": "CoreDoubleType"
+   },
+   "end": {
+    "key": 115,
+    "type": "CoreDoubleType"
+   },
+   "offset": {
+    "key": 116,
+    "type": "CoreDoubleType"
+   },
+   "modeValue": {
+    "key": 117,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ParametricPath": {
+  "typeKey": 15,
+  "super": "Path",
+  "props": {
+   "width": {
+    "key": 20,
+    "type": "CoreDoubleType"
+   },
+   "height": {
+    "key": 21,
+    "type": "CoreDoubleType"
+   },
+   "originX": {
+    "key": 123,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 124,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Path": {
+  "typeKey": 12,
+  "super": "Node",
+  "props": {
+   "pathFlags": {
+    "key": 128,
+    "type": "CoreUintType"
+   },
+   "isHole": {
+    "key": 770,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "PathVertex": {
+  "typeKey": 14,
+  "super": "Vertex",
+  "props": {}
+ },
+ "PointsCommonPath": {
+  "typeKey": 620,
+  "super": "Path",
+  "props": {
+   "isClosed": {
+    "key": 32,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "PointsPath": {
+  "typeKey": 16,
+  "super": "PointsCommonPath",
+  "props": {}
+ },
+ "Polygon": {
+  "typeKey": 51,
+  "super": "ParametricPath",
+  "props": {
+   "points": {
+    "key": 125,
+    "type": "CoreUintType"
+   },
+   "cornerRadius": {
+    "key": 126,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Rectangle": {
+  "typeKey": 7,
+  "super": "ParametricPath",
+  "props": {
+   "linkCornerRadius": {
+    "key": 164,
+    "type": "CoreBoolType"
+   },
+   "cornerRadiusTL": {
+    "key": 31,
+    "type": "CoreDoubleType"
+   },
+   "cornerRadiusTR": {
+    "key": 161,
+    "type": "CoreDoubleType"
+   },
+   "cornerRadiusBL": {
+    "key": 162,
+    "type": "CoreDoubleType"
+   },
+   "cornerRadiusBR": {
+    "key": 163,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Shape": {
+  "typeKey": 3,
+  "super": "Drawable",
+  "props": {
+   "length": {
+    "key": 781,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Star": {
+  "typeKey": 52,
+  "super": "Polygon",
+  "props": {
+   "innerRadius": {
+    "key": 127,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "StraightVertex": {
+  "typeKey": 5,
+  "super": "PathVertex",
+  "props": {
+   "radius": {
+    "key": 26,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Triangle": {
+  "typeKey": 8,
+  "super": "ParametricPath",
+  "props": {}
+ },
+ "Vertex": {
+  "typeKey": 107,
+  "super": "ContainerComponent",
+  "props": {
+   "x": {
+    "key": 24,
+    "type": "CoreDoubleType"
+   },
+   "y": {
+    "key": 25,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "Solo": {
+  "typeKey": 147,
+  "super": "Node",
+  "props": {
+   "activeComponentId": {
+    "key": 296,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "Text": {
+  "typeKey": 134,
+  "super": "Drawable",
+  "props": {
+   "alignValue": {
+    "key": 281,
+    "type": "CoreUintType"
+   },
+   "sizingValue": {
+    "key": 284,
+    "type": "CoreUintType"
+   },
+   "overflowValue": {
+    "key": 287,
+    "type": "CoreUintType"
+   },
+   "width": {
+    "key": 285,
+    "type": "CoreDoubleType"
+   },
+   "height": {
+    "key": 286,
+    "type": "CoreDoubleType"
+   },
+   "originX": {
+    "key": 366,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 367,
+    "type": "CoreDoubleType"
+   },
+   "paragraphSpacing": {
+    "key": 371,
+    "type": "CoreDoubleType"
+   },
+   "originValue": {
+    "key": 377,
+    "type": "CoreUintType"
+   },
+   "wrapValue": {
+    "key": 683,
+    "type": "CoreUintType"
+   },
+   "wordBreakValue": {
+    "key": 446,
+    "type": "CoreUintType"
+   },
+   "verticalAlignValue": {
+    "key": 685,
+    "type": "CoreUintType"
+   },
+   "fitFromBaseline": {
+    "key": 703,
+    "type": "CoreBoolType"
+   },
+   "fitFontSizeResizesBox": {
+    "key": 315,
+    "type": "CoreBoolType"
+   },
+   "textRunListSource": {
+    "key": 932,
+    "type": "CoreIdType"
+   },
+   "verticalTrimValue": {
+    "key": 1026,
+    "type": "CoreUintType"
+   },
+   "verticalTrimTopValue": {
+    "key": 1027,
+    "type": "CoreUintType"
+   },
+   "verticalTrimBottomValue": {
+    "key": 1028,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TextFollowPathModifier": {
+  "typeKey": 547,
+  "super": "TextTargetModifier",
+  "props": {
+   "radial": {
+    "key": 779,
+    "type": "CoreBoolType"
+   },
+   "orient": {
+    "key": 782,
+    "type": "CoreBoolType"
+   },
+   "start": {
+    "key": 783,
+    "type": "CoreDoubleType"
+   },
+   "end": {
+    "key": 784,
+    "type": "CoreDoubleType"
+   },
+   "strength": {
+    "key": 785,
+    "type": "CoreDoubleType"
+   },
+   "offset": {
+    "key": 786,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TextInput": {
+  "typeKey": 569,
+  "super": "Drawable",
+  "props": {
+   "text": {
+    "key": 817,
+    "type": "CoreStringType"
+   },
+   "selectionRadius": {
+    "key": 818,
+    "type": "CoreDoubleType"
+   },
+   "multiline": {
+    "key": 979,
+    "type": "CoreBoolType"
+   },
+   "alignValue": {
+    "key": 222,
+    "type": "CoreUintType"
+   },
+   "verticalAlignValue": {
+    "key": 1094,
+    "type": "CoreUintType"
+   },
+   "obscured": {
+    "key": 1095,
+    "type": "CoreBoolType"
+   },
+   "selectAllOnFocus": {
+    "key": 1099,
+    "type": "CoreBoolType"
+   },
+   "maxCharacters": {
+    "key": 489,
+    "type": "CoreUintType"
+   },
+   "maxLines": {
+    "key": 490,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TextInputCursor": {
+  "typeKey": 571,
+  "super": "TextInputDrawable",
+  "props": {}
+ },
+ "TextInputDrawable": {
+  "typeKey": 570,
+  "super": "Drawable",
+  "props": {}
+ },
+ "TextInputSelectedText": {
+  "typeKey": 575,
+  "super": "TextInputDrawable",
+  "props": {}
+ },
+ "TextInputSelection": {
+  "typeKey": 574,
+  "super": "TextInputDrawable",
+  "props": {}
+ },
+ "TextInputText": {
+  "typeKey": 572,
+  "super": "TextInputDrawable",
+  "props": {}
+ },
+ "TextModifier": {
+  "typeKey": 160,
+  "super": "Component",
+  "props": {}
+ },
+ "TextModifierGroup": {
+  "typeKey": 159,
+  "super": "ContainerComponent",
+  "props": {
+   "modifierFlags": {
+    "key": 335,
+    "type": "CoreUintType"
+   },
+   "originX": {
+    "key": 328,
+    "type": "CoreDoubleType"
+   },
+   "originY": {
+    "key": 329,
+    "type": "CoreDoubleType"
+   },
+   "opacity": {
+    "key": 324,
+    "type": "CoreDoubleType"
+   },
+   "x": {
+    "key": 322,
+    "type": "CoreDoubleType"
+   },
+   "y": {
+    "key": 323,
+    "type": "CoreDoubleType"
+   },
+   "rotation": {
+    "key": 332,
+    "type": "CoreDoubleType"
+   },
+   "scaleX": {
+    "key": 330,
+    "type": "CoreDoubleType"
+   },
+   "scaleY": {
+    "key": 331,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TextModifierRange": {
+  "typeKey": 158,
+  "super": "ContainerComponent",
+  "props": {
+   "modifyFrom": {
+    "key": 327,
+    "type": "CoreDoubleType"
+   },
+   "modifyTo": {
+    "key": 336,
+    "type": "CoreDoubleType"
+   },
+   "strength": {
+    "key": 334,
+    "type": "CoreDoubleType"
+   },
+   "unitsValue": {
+    "key": 316,
+    "type": "CoreUintType"
+   },
+   "typeValue": {
+    "key": 325,
+    "type": "CoreUintType"
+   },
+   "modeValue": {
+    "key": 326,
+    "type": "CoreUintType"
+   },
+   "clamp": {
+    "key": 333,
+    "type": "CoreBoolType"
+   },
+   "falloffFrom": {
+    "key": 317,
+    "type": "CoreDoubleType"
+   },
+   "falloffTo": {
+    "key": 318,
+    "type": "CoreDoubleType"
+   },
+   "offset": {
+    "key": 319,
+    "type": "CoreDoubleType"
+   },
+   "runId": {
+    "key": 378,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TextShapeModifier": {
+  "typeKey": 161,
+  "super": "TextModifier",
+  "props": {}
+ },
+ "TextStyleAxis": {
+  "typeKey": 144,
+  "super": "Component",
+  "props": {
+   "tag": {
+    "key": 289,
+    "type": "CoreUintType"
+   },
+   "axisValue": {
+    "key": 288,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TextStyleBackground": {
+  "typeKey": 1069,
+  "super": "ContainerComponent",
+  "props": {
+   "cornerRadius": {
+    "key": 1071,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TextStyle": {
+  "typeKey": 573,
+  "super": "TextStyleReference",
+  "props": {
+   "fontSize": {
+    "key": 274,
+    "type": "CoreDoubleType"
+   },
+   "lineHeight": {
+    "key": 370,
+    "type": "CoreDoubleType"
+   },
+   "letterSpacing": {
+    "key": 390,
+    "type": "CoreDoubleType"
+   },
+   "fontAssetId": {
+    "key": 279,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TextStyleFeature": {
+  "typeKey": 164,
+  "super": "Component",
+  "props": {
+   "tag": {
+    "key": 356,
+    "type": "CoreUintType"
+   },
+   "featureValue": {
+    "key": 357,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "TextStyleGlobal": {
+  "typeKey": 1101,
+  "super": "TextStyleReference",
+  "props": {
+   "artboardId": {
+    "key": 493,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TextStylePaint": {
+  "typeKey": 137,
+  "super": "TextStyle",
+  "props": {}
+ },
+ "TextStyleReference": {
+  "typeKey": 1100,
+  "super": "ContainerComponent",
+  "props": {}
+ },
+ "TextTargetModifier": {
+  "typeKey": 546,
+  "super": "TextModifier",
+  "props": {
+   "targetId": {
+    "key": 778,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "TextValueRun": {
+  "typeKey": 135,
+  "super": "Component",
+  "props": {
+   "styleId": {
+    "key": 272,
+    "type": "CoreIdType"
+   },
+   "text": {
+    "key": 268,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "TextVariationModifier": {
+  "typeKey": 162,
+  "super": "TextShapeModifier",
+  "props": {
+   "axisTag": {
+    "key": 320,
+    "type": "CoreUintType"
+   },
+   "axisValue": {
+    "key": 321,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "TransformComponent": {
+  "typeKey": 38,
+  "super": "WorldTransformComponent",
+  "props": {
+   "rotation": {
+    "key": 15,
+    "type": "CoreDoubleType"
+   },
+   "scaleX": {
+    "key": 16,
+    "type": "CoreDoubleType"
+   },
+   "scaleY": {
+    "key": 17,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "DataEnum": {
+  "typeKey": 510,
+  "super": "Core",
+  "props": {}
+ },
+ "DataEnumCustom": {
+  "typeKey": 438,
+  "super": "DataEnum",
+  "props": {
+   "name": {
+    "key": 572,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "DataEnumSystem": {
+  "typeKey": 512,
+  "super": "DataEnum",
+  "props": {
+   "enumType": {
+    "key": 709,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "DataEnumValue": {
+  "typeKey": 445,
+  "super": "Core",
+  "props": {
+   "key": {
+    "key": 578,
+    "type": "CoreStringType"
+   },
+   "value": {
+    "key": 579,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "ViewModel": {
+  "typeKey": 435,
+  "super": "ViewModelComponent",
+  "props": {
+   "viewModelType": {
+    "key": 981,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ViewModelComponent": {
+  "typeKey": 429,
+  "super": "Core",
+  "props": {
+   "name": {
+    "key": 557,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "ViewModelInstanceArtboard": {
+  "typeKey": 599,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 846,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceAsset": {
+  "typeKey": 586,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 824,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceAssetBlob": {
+  "typeKey": 1044,
+  "super": "ViewModelInstanceAsset",
+  "props": {}
+ },
+ "ViewModelInstanceAssetFont": {
+  "typeKey": 1035,
+  "super": "ViewModelInstanceAsset",
+  "props": {}
+ },
+ "ViewModelInstanceAssetImage": {
+  "typeKey": 587,
+  "super": "ViewModelInstanceAsset",
+  "props": {}
+ },
+ "ViewModelInstance": {
+  "typeKey": 437,
+  "super": "ContainerComponent",
+  "props": {
+   "viewModelId": {
+    "key": 566,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceBoolean": {
+  "typeKey": 449,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 593,
+    "type": "CoreBoolType"
+   }
+  }
+ },
+ "ViewModelInstanceColor": {
+  "typeKey": 426,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 555,
+    "type": "CoreColorType"
+   }
+  }
+ },
+ "ViewModelInstanceEnum": {
+  "typeKey": 432,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 560,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceList": {
+  "typeKey": 441,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "listSource": {
+    "key": 966,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceListItem": {
+  "typeKey": 427,
+  "super": "Core",
+  "props": {
+   "viewModelId": {
+    "key": 549,
+    "type": "CoreIdType"
+   },
+   "viewModelInstanceId": {
+    "key": 550,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceNumber": {
+  "typeKey": 442,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 575,
+    "type": "CoreDoubleType"
+   }
+  }
+ },
+ "ViewModelInstanceString": {
+  "typeKey": 433,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 561,
+    "type": "CoreStringType"
+   }
+  }
+ },
+ "ViewModelInstanceSymbol": {
+  "typeKey": 565,
+  "super": "ViewModelInstanceValue",
+  "props": {}
+ },
+ "ViewModelInstanceSymbolListIndex": {
+  "typeKey": 566,
+  "super": "ViewModelInstanceSymbol",
+  "props": {
+   "propertyValue": {
+    "key": 814,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ViewModelInstanceTrigger": {
+  "typeKey": 501,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 687,
+    "type": "CoreUintType"
+   },
+   "fire": {
+    "key": 1016,
+    "type": "?"
+   }
+  }
+ },
+ "ViewModelInstanceValue": {
+  "typeKey": 428,
+  "super": "Component",
+  "props": {
+   "viewModelPropertyId": {
+    "key": 554,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelInstanceViewModel": {
+  "typeKey": 444,
+  "super": "ViewModelInstanceValue",
+  "props": {
+   "propertyValue": {
+    "key": 577,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelPropertyArtboard": {
+  "typeKey": 598,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyAsset": {
+  "typeKey": 584,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyAssetBlob": {
+  "typeKey": 1043,
+  "super": "ViewModelPropertyAsset",
+  "props": {}
+ },
+ "ViewModelPropertyAssetFont": {
+  "typeKey": 1034,
+  "super": "ViewModelPropertyAsset",
+  "props": {}
+ },
+ "ViewModelPropertyAssetImage": {
+  "typeKey": 585,
+  "super": "ViewModelPropertyAsset",
+  "props": {}
+ },
+ "ViewModelProperty": {
+  "typeKey": 430,
+  "super": "ViewModelComponent",
+  "props": {
+   "symbolTypeValue": {
+    "key": 875,
+    "type": "CoreUintType"
+   },
+   "componentProps": {
+    "key": 957,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ViewModelPropertyBoolean": {
+  "typeKey": 448,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyColor": {
+  "typeKey": 440,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyEnum": {
+  "typeKey": 509,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyEnumCustom": {
+  "typeKey": 439,
+  "super": "ViewModelPropertyEnum",
+  "props": {
+   "enumId": {
+    "key": 574,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "ViewModelPropertyEnumSystem": {
+  "typeKey": 511,
+  "super": "ViewModelPropertyEnum",
+  "props": {
+   "enumType": {
+    "key": 708,
+    "type": "CoreUintType"
+   }
+  }
+ },
+ "ViewModelPropertyList": {
+  "typeKey": 434,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyNumber": {
+  "typeKey": 431,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyString": {
+  "typeKey": 443,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertySymbol": {
+  "typeKey": 563,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertySymbolListIndex": {
+  "typeKey": 564,
+  "super": "ViewModelPropertySymbol",
+  "props": {}
+ },
+ "ViewModelPropertyTrigger": {
+  "typeKey": 502,
+  "super": "ViewModelProperty",
+  "props": {}
+ },
+ "ViewModelPropertyViewModel": {
+  "typeKey": 436,
+  "super": "ViewModelProperty",
+  "props": {
+   "viewModelReferenceId": {
+    "key": 565,
+    "type": "CoreIdType"
+   }
+  }
+ },
+ "WorldTransformComponent": {
+  "typeKey": 91,
+  "super": "ContainerComponent",
+  "props": {
+   "opacity": {
+    "key": 18,
+    "type": "CoreDoubleType"
+   }
+  }
+ }
+}

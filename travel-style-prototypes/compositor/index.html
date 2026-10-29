@@ -1,0 +1,12 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Compositor</title>
+<style>html,body{margin:0;background:#111}canvas{display:block;height:100vh;width:auto;margin:auto}</style></head>
+<body><canvas id="out"></canvas>
+<script src="../src/timeline.js"></script>
+<script type="module">
+import { createCompositor } from './compositor.js';
+const q = new URLSearchParams(location.search);
+window.ready = createCompositor(q.get('style') || 'A', { canvas: document.getElementById('out'), only: q.get('only') }).then((c) => { window.comp = c; return c.layers; });
+// Interactive preview: ?style=A&play=1
+if (q.get('play')) window.ready.then(() => { let f = 0; const tick = () => { comp.renderFrame(f++); if (f < comp.frames) setTimeout(tick, 0); }; tick(); });
+</script></body></html>

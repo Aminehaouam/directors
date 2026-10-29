@@ -1,0 +1,14 @@
+const {RivFile}=require('../riv-writer');const fs=require('fs');
+const f=new RivFile();const ab=f.artboard('Test',{width:400,height:400});
+const root=ab.node('root',null,{x:200,y:200});
+const bg=ab.shape('bg',root);ab.rect(bg,-150,-150,300,300,30);ab.fill(bg,{linear:[0,-150,0,150],stops:[[0,'#e8d5b0'],[1,'#c2894b']]});
+const glow=ab.shape('glow',root);ab.ellipse(glow,0,60,200,120);ab.fill(glow,{radial:[0,60,100],stops:[[0,'#ffffff',0.8],[1,'#ffffff',0]]});
+const blob=ab.shape('blob',root);ab.path(blob,'M -80 0 C -80 -60 80 -60 80 0 C 80 50 -80 50 -80 0 Z');ab.fill(blob,'#2b3a42');const st=ab.stroke(blob,'#ffffff',6,{trim:{end:0.5}});
+const route=ab.shape('route',root);ab.path(route,'M -120 120 C -40 60 40 160 120 100');ab.stroke(route,'#c0392b',5,{dash:[14,10]});
+const clipG=ab.node('clipG',root);const clipSrc=ab.shape('clipSrc',clipG);ab.rect(clipSrc,60,-140,80,80,0);
+const dot=ab.shape('dot',clipG,{x:100,y:-90});ab.ellipse(dot,0,0,90,90);ab.fill(dot,'#c0392b');ab.clip(clipG,clipSrc);
+const a1=ab.animation('idle',{duration:1,loop:'loop'});a1.key(dot,'y',[[0,-90],[0.5,-60],[1,-90]]);
+const a2=ab.animation('spin',{duration:1});a2.key(blob,'rotation',[[0,0,'outBack'],[1,Math.PI/2]]);a2.key(st.trim,'end',[[0,0.5],[1,1]]);
+const sm=ab.stateMachine('SM');const go=sm.trigger('go');const L=sm.layer('main');const s1=L.anim(a1),s2=L.anim(a2);L.transition(L.entry,s1);L.transition(s1,s2,{trigger:go,mix:200});
+const L2=sm.layer('second');const s3=L2.anim(a1);L2.transition(L2.entry,s3);
+fs.writeFileSync(__dirname+'/test.riv',f.toBuffer());

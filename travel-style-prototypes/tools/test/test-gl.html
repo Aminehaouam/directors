@@ -1,0 +1,12 @@
+<!doctype html><canvas id=c width=400 height=400></canvas><canvas id=d width=400 height=400 style="display:none"></canvas><script type=module>
+import Rive from '/node_modules/@rive-app/webgl2-advanced/webgl2_advanced.mjs';
+window.run=async()=>{const rive=await Rive({locateFile:f=>'/node_modules/@rive-app/webgl2-advanced/rive.wasm'});
+const bytes=new Uint8Array(await (await fetch('/tools/test/test.riv')).arrayBuffer());
+const file=await rive.load(bytes);const ab=file.artboardByName('Test');const c=document.getElementById('c');const r=rive.makeRenderer(c,true);
+const sm={advanceAndApply(){},input(){return {asTrigger(){return{fire(){}}}}}};const log=[];
+const draw=()=>{(r.beginFrame?r.beginFrame():r.clear());r.save();ab.draw(r);r.restore();r.flush();rive.resolveAnimationFrame();};
+const step=t=>{sm.advanceAndApply(t);ab.advance(t);};
+step(0);step(0.25);draw();const a=0;
+sm.input(0).asTrigger().fire();for(let i=0;i<40;i++)step(1/30);draw();
+const d=document.getElementById("d").getContext("2d");d.drawImage(c,0,0);return {log,a:document.getElementById("d").toDataURL(),b:c.toDataURL()};};
+</script>

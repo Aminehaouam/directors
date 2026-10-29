@@ -1,0 +1,79 @@
+// The three art directions. Same keys in every palette so each element's
+// art code is written once and re-skinned per style.
+'use strict';
+
+const A = {
+  id: 'A', slug: 'style-a-journal', name: 'Modern Illustrated Travel Journal',
+  fonts: { title: 'serif', label: 'sans', hand: 'hand' },
+  pal: {
+    desk: '#2C4852', deskGrain: '#34525D', deskSeam: '#243C45', deskLight: '#3A5B66',
+    cover: '#B0563A', coverDark: '#8F4430', coverLight: '#C26748', coverInside: '#9B4A33', gold: '#D8B26E', band: '#2A2421',
+    page: '#F4EADA', pageShade: '#E7D8BF', pageEdge: '#D6C3A3', ink: '#39414B', inkSoft: '#8C8F91', ribbon: '#D9A441',
+    ticket: '#F7EFDF', ticketBack: '#EFE3CB', accent: '#C4553A', accentSoft: '#E3A48C', navy: '#22394A', ticketShade: '#E5D7BD',
+    thames: '#86A9B2', thamesLight: '#B7CDCE', street: '#E4D6BC', park: '#B9C79D',
+    stone: '#E4C690', stoneShade: '#C9A266', stoneDark: '#A27D4A', stoneLight: '#F1DCAE', slate: '#2F4552', slateLight: '#4A6370', gilt: '#D6A64D', clock: '#F7F0DE',
+    back1: '#AFC1C3', back2: '#98AFB3', back1Shade: '#97ABAE', backWin: '#C7D4D3',
+    brick: '#C98466', brickShade: '#AE6D52', roof: '#3F5662', window: '#F3E6C9', tree: '#6F8E67', treeDark: '#58744F', bus: '#C8442F', busShade: '#A3361F', steel: '#5D7A86', steelLight: '#7F9BA5', white: '#FBF6EA',
+    body: '#3A3D42', bodyShade: '#2F3236', bodyLight: '#4A4E54', wing: '#9EA5AB', wingShade: '#868D94', wingFar: '#2A2C30', beak: '#1C1C1F', tail: '#C7372C', tailShade: '#A22A21', feet: '#5A5E64',
+    map: '#F2E6CE', sea: '#BBD2CF', seaLine: '#A7C3C1', land: '#EADBB8', landEdge: '#C9B48C', grid: '#DCCDAF', route: '#C4553A', pin: '#C4553A', label: '#22394A',
+    cup: '#ECE5D8', cupShade: '#D9CFBE', coffee: '#4E3326', coffeeLight: '#7A5440', pencil: '#D9A441', pencilShade: '#B9852D', wood: '#E9C99A', graphite: '#3A3A3D', metal: '#B7B2A5', eraser: '#D98C7A',
+  },
+  post: { mode: 'editorial' },
+};
+
+const B = {
+  id: 'B', slug: 'style-b-paper', name: 'Dimensional Paper Cut-Out',
+  fonts: { title: 'serif', label: 'sansBold', hand: 'hand' },
+  paperDepth: true,
+  pal: {
+    desk: '#C9A47C', deskGrain: '#BF9970', deskSeam: '#A9845C', deskLight: '#D4B28C',
+    cover: '#3F6E5B', coverDark: '#335A4A', coverLight: '#4C7E6A', coverInside: '#36604F', gold: '#E9C67A', band: '#2B2F2C',
+    page: '#F7F0E3', pageShade: '#EBE0CC', pageEdge: '#DCCDB2', ink: '#3E4650', inkSoft: '#9A9790', ribbon: '#E0664C',
+    ticket: '#FAEBD3', ticketBack: '#F3DDBB', accent: '#E0664C', accentSoft: '#F0A58F', navy: '#2D4B66', ticketShade: '#EBD8B8',
+    thames: '#7FB3C6', thamesLight: '#A9CFDA', street: '#EFDDBE', park: '#A9CB8E',
+    stone: '#F1D59C', stoneShade: '#DDB574', stoneDark: '#BC9152', stoneLight: '#F9E6BD', slate: '#3B5A6E', slateLight: '#557789', gilt: '#E7B54F', clock: '#FCF6E7',
+    back1: '#A9C6D2', back2: '#8EB2C2', back1Shade: '#94B5C3', backWin: '#C8DDE4',
+    brick: '#E08E6A', brickShade: '#C77757', roof: '#3F5F73', window: '#FCEFD2', tree: '#7DB36F', treeDark: '#629A57', bus: '#E0553F', busShade: '#C2412D', steel: '#5E8597', steelLight: '#86A9B8', white: '#FFFBF1',
+    body: '#43474D', bodyShade: '#383B40', bodyLight: '#54595F', wing: '#A7AEB5', wingShade: '#8F979E', wingFar: '#33363B', beak: '#232327', tail: '#DA473A', tailShade: '#B9362B', feet: '#62666C',
+    map: '#F7EDD8', sea: '#A8D0D7', seaLine: '#95C2CA', land: '#F2E1B9', landEdge: '#D8C192', grid: '#E6D6B6', route: '#E0664C', pin: '#E0664C', label: '#2D4B66',
+    cup: '#F4EEE4', cupShade: '#E2D8C8', coffee: '#5A3A2A', coffeeLight: '#84604B', pencil: '#EDB54B', pencilShade: '#D39A33', wood: '#F2D3A4', graphite: '#3F3F43', metal: '#C9C3B4', eraser: '#EE9A86',
+  },
+  post: { mode: 'paper' },
+};
+
+// Pixel art: the same keys, mapped onto a fixed ramp-based palette. The
+// compositor quantises every rendered frame to PIXEL_PALETTE, so the art may
+// only use these colours.
+const PIXEL_PALETTE = [
+  '#1B1A24', '#2A2734', '#3A3546',
+  '#2B2120', '#3D2C27', '#523A31', '#6A4C3C', '#835F49',
+  '#1F3440', '#2C4A58', '#3E6571', '#5A8690', '#86AEB1', '#B8D3CE',
+  '#F7EEDA', '#EBDCBC', '#D7C097', '#B99A6D', '#93744F',
+  '#6E2A27', '#9C3B2F', '#C7553B', '#E3845E', '#F0B08A',
+  '#7C5A2E', '#A97E3F', '#D3A657', '#ECCB7E', '#F7E3AC',
+  '#283F2E', '#3E5D3B', '#5D7F4B', '#8CA661',
+  '#25272D', '#34373E', '#484C55', '#6B7179', '#959CA3', '#C3C8CC',
+  '#FFF9EC',
+];
+const C = {
+  id: 'C', slug: 'style-c-pixel', name: 'Modern Pixel Art',
+  fonts: { title: 'pixelBold', label: 'pixel', hand: 'pixel' },
+  pixel: 4, // one art pixel = 4 output pixels (270 x 480 canvas)
+  pal: {
+    desk: '#3D2C27', deskGrain: '#523A31', deskSeam: '#2B2120', deskLight: '#523A31',
+    cover: '#2C4A58', coverDark: '#1F3440', coverLight: '#3E6571', coverInside: '#1F3440', gold: '#D3A657', band: '#1B1A24',
+    page: '#F7EEDA', pageShade: '#EBDCBC', pageEdge: '#D7C097', ink: '#3A3546', inkSoft: '#B99A6D', ribbon: '#C7553B',
+    ticket: '#F7EEDA', ticketBack: '#EBDCBC', accent: '#C7553B', accentSoft: '#E3845E', navy: '#2C4A58', ticketShade: '#D7C097',
+    thames: '#5A8690', thamesLight: '#86AEB1', street: '#EBDCBC', park: '#8CA661',
+    stone: '#ECCB7E', stoneShade: '#D3A657', stoneDark: '#A97E3F', stoneLight: '#F7E3AC', slate: '#2C4A58', slateLight: '#3E6571', gilt: '#D3A657', clock: '#FFF9EC',
+    back1: '#86AEB1', back2: '#5A8690', back1Shade: '#5A8690', backWin: '#B8D3CE',
+    brick: '#C7553B', brickShade: '#9C3B2F', roof: '#2C4A58', window: '#F7E3AC', tree: '#5D7F4B', treeDark: '#3E5D3B', bus: '#C7553B', busShade: '#9C3B2F', steel: '#3E6571', steelLight: '#5A8690', white: '#FFF9EC',
+    body: '#34373E', bodyShade: '#25272D', bodyLight: '#484C55', wing: '#959CA3', wingShade: '#6B7179', wingFar: '#25272D', beak: '#1B1A24', tail: '#C7553B', tailShade: '#9C3B2F', feet: '#6B7179',
+    map: '#F7EEDA', sea: '#86AEB1', seaLine: '#5A8690', land: '#EBDCBC', landEdge: '#B99A6D', grid: '#D7C097', route: '#C7553B', pin: '#C7553B', label: '#2C4A58',
+    cup: '#EBDCBC', cupShade: '#D7C097', coffee: '#3D2C27', coffeeLight: '#6A4C3C', pencil: '#D3A657', pencilShade: '#A97E3F', wood: '#ECCB7E', graphite: '#2A2734', metal: '#959CA3', eraser: '#E3845E',
+  },
+  palette: PIXEL_PALETTE,
+  post: { mode: 'pixel' },
+};
+
+module.exports = { A, B, C, all: [A, B, C] };

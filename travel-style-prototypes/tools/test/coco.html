@@ -1,0 +1,13 @@
+<!doctype html><canvas id=c width=1500 height=360></canvas><script type=module>
+import Rive from '/node_modules/@rive-app/canvas-advanced/canvas_advanced.mjs';
+window.run=async(style)=>{const rive=await Rive({locateFile:()=>'/node_modules/@rive-app/canvas-advanced/rive.wasm'});
+const f=await rive.load(new Uint8Array(await (await fetch('/rive/'+style+'.riv?'+Date.now())).arrayBuffer()));
+const c=document.getElementById('c');const ctx=c.getContext('2d');ctx.fillStyle='#2C4852';ctx.fillRect(0,0,1500,360);
+const poses=[['fly',0],['fly',0.2],['land',0.2],['land',0.62],['idle',0.6],['nudge',0.47],['cheer',0.3],['idle',2.0]];
+const tmp=document.createElement('canvas');tmp.width=1080;tmp.height=1920;const r=rive.makeRenderer(tmp);
+poses.forEach(([n,t],i)=>{const ab=f.artboardByName('Coco');for(const [an,at] of (n=='fly'?[[n,t]]:[['fly',0],['land',0.62],[n,t]])){const li=new rive.LinearAnimationInstance(ab.animationByName(an),ab);li.advance(at);li.apply(1);}
+ const p=ab.node('cocoPath');p.x=540;p.y=1000;p.rotation=0;ab.node('facing').scaleX=1;const fs=ab.node('flyScale');fs.scaleX=fs.scaleY=1.2;if(n!='fly')ab.node('feet').rotation=0;ab.advance(0);
+ r.beginFrame();r.save();r.align(rive.Fit.none,rive.Alignment.topLeft,{minX:0,minY:0,maxX:1080,maxY:1920},ab.bounds);ab.draw(r);r.restore();r.flush();rive.resolveAnimationFrame();
+ ctx.drawImage(tmp,540-170,1000-300,340,340,i*185,10,185,185);});
+return c.toDataURL();};
+</script>

@@ -1,0 +1,12 @@
+<!doctype html><canvas id=c width=400 height=400></canvas><script type=module>
+import Rive from '/node_modules/@rive-app/canvas-advanced/canvas_advanced.mjs';
+window.run=async()=>{const rive=await Rive({locateFile:f=>'/node_modules/@rive-app/canvas-advanced/rive.wasm'});
+const bytes=new Uint8Array(await (await fetch('/tools/test/test.riv')).arrayBuffer());
+const file=await rive.load(bytes);const ab=file.artboardByName('Test');const c=document.getElementById('c');const r=rive.makeRenderer(c);
+const sm={advanceAndApply(){},input(){return {asTrigger(){return{fire(){}}}}}};const log=[];
+const draw=()=>{r.beginFrame();r.save();ab.draw(r);r.restore();r.flush();rive.resolveAnimationFrame();};
+const step=t=>{sm.advanceAndApply(t);ab.advance(t);};
+step(0);step(0.25);draw();const a=c.toDataURL();
+sm.input(0).asTrigger().fire();for(let i=0;i<40;i++)step(1/30);draw();
+return {log,a,b:c.toDataURL()};};
+</script>
