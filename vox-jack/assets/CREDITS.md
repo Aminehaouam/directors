@@ -10,6 +10,12 @@
 
 The quote on the paper strip is set from Greene's text (1592), original spelling: "…being an absolute Iohannes fac totum, is in his owne conceit the onely Shake-scene in a countrey."
 
+## Music
+
+| File | Source | Licence |
+| --- | --- | --- |
+| `music/mysterious-merchant.mp3` | "Mysterious Merchant" by code_box, https://freesound.org/people/code_box/sounds/505166 (Freesound HQ preview, via Openverse) | CC0 |
+
 ## Sound effects (cut by `scripts/prep-audio.sh`)
 
 | Take | Source | Licence |

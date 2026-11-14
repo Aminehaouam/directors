@@ -42,38 +42,43 @@
       <div id="board" data-composition-id="board" data-composition-src="compositions/board.html"
         data-start="0" data-duration="10" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
       <div id="greene" data-composition-id="greene" data-composition-src="compositions/greene.html"
-        data-start="0" data-duration="3.6" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="3.8" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
       <div id="factotum" data-composition-id="factotum" data-composition-src="compositions/factotum.html"
-        data-start="3.2" data-duration="6.8" data-track-index="3" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+        data-start="3.4" data-duration="6.6" data-track-index="3" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
       <div id="finish" data-composition-id="finish" data-composition-src="compositions/finish.html"
         data-start="0" data-duration="10" data-track-index="4" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+
+      <!-- SCORE: "Mysterious Merchant" by code_box (CC0). The cut follows it: 120.5 BPM, a break at 6.55-6.95 s, the drop at 7.00 s.
+           Level is set to sit under a voice: higher in the quiet intro, lower once the bass drops, out by 10 s. -->
+      <audio id="music" class="clip" src="assets/music/mysterious-merchant.mp3" data-start="0" data-duration="10" data-track-index="30" data-volume="1"
+        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.5},{"t":6.95,"v":0.5},{"t":7.0,"v":0.3},{"t":7.5,"v":0.17},{"t":9.6,"v":0.17},{"t":10,"v":0}]}]}'></audio>
 
       <!-- YOUR VOICEOVER: replace assets/voiceover.wav with your recording (currently 10 s of silence). -->
       <audio id="voiceover" class="clip" src="assets/voiceover.wav" data-start="0" data-track-index="5" data-volume="1"></audio>
 
       <!-- Sound effects, kept low under the voice. Each lands one frame after its picture. -->
-      <audio id="sfx-slide" class="clip" src="assets/sfx/slide.wav" data-start="0" data-track-index="6" data-duration="0.8" data-volume="0.35"></audio>
-      <audio id="sfx-circle-date" class="clip" src="assets/sfx/scribble.wav" data-start="0.68" data-track-index="7" data-duration="0.6" data-volume="0.28"></audio>
-      <audio id="sfx-date" class="clip" src="assets/sfx/thud.wav" data-start="1.21" data-track-index="8" data-duration="0.32" data-volume="0.4"></audio>
-      <audio id="sfx-circle-death" class="clip" src="assets/sfx/scribble.wav" data-start="1.68" data-track-index="9" data-duration="0.6" data-volume="0.28"></audio>
-      <audio id="sfx-label" class="clip" src="assets/sfx/tap-1.wav" data-start="2.28" data-track-index="10" data-duration="0.22" data-volume="0.35"></audio>
-      <audio id="sfx-sub" class="clip" src="assets/sfx/tap-2.wav" data-start="2.46" data-track-index="11" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-whip" class="clip" src="assets/sfx/whoosh.wav" data-start="3.24" data-track-index="12" data-duration="0.45" data-volume="0.3"></audio>
-      <audio id="sfx-strip" class="clip" src="assets/sfx/page-flick.wav" data-start="3.10" data-track-index="13" data-duration="0.476" data-volume="0.3"></audio>
-      <audio id="sfx-highlight" class="clip" src="assets/sfx/marker.wav" data-start="3.63" data-track-index="14" data-duration="0.52" data-volume="0.32"></audio>
-      <audio id="sfx-cite" class="clip" src="assets/sfx/tap-3.wav" data-start="3.76" data-track-index="15" data-duration="0.225" data-volume="0.25"></audio>
-      <audio id="sfx-trade-1" class="clip" src="assets/sfx/tap-1.wav" data-start="4.910" data-track-index="16" data-duration="0.22" data-volume="0.3"></audio>
-      <audio id="sfx-trade-2" class="clip" src="assets/sfx/tap-2.wav" data-start="4.995" data-track-index="17" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-trade-3" class="clip" src="assets/sfx/tap-3.wav" data-start="5.080" data-track-index="18" data-duration="0.225" data-volume="0.3"></audio>
-      <audio id="sfx-trade-4" class="clip" src="assets/sfx/tap-1.wav" data-start="5.165" data-track-index="19" data-duration="0.22" data-volume="0.3"></audio>
-      <audio id="sfx-trade-5" class="clip" src="assets/sfx/tap-2.wav" data-start="5.250" data-track-index="20" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-trade-6" class="clip" src="assets/sfx/tap-3.wav" data-start="5.335" data-track-index="21" data-duration="0.225" data-volume="0.3"></audio>
-      <audio id="sfx-trade-7" class="clip" src="assets/sfx/tap-1.wav" data-start="5.420" data-track-index="22" data-duration="0.22" data-volume="0.3"></audio>
-      <audio id="sfx-trade-8" class="clip" src="assets/sfx/tap-2.wav" data-start="5.505" data-track-index="23" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-jack" class="clip" src="assets/sfx/thud.wav" data-start="5.31" data-track-index="24" data-duration="0.32" data-volume="0.4"></audio>
-      <audio id="sfx-circle-shake" class="clip" src="assets/sfx/scribble.wav" data-start="6.73" data-track-index="25" data-duration="0.6" data-volume="0.28"></audio>
-      <audio id="sfx-portrait" class="clip" src="assets/sfx/page-turn.wav" data-start="7.08" data-track-index="26" data-duration="0.7" data-volume="0.32"></audio>
-      <audio id="sfx-name" class="clip" src="assets/sfx/thud.wav" data-start="7.66" data-track-index="27" data-duration="0.32" data-volume="0.42"></audio>
+      <audio id="sfx-slide" class="clip" src="assets/sfx/slide.wav" data-start="0.000" data-track-index="6" data-duration="0.8" data-volume="0.35"></audio>
+      <audio id="sfx-circle-date" class="clip" src="assets/sfx/scribble.wav" data-start="1.040" data-track-index="7" data-duration="0.6" data-volume="0.28"></audio>
+      <audio id="sfx-date" class="clip" src="assets/sfx/thud.wav" data-start="1.520" data-track-index="8" data-duration="0.32" data-volume="0.4"></audio>
+      <audio id="sfx-circle-death" class="clip" src="assets/sfx/scribble.wav" data-start="2.010" data-track-index="9" data-duration="0.6" data-volume="0.28"></audio>
+      <audio id="sfx-label" class="clip" src="assets/sfx/tap-1.wav" data-start="2.530" data-track-index="10" data-duration="0.22" data-volume="0.35"></audio>
+      <audio id="sfx-sub" class="clip" src="assets/sfx/tap-2.wav" data-start="3.030" data-track-index="11" data-duration="0.18" data-volume="0.3"></audio>
+      <audio id="sfx-whip" class="clip" src="assets/sfx/whoosh.wav" data-start="3.470" data-track-index="12" data-duration="0.45" data-volume="0.3"></audio>
+      <audio id="sfx-strip" class="clip" src="assets/sfx/page-flick.wav" data-start="3.270" data-track-index="13" data-duration="0.476" data-volume="0.3"></audio>
+      <audio id="sfx-highlight" class="clip" src="assets/sfx/marker.wav" data-start="4.030" data-track-index="14" data-duration="0.52" data-volume="0.32"></audio>
+      <audio id="sfx-cite" class="clip" src="assets/sfx/tap-3.wav" data-start="4.050" data-track-index="15" data-duration="0.225" data-volume="0.25"></audio>
+      <audio id="sfx-trade-1" class="clip" src="assets/sfx/tap-1.wav" data-start="5.020" data-track-index="16" data-duration="0.22" data-volume="0.3"></audio>
+      <audio id="sfx-trade-2" class="clip" src="assets/sfx/tap-2.wav" data-start="5.144" data-track-index="17" data-duration="0.18" data-volume="0.3"></audio>
+      <audio id="sfx-trade-3" class="clip" src="assets/sfx/tap-3.wav" data-start="5.269" data-track-index="18" data-duration="0.225" data-volume="0.3"></audio>
+      <audio id="sfx-trade-4" class="clip" src="assets/sfx/tap-1.wav" data-start="5.393" data-track-index="19" data-duration="0.22" data-volume="0.3"></audio>
+      <audio id="sfx-trade-5" class="clip" src="assets/sfx/tap-2.wav" data-start="5.518" data-track-index="20" data-duration="0.18" data-volume="0.3"></audio>
+      <audio id="sfx-trade-6" class="clip" src="assets/sfx/tap-3.wav" data-start="5.643" data-track-index="21" data-duration="0.225" data-volume="0.3"></audio>
+      <audio id="sfx-trade-7" class="clip" src="assets/sfx/tap-1.wav" data-start="5.767" data-track-index="22" data-duration="0.22" data-volume="0.3"></audio>
+      <audio id="sfx-trade-8" class="clip" src="assets/sfx/tap-2.wav" data-start="5.891" data-track-index="23" data-duration="0.18" data-volume="0.3"></audio>
+      <audio id="sfx-jack" class="clip" src="assets/sfx/thud.wav" data-start="6.010" data-track-index="24" data-duration="0.32" data-volume="0.4"></audio>
+      <audio id="sfx-circle-shake" class="clip" src="assets/sfx/scribble.wav" data-start="6.540" data-track-index="25" data-duration="0.6" data-volume="0.28"></audio>
+      <audio id="sfx-portrait" class="clip" src="assets/sfx/page-turn.wav" data-start="6.800" data-track-index="26" data-duration="0.7" data-volume="0.2"></audio>
+      <audio id="sfx-name" class="clip" src="assets/sfx/thud.wav" data-start="7.290" data-track-index="27" data-duration="0.32" data-volume="0.42"></audio>
     </div>
     <script>
       window.__timelines["main"] = gsap.timeline({ paused: true });
