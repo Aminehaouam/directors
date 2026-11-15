@@ -4,19 +4,20 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      background: #263638;
+      background: #0b0c0d;
     }
     #board-drift {
       position: absolute;
       inset: -60px;
     }
+    /* Soot-black plaster: a cold, barely-lit wall behind the collage. */
     #board-paper {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 38% 42%, rgba(120, 150, 150, 0.22), rgba(120, 150, 150, 0) 70%),
-        radial-gradient(ellipse 50% 45% at 80% 78%, rgba(10, 20, 22, 0.35), rgba(10, 20, 22, 0) 70%),
-        #263638;
+        radial-gradient(ellipse 65% 42% at 50% 40%, rgba(70, 76, 78, 0.32), rgba(70, 76, 78, 0) 72%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 70%),
+        #0b0c0d;
     }
     #board-mottle,
     #board-fibre {
@@ -26,27 +27,27 @@
       height: 100%;
     }
     #board-mottle {
-      opacity: 0.35;
+      opacity: 0.5;
       mix-blend-mode: soft-light;
     }
     #board-fibre {
-      opacity: 0.18;
+      opacity: 0.12;
       mix-blend-mode: overlay;
     }
   </style>
-  <div id="root" data-composition-id="board" data-width="1920" data-height="1080">
-    <div id="board-drift" data-layout-allow-overflow>
-      <div id="board-paper"></div>
+  <div id="root" data-composition-id="board" data-layout-allow-occlusion data-width="1080" data-height="1920">
+    <div id="board-drift" data-layout-allow-overflow data-layout-allow-occlusion>
+      <div id="board-paper" data-layout-allow-occlusion></div>
       <svg id="board-mottle" aria-hidden="true">
         <filter id="board-f-mottle" x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.004 0.006" numOctaves="3" seed="11" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.005 0.004" numOctaves="4" seed="11" />
           <feColorMatrix type="saturate" values="0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#board-f-mottle)" />
       </svg>
       <svg id="board-fibre" aria-hidden="true">
         <filter id="board-f-fibre" x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9 0.35" numOctaves="2" seed="4" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.8 0.4" numOctaves="2" seed="4" />
           <feColorMatrix type="saturate" values="0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#board-f-fibre)" />
@@ -56,8 +57,8 @@
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
-      // The board drifts slowly under everything: constant speed, the world behind the cut-outs.
-      tl.fromTo("#board-drift", { x: 0, y: 0 }, { x: -40, y: -18, duration: 10, ease: "none" }, 0);
+      // The wall drifts slowly under everything: constant speed, the world behind the cut-outs.
+      tl.fromTo("#board-drift", { x: 0, y: 0 }, { x: -24, y: -40, duration: 10, ease: "none" }, 0);
       window.__timelines["board"] = tl;
     })();
   </script>

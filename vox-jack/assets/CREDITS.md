@@ -15,6 +15,7 @@ The quote on the paper strip is set from Greene's text (1592), original spelling
 | File | Source | Licence |
 | --- | --- | --- |
 | `music/mysterious-merchant.mp3` | "Mysterious Merchant" by code_box, https://freesound.org/people/code_box/sounds/505166 (Freesound HQ preview, via Openverse) | CC0 |
+| `music/low-strings.mp3` | "Suspense_Strings_001.wav" by jdagenet, https://freesound.org/people/jdagenet/sounds/196002 (Freesound HQ preview, via Openverse) | CC0 |
 
 ## Sound effects (cut by `scripts/prep-audio.sh`)
 
@@ -27,6 +28,11 @@ The quote on the paper strip is set from Greene's text (1592), original spelling
 | thud | "drop05.wav" by newagesoup, https://freesound.org/people/newagesoup/sounds/339365 | CC0 |
 | scribble | "Pen scribbling sfx.mp3" by Rinus_Marais, https://freesound.org/people/Rinus_Marais/sounds/655452 | CC0 |
 | marker | "fast and slow marker strokes" by MBPiM, https://freesound.org/people/MBPiM/sounds/351145 | CC0 |
-| whoosh | HyperFrames bundled SFX library (Pixabay) | Pixabay Content License |
+| whoosh, boom | HyperFrames bundled SFX library (Pixabay) | Pixabay Content License |
 
-None of these require attribution. Fonts (Oswald, League Gothic, EB Garamond) are bundled with HyperFrames.
+None of these require attribution.
+
+## Fonts
+
+- UnifrakturMaguntia (`fonts/UnifrakturMaguntia-Regular.woff2`), SIL Open Font License 1.1.
+- EB Garamond is bundled with HyperFrames.

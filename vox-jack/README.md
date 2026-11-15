@@ -1,12 +1,20 @@
-# Jack of All Trades: the 1592 insult (10 s)
+# Jack of All Trades: the 1592 insult (10 s, 9:16)
 
-A documentary-style collage explainer in HyperFrames: archival scans, torn paper, highlighter and red pen. 1920×1080, 30 fps, 10 s. Cut to an eerie, suspenseful score, with your voiceover and sound effects on top.
+A gothic documentary collage for TikTok in HyperFrames: archival scans graded cold and desaturated, charred paper on a soot-black wall lit like a single candle, oxblood ink and blackletter titles. 1080×1920, 30 fps, 10 s. Cut to a dark, eerie score, with your voiceover and sound effects on top. Every word sits inside TikTok's clear band (y 240–1260, clear of the button rail).
 
-Share copy: `renders/jack-of-all-trades-doc-share.mp4`
+Share copy: `renders/jack-of-all-trades-tiktok-share.mp4`
 
 ## Score
 
-"Mysterious Merchant" by code_box (CC0, `assets/music/mysterious-merchant.mp3`): a diminished, harmonic-minor melody that drops out at 6.55 s and comes back with heavy bass at 7.00 s, 120.5 BPM. The picture is cut to it: circles and the whip fall on phrase starts, labels on beats, the eight engravings on sixteenth notes, the portrait one frame before the drop, the name on the 7.31 s hit and a punch-in on the 8.99 s accent. Its level (the `data-automation` lane on `<audio id="music">`) is set to sit under a voice, so without your voiceover the film plays quiet.
+- "Mysterious Merchant" by code_box (CC0, `assets/music/mysterious-merchant.mp3`): a diminished, harmonic-minor melody that drops out at 6.55 s and comes back with heavy bass at 7.00 s, 120.5 BPM. Darkened in the mix (`data-fx-chain` on `<audio id="music">`): low-passed at 2.2 kHz, +3 dB low shelf, and a large damped reverb.
+- Under the intro, "Suspense_Strings_001" by jdagenet (CC0, `assets/music/low-strings.mp3`): low tremolo strings whose C/E♭/E cluster sits in the melody's key; it stops before the break so the silence stays empty.
+- A sub-bass boom under the drop.
+
+The picture is cut to the score: circles and the whip fall on phrase starts, labels on beats, the eight engravings on sixteenth notes, the portrait one frame before the drop, the name on the 7.31 s hit and a push-in on Shakespeare's face on the 8.99 s accent. Levels are set to sit under a voice (the mix without voice measures about −23 LUFS), so add your voiceover before judging the balance.
+
+## Look
+
+Ground #0b0c0d soot plaster with soft-light mottling; one pool of light at 38% height whose darkness wavers by a few percent (a seeded candle flicker); heavy top and bottom vignette; 14% film grain. Scans graded with `media-treatment` (exposure −0.35, contrast +0.22, saturation −0.7, slightly cold, vignette 0.4). Paper in bone #bdb3a0 with charred edges, tags soot-black with bone type, ink oxblood #9a1f1a, the highlight a dull blood wash. Titles in UnifrakturMaguntia, text in EB Garamond.
 
 ## Voiceover script
 

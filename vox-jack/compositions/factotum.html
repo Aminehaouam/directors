@@ -1,14 +1,19 @@
 <template id="factotum-template">
   <style>
+    @font-face {
+      font-family: "UnifrakturMaguntia";
+      src: url("assets/fonts/UnifrakturMaguntia-Regular.woff2") format("woff2");
+      font-weight: 400;
+    }
     #root {
       position: absolute;
       inset: 0;
       overflow: hidden;
-      --ink: #1b1714;
-      --red: #e23b2e;
-      --hl: #ffd400;
-      --tape: #f4f1ea;
-      --print: #2a2118;
+      --bone: #d6ccb8;
+      --soot: #0d0c0b;
+      --blood: #9a1f1a;
+      --wash: #7a3a32;
+      --print: #1a1512;
     }
     #f-cam {
       position: absolute;
@@ -24,18 +29,25 @@
     .f-shadow {
       position: absolute;
       inset: 0;
-      filter: drop-shadow(7px 12px 12px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(9px 16px 18px rgba(0, 0, 0, 0.8));
     }
-    /* 1814 engravings of the trades, printed photos with a white border. */
+    .f-char::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 40px 6px rgba(22, 12, 6, 0.85);
+      pointer-events: none;
+    }
+    /* 1814 engravings of the trades, old prints with a soot-stained border. */
     .f-trade {
-      width: 460px;
-      height: 353px;
+      width: 500px;
+      height: 384px;
     }
     .f-print {
       position: absolute;
       inset: 0;
-      background: #f2eee4;
-      padding: 10px;
+      background: #8f8778;
+      padding: 12px;
     }
     .f-print img {
       display: block;
@@ -45,33 +57,32 @@
     }
     #f-dim {
       position: absolute;
-      inset: -40px;
-      background: #182325;
+      inset: -60px;
+      background: #050505;
       opacity: 0;
     }
     /* The quote strip. */
     #f-quote {
-      left: 150px;
-      top: 350px;
-      width: 1620px;
-      height: 310px;
+      left: 60px;
+      top: 420px;
+      width: 900px;
+      height: 360px;
     }
     .f-strip {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 80% at 20% 30%, rgba(255, 252, 240, 0.55), rgba(255, 252, 240, 0) 70%),
-        radial-gradient(ellipse 50% 70% at 85% 80%, rgba(150, 120, 70, 0.22), rgba(150, 120, 70, 0) 70%),
-        #ebe1c8;
+        radial-gradient(ellipse 60% 70% at 30% 35%, rgba(225, 214, 192, 0.45), rgba(225, 214, 192, 0) 70%),
+        #bdb3a0;
     }
     #f-text {
       position: absolute;
       inset: 0;
-      padding: 50px 72px 40px;
+      padding: 54px 40px 40px 66px;
       font-family: "EB Garamond", serif;
       font-weight: 500;
-      font-size: 60px;
-      line-height: 1.45;
+      font-size: 58px;
+      line-height: 1.42;
       color: var(--print);
     }
     .f-mark {
@@ -97,10 +108,10 @@
     }
     #f-hl-path {
       fill: none;
-      stroke: var(--hl);
+      stroke: var(--wash);
       stroke-width: 30;
       stroke-linecap: butt;
-      opacity: 0.85;
+      opacity: 0.42;
     }
     #f-sh-svg {
       left: -12%;
@@ -111,134 +122,142 @@
     }
     .f-ink {
       fill: none;
-      stroke: var(--red);
-      stroke-width: 3;
+      stroke: var(--blood);
+      stroke-width: 3.4;
       stroke-linecap: round;
     }
-    .f-tape {
+    .f-tag {
       position: relative;
       white-space: nowrap;
-      background: var(--tape);
-      color: var(--ink);
-      font-family: "Oswald", sans-serif;
-      text-transform: uppercase;
+      background: var(--soot);
+      color: var(--bone);
+      box-shadow: inset 0 0 0 2px rgba(214, 204, 184, 0.22);
       clip-path: polygon(0.8% 0%, 99.2% 3%, 100% 22%, 99% 41%, 100% 63%, 99.1% 82%, 99.6% 100%, 0.4% 97%, 1.2% 78%, 0% 58%, 1% 37%, 0.2% 18%);
     }
     #f-cite {
-      left: 1210px;
-      top: 668px;
+      left: 400px;
+      top: 378px;
     }
-    #f-cite .f-tape {
-      padding: 6px 16px 8px;
-      font-size: 28px;
-      font-weight: 500;
+    #f-cite .f-tag {
+      padding: 6px 18px 8px;
+      font-family: "EB Garamond", serif;
+      font-size: 30px;
+      font-weight: 600;
       letter-spacing: 0.06em;
-      background: var(--ink);
-      color: var(--tape);
+      text-transform: uppercase;
     }
     #f-jack {
-      left: 380px;
-      top: 706px;
+      left: 124px;
+      top: 800px;
     }
-    #f-jack .f-tape {
-      padding: 12px 34px 16px;
-      font-size: 72px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+    #f-jack .f-tag {
+      padding: 6px 28px 14px;
+      font-family: "UnifrakturMaguntia", serif;
+      font-size: 58px;
+      line-height: 1.15;
     }
     #f-jack-eq {
-      color: var(--red);
-      margin-right: 0.25em;
+      color: #c23a2c;
+      margin-right: 0.3em;
+      font-family: "EB Garamond", serif;
     }
     #f-lines {
       position: absolute;
       left: 0;
       top: 0;
-      width: 1920px;
-      height: 1080px;
+      width: 1080px;
+      height: 1920px;
       overflow: visible;
     }
     .f-line {
       fill: none;
-      stroke: var(--red);
-      stroke-width: 4;
+      stroke: var(--blood);
+      stroke-width: 5;
       stroke-linecap: round;
     }
     /* Shakespeare: the Droeshout engraving from the First Folio, 1623. */
     #f-portrait {
-      left: 1080px;
-      top: 80px;
-      width: 720px;
-      height: 772px;
+      left: 240px;
+      top: 520px;
+      width: 600px;
+      height: 640px;
     }
     #f-portrait .f-print {
       padding: 58px 18px 22px;
+      background: #a39b8b;
+    }
+    .f-zoom-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
     #f-portrait-cap {
       position: absolute;
-      left: 20px;
-      right: 20px;
+      left: 22px;
+      right: 22px;
       top: 12px;
-      font-family: "Oswald", sans-serif;
+      font-family: "EB Garamond", serif;
       font-size: 28px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #2e2922;
+      color: #17120f;
+      white-space: nowrap;
     }
     #f-name {
-      left: 860px;
-      top: 800px;
+      left: 136px;
+      top: 1010px;
     }
-    #f-name .f-tape {
-      padding: 12px 32px 16px;
-      font-size: 80px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+    #f-name .f-tag {
+      padding: 4px 38px 22px;
+      font-family: "UnifrakturMaguntia", serif;
+      font-size: 100px;
+      line-height: 1.02;
+      text-align: left;
     }
   </style>
-  <div id="root" data-composition-id="factotum" data-width="1920" data-height="1080" data-layout-allow-overlap data-composition-variables='[{"id": "cite", "type": "string", "label": "Quote source", "default": "Greene’s Groats-worth of Witte, 1592"}, {"id": "meaning", "type": "string", "label": "Meaning label", "default": "a jack of all trades"}, {"id": "name", "type": "string", "label": "Name label", "default": "William Shakespeare"}]'>
-    <div id="f-cam" data-layout-allow-overflow>
-      <div id="f-punch" class="f-fill" data-layout-allow-overflow>
-      <div id="f-trades">
-        <div id="f-t1" class="f-abs f-trade" style="left:30px;top:24px"><div id="f-t1-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-carpenter.jpg" alt="Carpenter, 1814" /></div></div></div></div>
-        <div id="f-t2" class="f-abs f-trade" style="left:500px;top:-6px"><div id="f-t2-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-blacksmith.jpg" alt="Blacksmith, 1814" /></div></div></div></div>
-        <div id="f-t3" class="f-abs f-trade" style="left:968px;top:30px"><div id="f-t3-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-cooper.jpg" alt="Cooper, 1814" /></div></div></div></div>
-        <div id="f-t4" class="f-abs f-trade" style="left:1430px;top:8px"><div id="f-t4-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-wheelwright.jpg" alt="Wheelwright, 1814" /></div></div></div></div>
-        <div id="f-t5" class="f-abs f-trade" style="left:40px;top:712px"><div id="f-t5-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-shoemaker.jpg" alt="Shoemaker, 1814" /></div></div></div></div>
-        <div id="f-t6" class="f-abs f-trade" style="left:520px;top:740px"><div id="f-t6-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-basketmaker.jpg" alt="Basket maker, 1814" /></div></div></div></div>
-        <div id="f-t7" class="f-abs f-trade" style="left:990px;top:716px"><div id="f-t7-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-cutler.jpg" alt="Cutler, 1814" /></div></div></div></div>
-        <div id="f-t8" class="f-abs f-trade" style="left:1440px;top:730px"><div id="f-t8-b" class="f-fill"><div class="f-shadow"><div class="f-print"><img src="assets/img/trade-mason.jpg" alt="Mason, 1814" /></div></div></div></div>
-      </div>
-      <div id="f-dim"></div>
-
-      <div id="f-quote" class="f-abs">
-        <div id="f-quote-body" class="f-fill">
-          <div class="f-shadow">
-            <div class="f-strip f-deckle" data-w="1620" data-h="310" data-seed="21" data-amp="7"></div>
-          </div>
-          <div id="f-text">…being an <span class="f-mark" id="f-hl"><svg id="f-hl-svg" viewBox="0 0 100 40" preserveAspectRatio="none"><path id="f-hl-path" d="M 1 24 C 22 20.5, 47 25.5, 68 22.5 C 79 21, 90 23, 99 21.5" /></svg><span class="f-mark-word">absolute Iohannes fac totum</span></span>, is in his owne conceit the onely <span class="f-mark" id="f-sh"><span class="f-mark-word">Shake-scene</span><svg id="f-sh-svg" viewBox="0 0 100 40" preserveAspectRatio="none"><path id="f-sh-path" class="f-ink" d="M 22 7 C 58 1, 95 8, 97 20 C 99 31, 74 38, 44 37 C 16 36, 2 29, 3 19 C 4 10, 22 4, 52 4.5" /></svg></span> in a countrey.</div>
+  <div data-hf-id="hf-0732" id="root" data-composition-id="factotum" data-width="1080" data-height="1920" data-layout-allow-overlap="" data-composition-variables="[{&quot;id&quot;: &quot;cite&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Quote source&quot;, &quot;default&quot;: &quot;Greene’s Groats-worth, 1592&quot;}, {&quot;id&quot;: &quot;meaning&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Meaning label&quot;, &quot;default&quot;: &quot;a Jack of all Trades&quot;}, {&quot;id&quot;: &quot;name1&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Name, line 1&quot;, &quot;default&quot;: &quot;William&quot;}, {&quot;id&quot;: &quot;name2&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Name, line 2&quot;, &quot;default&quot;: &quot;Shakespeare&quot;}]">
+    <div data-hf-id="hf-alw4" id="f-cam" data-layout-allow-overflow="">
+      <div data-hf-id="hf-p2ww" id="f-punch" class="f-fill" data-layout-allow-overflow="">
+        <div data-hf-id="hf-imez" id="f-trades">
+          <div data-hf-id="hf-y72r" id="f-t1" class="f-abs f-trade" style="left:20px;top:-60px"><div data-hf-id="hf-yk4x" id="f-t1-b" class="f-fill"><div data-hf-id="hf-khr7" class="f-shadow"><div data-hf-id="hf-nr4n" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-8jtm" class="f-trade-img" src="assets/img/trade-carpenter.jpg" alt="Carpenter, 1814"></div></div></div></div>
+          <div data-hf-id="hf-o93t" id="f-t2" class="f-abs f-trade" style="left:560px;top:-80px"><div data-hf-id="hf-ydwa" id="f-t2-b" class="f-fill"><div data-hf-id="hf-t1pf" class="f-shadow"><div data-hf-id="hf-1frr" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-xe96" class="f-trade-img" src="assets/img/trade-blacksmith.jpg" alt="Blacksmith, 1814"></div></div></div></div>
+          <div data-hf-id="hf-4lrd" id="f-t3" class="f-abs f-trade" style="left:40px;top:820px"><div data-hf-id="hf-nv1z" id="f-t3-b" class="f-fill"><div data-hf-id="hf-snee" class="f-shadow"><div data-hf-id="hf-11gq" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-pdey" class="f-trade-img" src="assets/img/trade-cooper.jpg" alt="Cooper, 1814"></div></div></div></div>
+          <div data-hf-id="hf-hmme" id="f-t4" class="f-abs f-trade" style="left:560px;top:800px"><div data-hf-id="hf-w97s" id="f-t4-b" class="f-fill"><div data-hf-id="hf-s93d" class="f-shadow"><div data-hf-id="hf-0n5p" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-b9he" class="f-trade-img" src="assets/img/trade-wheelwright.jpg" alt="Wheelwright, 1814"></div></div></div></div>
+          <div data-hf-id="hf-0swg" id="f-t5" class="f-abs f-trade" style="left:30px;top:1150px"><div data-hf-id="hf-53it" id="f-t5-b" class="f-fill"><div data-hf-id="hf-rusc" class="f-shadow"><div data-hf-id="hf-3faw" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-u3ys" class="f-trade-img" src="assets/img/trade-shoemaker.jpg" alt="Shoemaker, 1814"></div></div></div></div>
+          <div data-hf-id="hf-8brx" id="f-t6" class="f-abs f-trade" style="left:560px;top:1130px"><div data-hf-id="hf-qv6m" id="f-t6-b" class="f-fill"><div data-hf-id="hf-rghb" class="f-shadow"><div data-hf-id="hf-30zv" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-a3io" class="f-trade-img" src="assets/img/trade-basketmaker.jpg" alt="Basket maker, 1814"></div></div></div></div>
+          <div data-hf-id="hf-p8gp" id="f-t7" class="f-abs f-trade" style="left:40px;top:1480px"><div data-hf-id="hf-pdsr" id="f-t7-b" class="f-fill"><div data-hf-id="hf-r26a" class="f-shadow"><div data-hf-id="hf-2mou" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-rtx2" class="f-trade-img" src="assets/img/trade-cutler.jpg" alt="Cutler, 1814"></div></div></div></div>
+          <div data-hf-id="hf-nj8h" id="f-t8" class="f-abs f-trade" style="left:550px;top:1460px"><div data-hf-id="hf-atuk" id="f-t8-b" class="f-fill"><div data-hf-id="hf-qnv9" class="f-shadow"><div data-hf-id="hf-28dt" class="f-print f-char"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-o2jy" class="f-trade-img" src="assets/img/trade-mason.jpg" alt="Mason, 1814"></div></div></div></div>
         </div>
-      </div>
+        <div data-hf-id="hf-lyc4" id="f-dim" data-layout-allow-occlusion></div>
 
-      <div id="f-cite" class="f-abs"><div id="f-cite-b" style="filter: drop-shadow(3px 5px 5px rgba(0,0,0,.4))"><div class="f-tape" data-var-text="cite">Greene’s Groats-worth of Witte, 1592</div></div></div>
-      <div id="f-jack" class="f-abs"><div id="f-jack-b" style="filter: drop-shadow(5px 9px 9px rgba(0,0,0,.45))"><div class="f-tape"><span id="f-jack-eq">=</span><span data-var-text="meaning">a jack of all trades</span></div></div></div>
-
-      <div id="f-portrait" class="f-abs">
-        <div id="f-portrait-b" class="f-fill">
-          <div class="f-shadow">
-            <div class="f-print f-deckle" data-w="720" data-h="772" data-seed="5" data-amp="3"><img src="assets/img/shakespeare-1623.jpg" alt="William Shakespeare, Droeshout engraving, 1623" /></div>
+        <div data-hf-id="hf-c150" id="f-quote" class="f-abs">
+          <div data-hf-id="hf-ccpg" id="f-quote-body" class="f-fill">
+            <div data-hf-id="hf-q9k8" class="f-shadow">
+              <div data-hf-id="hf-f1ww" class="f-strip f-deckle f-char" data-w="900" data-h="360" data-seed="21" data-amp="8"></div>
+            </div>
+            <div data-hf-id="hf-d9ym" id="f-text" data-layout-allow-occlusion>…an <span data-hf-id="hf-9t6c" class="f-mark" id="f-hl"><svg data-hf-id="hf-bh5s" id="f-hl-svg" viewBox="0 0 100 40" preserveAspectRatio="none"><path data-hf-id="hf-osct" id="f-hl-path" d="M 1 24 C 22 20.5, 47 25.5, 68 22.5 C 79 21, 90 23, 99 21.5" /></svg><span data-hf-id="hf-twf1" class="f-mark-word" data-layout-allow-occlusion>absolute Iohannes fac totum</span></span>, is in his owne conceit the onely <span data-hf-id="hf-esbd" class="f-mark" id="f-sh"><span data-hf-id="hf-7mt5" class="f-mark-word" data-layout-allow-occlusion>Shake-scene</span><svg data-hf-id="hf-vgjp" id="f-sh-svg" viewBox="0 0 100 40" preserveAspectRatio="none"><path data-hf-id="hf-2ia5" id="f-sh-path" class="f-ink" d="M 22 7 C 58 1, 95 8, 97 20 C 99 31, 74 38, 44 37 C 16 36, 2 29, 3 19 C 4 10, 22 4, 52 4.5" /></svg></span> in a countrey.</div>
           </div>
-          <div id="f-portrait-cap" data-layout-allow-occlusion>Martin Droeshout engraving · First Folio, 1623</div>
         </div>
-      </div>
 
-      <svg id="f-lines" viewBox="0 0 1920 1080" aria-hidden="true">
-        <path id="f-line-jack" class="f-line" d="M 760 640 C 756 668, 748 690, 744 712" />
-        <path id="f-line-sh" class="f-line" d="M 548 594 C 700 652, 920 642, 1092 560" />
-      </svg>
+        <div data-hf-id="hf-zawp" id="f-cite" class="f-abs"><div data-hf-id="hf-n9fe" id="f-cite-b" style="filter: drop-shadow(4px 7px 7px rgba(0,0,0,.6))"><div data-hf-id="hf-djin" class="f-tag" data-var-text="cite">Greene’s Groats-worth, 1592</div></div></div>
+        <div data-hf-id="hf-x93l" id="f-jack" class="f-abs"><div data-hf-id="hf-tcyx" id="f-jack-b" style="filter: drop-shadow(6px 11px 11px rgba(0,0,0,.7))"><div data-hf-id="hf-tm09" class="f-tag"><span data-hf-id="hf-bdgy" id="f-jack-eq">=</span><span data-hf-id="hf-ron9" data-var-text="meaning">a Jack of all Trades</span></div></div></div>
 
-      <div id="f-name" class="f-abs"><div id="f-name-b" style="filter: drop-shadow(6px 10px 10px rgba(0,0,0,.5))"><div class="f-tape" data-var-text="name">William Shakespeare</div></div></div>
+        <div data-hf-id="hf-5j7d" id="f-portrait" class="f-abs">
+          <div data-hf-id="hf-swhl" id="f-portrait-b" class="f-fill">
+            <div data-hf-id="hf-pv97" class="f-shadow">
+              <div data-hf-id="hf-tojl" class="f-print f-deckle f-char" data-w="600" data-h="640" data-seed="5" data-amp="4"><div class="f-zoom-box"><div id="f-portrait-zoom" class="f-fill"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.2,&quot;contrast&quot;:0.25,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.05,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.8},&quot;details&quot;:{&quot;vignette&quot;:0.45,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-hwqd" id="f-portrait-img" src="assets/img/shakespeare-1623.jpg" alt="William Shakespeare, Droeshout engraving, 1623"></div></div></div>
+            </div>
+            <div data-hf-id="hf-xx3o" id="f-portrait-cap" data-layout-allow-occlusion="">Droeshout · First Folio, 1623</div>
+          </div>
+        </div>
+
+        <svg data-hf-id="hf-2u6h" id="f-lines" viewBox="0 0 1080 1920" aria-hidden="true">
+          <path data-hf-id="hf-ysfh" id="f-line-jack" class="f-line" d="M 420 772 C 419 782, 418 790, 417 802" />
+        </svg>
+
+        <div data-hf-id="hf-a215" id="f-name" class="f-abs"><div data-hf-id="hf-430a" id="f-name-b" style="filter: drop-shadow(8px 14px 14px rgba(0,0,0,.75))"><div data-hf-id="hf-a2e5" class="f-tag"><span data-hf-id="hf-ursu" data-var-text="name1">William</span><br data-hf-id="hf-x5px"><span data-hf-id="hf-v3vo" data-var-text="name2">Shakespeare</span></div></div></div>
       </div>
     </div>
   </div>
@@ -272,7 +291,6 @@
         const len = el.getTotalLength();
         el.style.strokeDasharray = len + " " + (len + 8);
         tl.fromTo(sel, { strokeDashoffset: len + 4 }, { strokeDashoffset: 0, duration: dur, ease: "power2.inOut" }, at);
-        // Hidden until its stroke starts, so the round cap never leaves a dot.
         tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "none" }, at);
       }
       function slap(sel, at, rot) {
@@ -285,42 +303,42 @@
       const H = 3.4;
       const at = function (filmTime) { return filmTime - H; };
       // 3.45  the quote strip whips in on the 3.55 beat.
-      tl.fromTo("#f-quote-body", { x: 2100, rotation: 3, scale: 1, y: 0 },
+      tl.fromTo("#f-quote-body", { x: 1500, rotation: 3, scale: 1, y: 0 },
         { x: 0, rotation: -1.5, duration: 0.5, ease: "power4.out" }, at(3.45));
-      // 4.05  phrase three, "...an absolute Johannes factotum": highlighter across the words.
+      // 4.05  phrase three, "...an absolute Johannes factotum": a blood wash across the words.
       draw("#f-hl-path", at(4.05), 0.6);
       slap("#f-cite-b", at(4.03), -1);
       // 5.01  "...a jack of all trades": the trades of 1814 come down on sixteenth notes.
-      const trades = [["#f-t1-b", -4], ["#f-t6-b", -3], ["#f-t3-b", -2], ["#f-t8-b", -4], ["#f-t2-b", 3], ["#f-t5-b", 3], ["#f-t4-b", 4], ["#f-t7-b", 2]];
+      const trades = [["#f-t1-b", -4], ["#f-t6-b", -2], ["#f-t3-b", 2], ["#f-t8-b", 4], ["#f-t2-b", 3], ["#f-t5-b", 3], ["#f-t4-b", -3], ["#f-t7-b", -3]];
       trades.forEach(function (t, i) { slap(t[0], at(5.01 + i * 0.1245), t[1]); });
       draw("#f-line-jack", at(5.9), 0.1);
       slap("#f-jack-b", at(6.0), -2);
-      // 6.50  the break: the explanation clears, "Shake-scene" is circled, the quote moves down-left.
+      // 6.50  the break: the explanation clears, "Shake-scene" is circled, the quote rises to the top.
       tl.fromTo(["#f-jack", "#f-cite", "#f-line-jack"], { opacity: 1 },
         { opacity: 0, duration: 0.15, ease: "power2.in" }, at(6.5));
       tl.fromTo("#f-quote-body", { x: 0, y: 0, scale: 1 },
-        { x: -280, y: 40, scale: 0.62, duration: 0.42, ease: "power3.inOut", immediateRender: false }, at(6.53));
+        { x: 0, y: -224, scale: 0.7, duration: 0.42, ease: "power3.inOut", immediateRender: false }, at(6.53));
       draw("#f-sh-path", at(6.56), 0.36);
-      tl.fromTo("#f-dim", { opacity: 0 }, { opacity: 0.62, duration: 0.35, ease: "power2.inOut" }, at(6.53));
-      tl.fromTo("#f-trades", { scale: 1, transformOrigin: "50% 50%" }, { scale: 0.96, duration: 0.42, ease: "power2.inOut" }, at(6.53));
-      // 6.97  "...William Shakespeare": the portrait slams in one frame before the drop.
-      tl.fromTo("#f-portrait-b", { x: 1300, rotation: 10, scale: 1.05 },
-        { x: 0, rotation: 2.5, duration: 0.187, ease: "power2.in" }, at(6.78));
+      tl.fromTo("#f-dim", { opacity: 0 }, { opacity: 0.72, duration: 0.35, ease: "power2.inOut" }, at(6.53));
+      tl.fromTo("#f-trades", { scale: 1, transformOrigin: "50% 50%" }, { scale: 0.95, duration: 0.42, ease: "power2.inOut" }, at(6.53));
+      // 6.97  "...William Shakespeare": the portrait slams up out of the dark one frame before the drop.
+      tl.fromTo("#f-portrait-b", { y: 1650, rotation: -8, scale: 1.05 },
+        { y: 0, rotation: 2.5, duration: 0.187, ease: "power2.in" }, at(6.78));
       tl.fromTo("#f-portrait-b", { scale: 1.05 }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, at(6.967));
+      tl.fromTo("#f-portrait", { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "none" }, at(6.78));
       // The board jolts with the bass.
-      const jolt = [[0, 9, 0.05], [9, -4, 0.08], [-4, 2, 0.08], [2, 0, 0.1]];
+      const jolt = [[0, 12, 0.05], [12, -5, 0.08], [-5, 2, 0.08], [2, 0, 0.1]];
       let jt = at(6.967);
       jolt.forEach(function (j, i) {
         tl.fromTo("#f-punch", { y: j[0] }, { y: j[1], duration: j[2], ease: "sine.inOut", immediateRender: i === 0 }, jt);
         jt += j[2];
       });
       slap("#f-name-b", at(7.28), -2.5);
-      draw("#f-line-sh", at(7.5), 0.3);
-      // 8.96  punch in toward Shakespeare on the 8.99 accent, then hold to the end.
-      tl.fromTo("#f-punch", { scale: 1, transformOrigin: "70% 60%" },
-        { scale: 1.06, duration: 0.3, ease: "expo.out" }, at(8.96));
+      // 8.96  push in on Shakespeare's face, inside its frame, on the 8.99 accent; the layout stays clear of the app's buttons.
+      tl.fromTo("#f-portrait-zoom", { scale: 1, transformOrigin: "50% 38%" },
+        { scale: 1.1, duration: 0.3, ease: "expo.out" }, at(8.96));
       // Slow push across the whole scene.
-      tl.fromTo("#f-cam", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.03, duration: 6.6, ease: "none" }, 0);
+      tl.fromTo("#f-cam", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.01, duration: 6.6, ease: "none" }, 0);
 
       window.__timelines["factotum"] = tl;
     })();

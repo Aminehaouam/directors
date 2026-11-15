@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta name="viewport" content="width=1080, height=1920" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
     <style>
       * {
@@ -13,10 +13,10 @@
       html,
       body {
         margin: 0;
-        width: 1920px;
-        height: 1080px;
+        width: 1080px;
+        height: 1920px;
         overflow: hidden;
-        background: #263638;
+        background: #0b0c0d;
       }
       #root {
         position: relative;
@@ -35,50 +35,55 @@
       data-composition-id="main"
       data-start="0"
       data-duration="10"
-      data-width="1920"
-      data-height="1080"
+      data-width="1080"
+      data-height="1920"
       data-motion-blur="on"
     >
       <div id="board" data-composition-id="board" data-composition-src="compositions/board.html"
-        data-start="0" data-duration="10" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="10" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
       <div id="greene" data-composition-id="greene" data-composition-src="compositions/greene.html"
-        data-start="0" data-duration="3.8" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="3.8" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
       <div id="factotum" data-composition-id="factotum" data-composition-src="compositions/factotum.html"
-        data-start="3.4" data-duration="6.6" data-track-index="3" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+        data-start="3.4" data-duration="6.6" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
       <div id="finish" data-composition-id="finish" data-composition-src="compositions/finish.html"
-        data-start="0" data-duration="10" data-track-index="4" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+        data-start="0" data-duration="10" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
 
-      <!-- SCORE: "Mysterious Merchant" by code_box (CC0). The cut follows it: 120.5 BPM, a break at 6.55-6.95 s, the drop at 7.00 s.
-           Level is set to sit under a voice: higher in the quiet intro, lower once the bass drops, out by 10 s. -->
-      <audio id="music" class="clip" src="assets/music/mysterious-merchant.mp3" data-start="0" data-duration="10" data-track-index="30" data-volume="1"
-        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.5},{"t":6.95,"v":0.5},{"t":7.0,"v":0.3},{"t":7.5,"v":0.17},{"t":9.6,"v":0.17},{"t":10,"v":0}]}]}'></audio>
+      <!-- SCORE: "Mysterious Merchant" by code_box (CC0), darkened: low-passed at 2.2 kHz and sent into a large dark reverb.
+           The cut follows it: 120.5 BPM, a break at 6.55-6.95 s, the drop at 7.00 s. Level sits under a voice. -->
+      <audio id="music" class="clip" src="assets/music/mysterious-merchant.mp3" data-start="0" data-duration="10" data-track-index="30" data-volume="0.700"
+        data-fx-chain="{&quot;version&quot;:1,&quot;nodes&quot;:[{&quot;type&quot;:&quot;lowpass&quot;,&quot;id&quot;:&quot;n1&quot;,&quot;label&quot;:&quot;Darken&quot;,&quot;params&quot;:{&quot;frequency&quot;:2200,&quot;q&quot;:0.707,&quot;poles&quot;:&quot;2&quot;}},{&quot;type&quot;:&quot;lowshelf&quot;,&quot;id&quot;:&quot;n2&quot;,&quot;label&quot;:&quot;Weight&quot;,&quot;params&quot;:{&quot;frequency&quot;:160,&quot;gain&quot;:3}},{&quot;type&quot;:&quot;reverb&quot;,&quot;id&quot;:&quot;n3&quot;,&quot;label&quot;:&quot;Crypt&quot;,&quot;params&quot;:{&quot;size&quot;:0.9,&quot;damping&quot;:0.65,&quot;wet&quot;:0.42,&quot;dry&quot;:0.8}},{&quot;type&quot;:&quot;truepeak&quot;,&quot;id&quot;:&quot;n4&quot;,&quot;label&quot;:&quot;Ceiling&quot;,&quot;params&quot;:{&quot;ceiling&quot;:-1,&quot;lookahead&quot;:3,&quot;release&quot;:80}}]}"
+        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.55},{"t":6.95,"v":0.55},{"t":7.0,"v":0.32},{"t":7.5,"v":0.18},{"t":9.6,"v":0.18},{"t":10,"v":0}]}]}'></audio>
+      <!-- Under the intro: low tremolo strings, "Suspense_Strings_001" by jdagenet (CC0); its C/Eb/E cluster sits in the score's key. Cut before the break so the silence stays empty. -->
+      <audio id="music-strings" class="clip" src="assets/music/low-strings.mp3" data-start="0.2" data-duration="6.3" data-fade-in="0.8" data-fade-out="0.5" data-track-index="31" data-volume="0.224"></audio>
+      <!-- A sub-bass boom under the drop. -->
+      <audio id="sfx-boom" class="clip" src="assets/sfx/boom.mp3" data-start="6.96" data-duration="2.116" data-track-index="32" data-volume="0.210"></audio>
 
       <!-- YOUR VOICEOVER: replace assets/voiceover.wav with your recording (currently 10 s of silence). -->
       <audio id="voiceover" class="clip" src="assets/voiceover.wav" data-start="0" data-track-index="5" data-volume="1"></audio>
 
       <!-- Sound effects, kept low under the voice. Each lands one frame after its picture. -->
-      <audio id="sfx-slide" class="clip" src="assets/sfx/slide.wav" data-start="0.000" data-track-index="6" data-duration="0.8" data-volume="0.35"></audio>
-      <audio id="sfx-circle-date" class="clip" src="assets/sfx/scribble.wav" data-start="1.040" data-track-index="7" data-duration="0.6" data-volume="0.28"></audio>
-      <audio id="sfx-date" class="clip" src="assets/sfx/thud.wav" data-start="1.520" data-track-index="8" data-duration="0.32" data-volume="0.4"></audio>
-      <audio id="sfx-circle-death" class="clip" src="assets/sfx/scribble.wav" data-start="2.010" data-track-index="9" data-duration="0.6" data-volume="0.28"></audio>
-      <audio id="sfx-label" class="clip" src="assets/sfx/tap-1.wav" data-start="2.530" data-track-index="10" data-duration="0.22" data-volume="0.35"></audio>
-      <audio id="sfx-sub" class="clip" src="assets/sfx/tap-2.wav" data-start="3.030" data-track-index="11" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-whip" class="clip" src="assets/sfx/whoosh.wav" data-start="3.470" data-track-index="12" data-duration="0.45" data-volume="0.3"></audio>
-      <audio id="sfx-strip" class="clip" src="assets/sfx/page-flick.wav" data-start="3.270" data-track-index="13" data-duration="0.476" data-volume="0.3"></audio>
-      <audio id="sfx-highlight" class="clip" src="assets/sfx/marker.wav" data-start="4.030" data-track-index="14" data-duration="0.52" data-volume="0.32"></audio>
-      <audio id="sfx-cite" class="clip" src="assets/sfx/tap-3.wav" data-start="4.050" data-track-index="15" data-duration="0.225" data-volume="0.25"></audio>
-      <audio id="sfx-trade-1" class="clip" src="assets/sfx/tap-1.wav" data-start="5.020" data-track-index="16" data-duration="0.22" data-volume="0.3"></audio>
-      <audio id="sfx-trade-2" class="clip" src="assets/sfx/tap-2.wav" data-start="5.144" data-track-index="17" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-trade-3" class="clip" src="assets/sfx/tap-3.wav" data-start="5.269" data-track-index="18" data-duration="0.225" data-volume="0.3"></audio>
-      <audio id="sfx-trade-4" class="clip" src="assets/sfx/tap-1.wav" data-start="5.393" data-track-index="19" data-duration="0.22" data-volume="0.3"></audio>
-      <audio id="sfx-trade-5" class="clip" src="assets/sfx/tap-2.wav" data-start="5.518" data-track-index="20" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-trade-6" class="clip" src="assets/sfx/tap-3.wav" data-start="5.643" data-track-index="21" data-duration="0.225" data-volume="0.3"></audio>
-      <audio id="sfx-trade-7" class="clip" src="assets/sfx/tap-1.wav" data-start="5.767" data-track-index="22" data-duration="0.22" data-volume="0.3"></audio>
-      <audio id="sfx-trade-8" class="clip" src="assets/sfx/tap-2.wav" data-start="5.891" data-track-index="23" data-duration="0.18" data-volume="0.3"></audio>
-      <audio id="sfx-jack" class="clip" src="assets/sfx/thud.wav" data-start="6.010" data-track-index="24" data-duration="0.32" data-volume="0.4"></audio>
-      <audio id="sfx-circle-shake" class="clip" src="assets/sfx/scribble.wav" data-start="6.540" data-track-index="25" data-duration="0.6" data-volume="0.28"></audio>
-      <audio id="sfx-portrait" class="clip" src="assets/sfx/page-turn.wav" data-start="6.800" data-track-index="26" data-duration="0.7" data-volume="0.2"></audio>
-      <audio id="sfx-name" class="clip" src="assets/sfx/thud.wav" data-start="7.290" data-track-index="27" data-duration="0.32" data-volume="0.42"></audio>
+      <audio id="sfx-slide" class="clip" src="assets/sfx/slide.wav" data-start="0.000" data-track-index="6" data-duration="0.8" data-volume="0.245"></audio>
+      <audio id="sfx-circle-date" class="clip" src="assets/sfx/scribble.wav" data-start="1.040" data-track-index="7" data-duration="0.6" data-volume="0.196"></audio>
+      <audio id="sfx-date" class="clip" src="assets/sfx/thud.wav" data-start="1.520" data-track-index="8" data-duration="0.32" data-volume="0.280"></audio>
+      <audio id="sfx-circle-death" class="clip" src="assets/sfx/scribble.wav" data-start="2.010" data-track-index="9" data-duration="0.6" data-volume="0.196"></audio>
+      <audio id="sfx-label" class="clip" src="assets/sfx/tap-1.wav" data-start="2.530" data-track-index="10" data-duration="0.22" data-volume="0.245"></audio>
+      <audio id="sfx-sub" class="clip" src="assets/sfx/tap-2.wav" data-start="3.030" data-track-index="11" data-duration="0.18" data-volume="0.210"></audio>
+      <audio id="sfx-whip" class="clip" src="assets/sfx/whoosh.wav" data-start="3.470" data-track-index="12" data-duration="0.45" data-volume="0.210"></audio>
+      <audio id="sfx-strip" class="clip" src="assets/sfx/page-flick.wav" data-start="3.270" data-track-index="13" data-duration="0.476" data-volume="0.210"></audio>
+      <audio id="sfx-highlight" class="clip" src="assets/sfx/marker.wav" data-start="4.030" data-track-index="14" data-duration="0.52" data-volume="0.224"></audio>
+      <audio id="sfx-cite" class="clip" src="assets/sfx/tap-3.wav" data-start="4.050" data-track-index="15" data-duration="0.225" data-volume="0.175"></audio>
+      <audio id="sfx-trade-1" class="clip" src="assets/sfx/tap-1.wav" data-start="5.020" data-track-index="16" data-duration="0.22" data-volume="0.210"></audio>
+      <audio id="sfx-trade-2" class="clip" src="assets/sfx/tap-2.wav" data-start="5.144" data-track-index="17" data-duration="0.18" data-volume="0.210"></audio>
+      <audio id="sfx-trade-3" class="clip" src="assets/sfx/tap-3.wav" data-start="5.269" data-track-index="18" data-duration="0.225" data-volume="0.210"></audio>
+      <audio id="sfx-trade-4" class="clip" src="assets/sfx/tap-1.wav" data-start="5.393" data-track-index="19" data-duration="0.22" data-volume="0.210"></audio>
+      <audio id="sfx-trade-5" class="clip" src="assets/sfx/tap-2.wav" data-start="5.518" data-track-index="20" data-duration="0.18" data-volume="0.210"></audio>
+      <audio id="sfx-trade-6" class="clip" src="assets/sfx/tap-3.wav" data-start="5.643" data-track-index="21" data-duration="0.225" data-volume="0.210"></audio>
+      <audio id="sfx-trade-7" class="clip" src="assets/sfx/tap-1.wav" data-start="5.767" data-track-index="22" data-duration="0.22" data-volume="0.210"></audio>
+      <audio id="sfx-trade-8" class="clip" src="assets/sfx/tap-2.wav" data-start="5.891" data-track-index="23" data-duration="0.18" data-volume="0.210"></audio>
+      <audio id="sfx-jack" class="clip" src="assets/sfx/thud.wav" data-start="6.010" data-track-index="24" data-duration="0.32" data-volume="0.280"></audio>
+      <audio id="sfx-circle-shake" class="clip" src="assets/sfx/scribble.wav" data-start="6.540" data-track-index="25" data-duration="0.6" data-volume="0.196"></audio>
+      <audio id="sfx-portrait" class="clip" src="assets/sfx/page-turn.wav" data-start="6.800" data-track-index="26" data-duration="0.7" data-volume="0.140"></audio>
+      <audio id="sfx-name" class="clip" src="assets/sfx/thud.wav" data-start="7.290" data-track-index="27" data-duration="0.32" data-volume="0.294"></audio>
     </div>
     <script>
       window.__timelines["main"] = gsap.timeline({ paused: true });

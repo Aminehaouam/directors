@@ -1,12 +1,17 @@
 <template id="greene-template">
   <style>
+    @font-face {
+      font-family: "UnifrakturMaguntia";
+      src: url("assets/fonts/UnifrakturMaguntia-Regular.woff2") format("woff2");
+      font-weight: 400;
+    }
     #root {
       position: absolute;
       inset: 0;
       overflow: hidden;
-      --ink: #1b1714;
-      --red: #e23b2e;
-      --tape: #f4f1ea;
+      --bone: #d6ccb8;
+      --soot: #0d0c0b;
+      --blood: #9a1f1a;
     }
     #g-cam {
       position: absolute;
@@ -22,13 +27,21 @@
     .g-shadow {
       position: absolute;
       inset: 0;
-      filter: drop-shadow(8px 14px 14px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(10px 18px 22px rgba(0, 0, 0, 0.8));
+    }
+    /* Charred edges on every paper piece. */
+    .g-char::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 46px 6px rgba(22, 12, 6, 0.85);
+      pointer-events: none;
     }
     #g-page {
-      left: 290px;
-      top: 70px;
-      width: 623px;
-      height: 940px;
+      left: 150px;
+      top: 190px;
+      width: 700px;
+      height: 1056px;
     }
     #g-page img {
       position: absolute;
@@ -45,8 +58,8 @@
     }
     .g-ink {
       fill: none;
-      stroke: var(--red);
-      stroke-width: 6;
+      stroke: var(--blood);
+      stroke-width: 7;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
@@ -54,28 +67,28 @@
       position: absolute;
       left: 0;
       top: 0;
-      width: 1920px;
-      height: 1080px;
+      width: 1080px;
+      height: 1920px;
       overflow: visible;
     }
     .g-line {
       fill: none;
-      stroke: var(--red);
-      stroke-width: 4;
+      stroke: var(--blood);
+      stroke-width: 5;
       stroke-linecap: round;
     }
     #g-date {
-      left: 1060px;
-      top: 170px;
-      width: 430px;
-      height: 300px;
+      left: 540px;
+      top: 560px;
+      width: 380px;
+      height: 250px;
     }
     .g-card {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 30% 25%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 60%),
-        #efeadf;
+        radial-gradient(ellipse at 35% 30%, rgba(230, 220, 200, 0.35), rgba(230, 220, 200, 0) 65%),
+        #b9af9b;
     }
     #g-date-num {
       position: absolute;
@@ -83,88 +96,84 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: "League Gothic", sans-serif;
-      font-size: 280px;
+      font-family: "UnifrakturMaguntia", serif;
+      font-size: 190px;
       line-height: 1;
-      color: var(--ink);
-      letter-spacing: 0.01em;
-      padding-top: 10px;
+      color: var(--soot);
+      padding-top: 6px;
     }
-    .g-tape {
-      position: absolute;
-      left: 0;
-      top: 0;
+    .g-tag {
+      position: relative;
       white-space: nowrap;
-      background: var(--tape);
-      color: var(--ink);
-      font-family: "Oswald", sans-serif;
+      background: var(--soot);
+      color: var(--bone);
+      font-family: "EB Garamond", serif;
       text-transform: uppercase;
+      box-shadow: inset 0 0 0 2px rgba(214, 204, 184, 0.25);
       clip-path: polygon(0.8% 0%, 99.2% 3%, 100% 22%, 99% 41%, 100% 63%, 99.1% 82%, 99.6% 100%, 0.4% 97%, 1.2% 78%, 0% 58%, 1% 37%, 0.2% 18%);
     }
     #g-label {
-      left: 1050px;
-      top: 586px;
+      left: 130px;
+      top: 1104px;
     }
-    #g-label .g-tape {
-      position: relative;
-      padding: 14px 30px 16px;
-      font-size: 46px;
+    #g-label .g-tag {
+      padding: 10px 24px 14px;
+      font-size: 34px;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.05em;
     }
     #g-sub {
-      left: 1074px;
-      top: 690px;
+      left: 160px;
+      top: 1184px;
     }
-    #g-sub .g-tape {
-      position: relative;
+    #g-sub .g-tag {
       padding: 8px 22px 10px;
       font-size: 30px;
       font-weight: 500;
-      letter-spacing: 0.06em;
-      background: var(--ink);
-      color: var(--tape);
+      letter-spacing: 0.12em;
+      background: #2a0f0d;
+      color: #e2d6c2;
     }
   </style>
-  <div id="root" data-composition-id="greene" data-width="1920" data-height="1080" data-composition-variables='[{"id": "year", "type": "string", "label": "Year", "default": "1592"}, {"id": "who", "type": "string", "label": "Who label", "default": "Robert Greene, playwright"}, {"id": "who-note", "type": "string", "label": "Who note", "default": "Written on his deathbed"}]'>
-    <div id="g-cam" data-layout-allow-overflow>
+  <div data-hf-id="hf-kttm" id="root" data-composition-id="greene" data-width="1080" data-height="1920" data-composition-variables="[{&quot;id&quot;: &quot;year&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Year&quot;, &quot;default&quot;: &quot;1592&quot;}, {&quot;id&quot;: &quot;who&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Who label&quot;, &quot;default&quot;: &quot;Robert Greene, playwright&quot;}, {&quot;id&quot;: &quot;who-note&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Who note&quot;, &quot;default&quot;: &quot;Written on his deathbed&quot;}]">
+    <div data-hf-id="hf-9wh9" id="g-cam" data-layout-allow-overflow="">
       <!-- The title page itself, Folger Shakespeare Library copy (public domain). -->
-      <div id="g-page" class="g-abs" data-layout-allow-overflow>
-        <div id="g-page-body" class="g-fill">
-          <div class="g-shadow">
-            <div class="g-fill g-deckle" data-w="623" data-h="940" data-seed="3" data-amp="5">
-              <img id="g-page-img" src="assets/img/greene-1592.jpg" alt="Title page of Greene's Groats-worth of Witte, 1592" />
+      <div data-hf-id="hf-9exu" id="g-page" class="g-abs" data-layout-allow-overflow="">
+        <div data-hf-id="hf-59mx" id="g-page-body" class="g-fill">
+          <div data-hf-id="hf-m6zo" class="g-shadow">
+            <div data-hf-id="hf-rmun" class="g-fill g-deckle g-char" data-w="700" data-h="1056" data-seed="3" data-amp="6">
+              <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:-0.35,&quot;contrast&quot;:0.22,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:-0.06,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:-0.7},&quot;details&quot;:{&quot;vignette&quot;:0.4,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.12,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-z7ni" id="g-page-img" src="assets/img/greene-1592.jpg" alt="Title page of Greene's Groats-worth of Witte, 1592">
             </div>
           </div>
-          <svg class="g-marks" width="623" height="940" viewBox="0 0 623 940">
-            <path id="g-circ-date" class="g-ink" data-box="196 744 186 76" />
-            <path id="g-circ-death" class="g-ink" data-box="48 330 284 86" />
+          <svg data-hf-id="hf-umzl" class="g-marks" width="700" height="1056" viewBox="0 0 700 1056">
+            <path data-hf-id="hf-mq28" id="g-circ-date" class="g-ink" data-box="214 830 220 96" />
+            <path data-hf-id="hf-lrnp" id="g-circ-death" class="g-ink" data-box="48 364 330 108" />
           </svg>
         </div>
       </div>
 
-      <svg id="g-lines" viewBox="0 0 1920 1080" aria-hidden="true">
-        <path id="g-line-date" class="g-line" d="M 684 846 C 820 830, 960 660, 1068 492" />
-        <path id="g-line-death" class="g-line" d="M 616 438 C 770 446, 900 590, 1046 626" />
+      <svg data-hf-id="hf-pdos" id="g-lines" viewBox="0 0 1080 1920" aria-hidden="true">
+        <path data-hf-id="hf-p5c1" id="g-line-date" class="g-line" d="M 604 1032 C 650 960, 662 880, 642 816" />
+        <path data-hf-id="hf-96cr" id="g-line-death" class="g-line" d="M 196 618 C 92 680, 80 980, 152 1100" />
       </svg>
 
-      <div id="g-date" class="g-abs">
-        <div id="g-date-body" class="g-fill">
-          <div class="g-shadow">
-            <div class="g-card g-deckle" data-w="430" data-h="300" data-seed="9" data-amp="4"></div>
+      <div data-hf-id="hf-ixfi" id="g-date" class="g-abs">
+        <div data-hf-id="hf-o6ki" id="g-date-body" class="g-fill">
+          <div data-hf-id="hf-tbbw" class="g-shadow">
+            <div data-hf-id="hf-cq3u" class="g-card g-deckle g-char" data-w="380" data-h="250" data-seed="9" data-amp="5"></div>
           </div>
-          <div id="g-date-num" data-var-text="year">1592</div>
+          <div data-hf-id="hf-x86n" id="g-date-num" data-layout-allow-occlusion data-var-text="year">1592</div>
         </div>
       </div>
 
-      <div id="g-label" class="g-abs">
-        <div id="g-label-body" style="filter: drop-shadow(4px 7px 7px rgba(0,0,0,.45))">
-          <div class="g-tape" data-var-text="who">Robert Greene, playwright</div>
+      <div data-hf-id="hf-aegs" id="g-label" class="g-abs">
+        <div data-hf-id="hf-htkq" id="g-label-body" style="filter: drop-shadow(5px 9px 9px rgba(0,0,0,.7))">
+          <div data-hf-id="hf-ys38" class="g-tag" data-var-text="who">Robert Greene, playwright</div>
         </div>
       </div>
-      <div id="g-sub" class="g-abs">
-        <div id="g-sub-body" style="filter: drop-shadow(3px 5px 5px rgba(0,0,0,.4))">
-          <div class="g-tape" data-var-text="who-note">Written on his deathbed</div>
+      <div data-hf-id="hf-feg4" id="g-sub" class="g-abs">
+        <div data-hf-id="hf-qfuv" id="g-sub-body" style="filter: drop-shadow(4px 7px 7px rgba(0,0,0,.65))">
+          <div data-hf-id="hf-bcyl" class="g-tag" data-var-text="who-note">Written on his deathbed</div>
         </div>
       </div>
     </div>
@@ -223,22 +232,22 @@
         tl.fromTo(sel, { scale: 1.16, rotation: rot + 4 }, { scale: 1, rotation: rot, duration: 0.13, ease: "steps(3)", immediateRender: false }, at);
       }
 
-      // 0.00  "In 1592..." the title page slides up onto the board.
-      tl.fromTo("#g-page-body", { y: 820, x: -60, rotation: -9 }, { y: 0, x: 0, rotation: -2.5, duration: 0.8, ease: "expo.out" }, 0);
       // Cut to the score (120.5 BPM, beats at 0.07 + n x 0.4975 s, phrases every 2 s).
-      // 1.06  beat: the printed date is circled, a line runs out to a big 1592.
+      // 0.00  "In 1592..." the title page is already rising out of the dark on frame 0 (the thumbnail).
+      tl.fromTo("#g-page-body", { y: 320, x: -20, rotation: -5 }, { y: 0, x: 0, rotation: -2, duration: 1.0, ease: "expo.out" }, 0);
+      // 1.06  beat: the printed date is circled in blood, a 1592 card lands beside it.
       draw("#g-circ-date", 1.06, 0.4);
-      draw("#g-line-date", 1.3, 0.25);
-      slap("#g-date-body", 1.53, 3);
+      draw("#g-line-date", 1.32, 0.2);
+      slap("#g-date-body", 1.53, 4);
       // 2.03  phrase two, "...a dying playwright": the deathbed line is circled and labelled.
       draw("#g-circ-death", 2.03, 0.45);
       draw("#g-line-death", 2.33, 0.25);
       slap("#g-label-body", 2.52, -1.5);
       slap("#g-sub-body", 3.02, 1.2);
       // Slow push on the whole collage while it holds.
-      tl.fromTo("#g-cam", { scale: 1, transformOrigin: "42% 50%" }, { scale: 1.035, duration: 3.4, ease: "none" }, 0);
+      tl.fromTo("#g-cam", { scale: 1, transformOrigin: "50% 45%" }, { scale: 1.04, duration: 3.4, ease: "none" }, 0);
       // 3.40  whip off to the left on the 3.55 beat; the quote arrives from the right.
-      tl.fromTo("#g-cam", { x: 0 }, { x: -2200, duration: 0.3, ease: "power3.in" }, 3.4);
+      tl.fromTo("#g-cam", { x: 0 }, { x: -1500, duration: 0.3, ease: "power3.in" }, 3.4);
 
       window.__timelines["greene"] = tl;
     })();
